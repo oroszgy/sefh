@@ -106,18 +106,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pagerank", "pagerank\pagera
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hunTools", "hunTools\hunTools.vcproj", "{7F4DFE6C-83CA-4C89-A7AB-9683E0AEA751}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_listIndex", "_listIndex\_listIndex.vcproj", "{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testHunTools", "testHunTools\testHunTools.vcproj", "{06909341-766D-432A-B6CD-16712E885310}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dateRecognizer", "dateRecognizer\dateRecognizer.vcproj", "{98D490CB-2AB6-469E-A363-4CC17E99899C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_testDate", "_testDate\_testDate.vcproj", "{1F759FAA-7991-48BD-A4BC-A2AA4D30779E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "createDateField", "_testDate\_testDate.vcproj", "{1F759FAA-7991-48BD-A4BC-A2AA4D30779E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{98D490CB-2AB6-469E-A363-4CC17E99899C} = {98D490CB-2AB6-469E-A363-4CC17E99899C}
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup", "setup\setup.vdproj", "{D870DE93-ECCC-440B-B417-7D1310392BA9}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SEFHsetup", "setup\setup.vdproj", "{D870DE93-ECCC-440B-B417-7D1310392BA9}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -354,18 +352,6 @@ Global
 		{7F4DFE6C-83CA-4C89-A7AB-9683E0AEA751}.Release|Win32.ActiveCfg = Release|Win32
 		{7F4DFE6C-83CA-4C89-A7AB-9683E0AEA751}.Release|Win32.Build.0 = Release|Win32
 		{7F4DFE6C-83CA-4C89-A7AB-9683E0AEA751}.Release|x86.ActiveCfg = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|Win32.Build.0 = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Debug|x86.ActiveCfg = Debug|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|Any CPU.ActiveCfg = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|Win32.ActiveCfg = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|Win32.Build.0 = Release|Win32
-		{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}.Release|x86.ActiveCfg = Release|Win32
 		{06909341-766D-432A-B6CD-16712E885310}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{06909341-766D-432A-B6CD-16712E885310}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{06909341-766D-432A-B6CD-16712E885310}.Debug|Mixed Platforms.Build.0 = Debug|Win32
