@@ -9,8 +9,10 @@
 int main(int argc, char **argvs)
 {
 	if(argc<3)
+	{
+		std::cout<<"Not enough arguments!\n";
 		return 0;
-	
+	}
 	FileCompleter f;
 	std::string filename(argvs[1]);
 	std::string dateFile(argvs[2]);
@@ -21,6 +23,7 @@ int main(int argc, char **argvs)
 	f.doReplace(filename, df);
 	
 	delete df;
+	std::cout<<"Done!";
 	return 0;
 }
 
