@@ -13,12 +13,17 @@ NumberFormats::~NumberFormats(void)
 void NumberFormats::createFormatStr(std::string sep)
 {
 	if(sep == "")
-		formatString = "\d+";
+		formatString = "\\d+";
 	else
-		formatString ="^\d+(["+sep+"]{0,1}\d)*\d*$";
+		formatString ="^\\d+(["+sep+"]{0,1}\\d)*\\d*";
 }
 
 NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
 {
 	return new NumberFormats(sep);
+}
+
+std::string NumberFormats::getRegExpString()
+{
+	return formatString;
 }
