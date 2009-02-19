@@ -15,7 +15,7 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 	
 	XMLNode xMainNode = XMLNode::openFileHelper(fileName.c_str(), _T("UDML"));
 	
-	units = new std::vector<Unit*>();
+	units = new std::vector<Unit>();
 
 	std::wstring type, constant, multiplierStr;
 	int i=0; char* p; double multiplier;
@@ -27,7 +27,7 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 		constant = unitNode.getText();
 		
 		multiplier = strtod(StringCoverter::WStringToString(multiplierStr).c_str(),&p);
-		units->push_back(new Unit(StringCoverter::WStringToString(type),
+		units->push_back(Unit(StringCoverter::WStringToString(type),
 			StringCoverter::WStringToString(constant), multiplier));
 
 		++i;
@@ -36,7 +36,7 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 
 }
 
-std::vector<Unit*>* ConfigFileReader::getUnits()
+std::vector<Unit>* ConfigFileReader::getUnits()
 {
 	return units;
 }
