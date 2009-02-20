@@ -3,6 +3,8 @@
 UnitRecognizer::UnitRecognizer(ConfigFileReader* reader)
 {
 	units = reader->getUnits();
+	separators = reader->getSeparators();
+	decSep = reader->getDecimalSeparator();
 }
 
 UnitRecognizer::~UnitRecognizer()
@@ -12,7 +14,13 @@ UnitRecognizer::~UnitRecognizer()
 //TODO:: lekezelni azt az esetet amikor nincs semmi
 std::string UnitRecognizer::getUnitRecognizingRegexp()
 {
-	NumberFormats* nf = NumberFormats::getNumberFormatFromSeparators("\\.");
+	std::string sep;
+	for(int i=0; i<separators->size(); ++i)
+	{
+		sep+=separators->at(i);
+	}
+
+	NumberFormats* nf = NumberFormats::getNumberFormatFromSeparators(sep);
 	std::string REStr = "("+nf->getRegExpString()+")";
 	REStr+="\\s*(";
 	
@@ -40,10 +48,11 @@ double UnitRecognizer::getSIValue(std::string unit)
 			//TODO:: konverzió
 
 			//a tizedes elválasztó a '.'
+			////////////elvileg a fentiek mûködnek, ellenõrizd le
 			boost::regex re(getUnitRecognizingRegexp());
 			std::string value = boost::regex_replace(unit, re, "$1");
 			
-			return atof(value.c_str());
+			return NumberFormats::convertToDouble(decSep[0], value);
 		}
 	}
 

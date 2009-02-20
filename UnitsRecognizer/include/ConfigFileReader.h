@@ -11,9 +11,12 @@ public:
 	~ConfigFileReader();
 
 	std::vector<Unit>* getUnits();
+	std::vector<std::string>* getSeparators();
+	std::string getDecimalSeparator();
 
 private:
-	std::string separators;
+	std::vector<std::string>* separators;
+	std::string decimalSeparator;
 	std::vector<Unit>* units;
 
 	void parseFile(std::wstring fileName);

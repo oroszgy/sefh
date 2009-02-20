@@ -18,4 +18,6 @@ public:
 
 private:
 	std::vector<Unit>* units;
+	std::vector<std::string>* separators;
+	std::string decSep;
 };
