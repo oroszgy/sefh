@@ -27,3 +27,29 @@ std::string NumberFormats::getRegExpString()
 {
 	return formatString;
 }
+
+double NumberFormats::convertToDouble(char decimalSep, std::string _unit)
+{
+	std::string unit(_unit);
+	std::string::iterator it = unit.begin();
+	while(it!=unit.end())
+	{
+		if(!isInt(*it) && *it != decimalSep)
+			unit.erase(it);
+		++it;
+	}
+
+	unit[unit.find(decimalSep)]='.';
+	
+
+	return atof(unit.c_str());
+	
+}
+
+bool NumberFormats::isInt(char c)
+{
+	int ci = atoi(&c);
+	char* cic = new char[10];
+	cic	= itoa(ci, cic, 10);
+	return cic[0] == c;
+}

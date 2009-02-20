@@ -19,7 +19,8 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 
 	std::wstring type, constant, multiplierStr;
 	int i=0; char* p; double multiplier;
-	XMLNode unitNode = xMainNode.getChildNode(_T("Unit"),0);
+	XMLNode unitsNode = xMainNode.getChildNode(_T("Units"));
+	XMLNode unitNode = unitsNode.getChildNode(_T("Unit"),0);
 	while(!unitNode.isEmpty())
 	{
 		type = unitNode.getAttribute(_T("type"));
@@ -31,12 +32,43 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 			StringCoverter::WStringToString(constant), multiplier));
 
 		++i;
-		unitNode = xMainNode.getChildNode(_T("Unit"), i);
+		unitNode = unitsNode.getChildNode(_T("Unit"), i);
 	}
 
+	//Szükséges, hogy az XML fájlban a a ' ' helyett '\s' legyen és hasonlóan
+	//minden karaktersotozatnak reguláris alakja
+	separators = new std::vector<std::string>();
+	XMLNode separatorsNode= xMainNode.getChildNode(_T("Separators"));
+	i=0; std::string isDec;
+	XMLNode sepNode = separatorsNode.getChildNode(_T("sep"),i);
+	while(!sepNode.isEmpty())
+	{
+		isDec = StringCoverter::WStringToString(sepNode.getAttribute(_T("isDecimal")));
+		
+		if(isDec == "true")
+		{
+			decimalSeparator = StringCoverter::WStringToString(sepNode.getText());
+		}
+		else
+		{
+			separators->push_back(StringCoverter::WStringToString(sepNode.getText()));	
+		}
+
+		++i; sepNode = separatorsNode.getChildNode(_T("sep"), i);
+	}
 }
 
 std::vector<Unit>* ConfigFileReader::getUnits()
 {
 	return units;
+}
+
+std::vector<std::string>* ConfigFileReader::getSeparators()
+{
+	return separators;
+}
+
+std::string ConfigFileReader::getDecimalSeparator()
+{
+	return decimalSeparator;
 }
