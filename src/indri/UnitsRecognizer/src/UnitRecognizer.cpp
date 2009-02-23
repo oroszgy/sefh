@@ -11,28 +11,55 @@ UnitRecognizer::~UnitRecognizer()
 {
 }
 
+std::string UnitRecognizer::getUnitsRecognizingRegExp()
+{
+	std::string unitConstants;
+	for(int i=0; i<units->size(); ++i)
+	{
+		unitConstants+=units->at(i).constant;
+		if(i<units->size()-1)
+			unitConstants+="|";
+	}
+	return getUnitRecognizingRegExpFromConstants(unitConstants);
+}
+
 //TODO:: lekezelni azt az esetet amikor nincs semmi
-std::string UnitRecognizer::getUnitRecognizingRegexp()
+std::string UnitRecognizer::getUnitRecognizingRegExpFromConstants(std::string unitConstants)
 {
 	std::string sep;
 	for(int i=0; i<separators->size(); ++i)
 	{
-		sep+=separators->at(i);
+		sep += separators->at(i);
 	}
+	sep += decSep;
 
 	NumberFormats* nf = NumberFormats::getNumberFormatFromSeparators(sep);
-	std::string REStr = "("+nf->getRegExpString()+")";
-	REStr+="\\s*(";
+	std::string REStr = "(" + nf->getRegExpString() + ")";
+	REStr += "\\s*(";
 	
-	for(int i=0; i<units->size(); ++i)
+	REStr += unitConstants;
+
+	REStr += ')';
+	//REStr += "$";
+	return REStr;
+}
+
+std::map<std::string, std::string>* UnitRecognizer::getUnitsRecognizingRegexps()
+{
+	std::map<std::string, std::string>* map = new std::map<std::string, std::string>();
+	std::vector<Unit>::iterator vecIt;
+	for(vecIt = units->begin(); vecIt != units->end(); ++vecIt)
 	{
-		REStr+=units->at(i).constant;
-		REStr+="|";
+		(*map)[(*vecIt).type] += "|" + (*vecIt).constant;
 	}
 
-	REStr[REStr.length()-1]=')';
-	REStr+="$";
-	return REStr;
+	std::map<std::string, std::string>::iterator mapIt;
+	for(mapIt = map->begin(); mapIt != map->end(); ++mapIt)
+	{
+		mapIt->second = getUnitRecognizingRegExpFromConstants(mapIt->second.substr(1));
+	}
+
+	return map;
 }
 
 double UnitRecognizer::getSIValue(std::string unit)
@@ -49,7 +76,7 @@ double UnitRecognizer::getSIValue(std::string unit)
 
 			//a tizedes elválasztó a '.'
 			////////////elvileg a fentiek mûködnek, ellenõrizd le
-			boost::regex re(getUnitRecognizingRegexp());
+			boost::regex re(getUnitsRecognizingRegExp());
 			std::string value = boost::regex_replace(unit, re, "$1");
 			
 			return NumberFormats::convertToDouble(decSep[0], value);
