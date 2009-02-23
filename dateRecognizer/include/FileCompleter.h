@@ -12,6 +12,8 @@ public:
 	~FileCompleter();
 	void doReplace(const std::string fileName, DateFormats* dateFormats);
 	std::string doTransformation(const std::string& inputString, DateFormats* dateFormats);
+	std::string doDateTransformation(const std::string& inputString, DateFormats* dateFormats);
+	std::string doUnitTransformation(const std::string& inputString);
 //	indri::parse::UnparsedDocument* doTransformation(indri::parse::UnparsedDocument* document, DateFormats* df);
 
 private:

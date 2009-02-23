@@ -55,8 +55,8 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 //P: Exists a parser which can recognize
 void HunDatefieldAnnotator::_parseDate(const std::string& date, indri::parse::TagExtent *extent) const
 {
-	std::wstring wdate = StringCoverter::UTF8ToUnicode(date);
-	std::string _date = StringCoverter::WStringToString(wdate);
+	std::wstring wdate = StringConverter::UTF8ToUnicode(date);
+	std::string _date = StringConverter::WStringToString(wdate);
 	std::string day, month, year;
 	std::vector<DateFormat>* dfs = _dateFormats->getDateFormats();
 

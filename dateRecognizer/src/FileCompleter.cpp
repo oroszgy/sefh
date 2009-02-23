@@ -1,5 +1,6 @@
 #include "..\include\FileCompleter.h"
 #include <boost/regex.hpp>
+#include "UnitRecognizerFactory.h"
 
 FileCompleter::FileCompleter()
 {
@@ -31,7 +32,7 @@ void FileCompleter::doReplace(const std::string fileName, DateFormats* dateForma
 }*/
 
 
-std::string FileCompleter::doTransformation(const std::string& inputString, DateFormats* dateFormats)
+std::string FileCompleter::doDateTransformation(const std::string& inputString, DateFormats* dateFormats)
 {
 	std::vector<DateFormat>* dates = dateFormats->getDateFormats();
 	//std::vector<boost::regex> * dateRegexps = new std::vector<boost::regex>();
@@ -57,7 +58,36 @@ std::string FileCompleter::doTransformation(const std::string& inputString, Date
 
 	
 	return modInputString;
-	return "";
+}
+
+
+std::string FileCompleter::doTransformation(const std::string &inputString, DateFormats *dateFormats)
+{
+	std::string str;
+	str = doDateTransformation(inputString, dateFormats);
+	return doUnitTransformation(str);
+}
+
+std::string FileCompleter::doUnitTransformation(const std::string& inputString)
+{
+	std::string input(inputString);
+
+	UnitRecognizer* ur = UnitRecognizerFactory::getDefault();
+	std::map<std::string, std::string>* unitRegExps = ur->getUnitsRecognizingRegexps();
+	std::map<std::string, std::string>::iterator it;
+	for(it= unitRegExps->begin(); it != unitRegExps->end(); ++it)
+	{
+		std::string recRegExpStr = "(" + it->second + ")";
+		boost::regex unitRegExp(recRegExpStr);
+		input = boost::regex_replace(input, unitRegExp, "<" + it->first + ">" + "$1"+
+			"</" + it->first + ">");
+	}
+
+	
+	
+	
+
+	return input;
 }
 
 std::string FileCompleter::parseFile(std::string fileName)

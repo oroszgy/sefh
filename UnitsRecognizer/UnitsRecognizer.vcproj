@@ -166,6 +166,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UnitRecognizerFactory.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\xmlParser.cpp"
 				>
 			</File>
@@ -189,6 +193,10 @@
 			</File>
 			<File
 				RelativePath=".\include\UnitRecognizer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\UnitRecognizerFactory.h"
 				>
 			</File>
 			<File

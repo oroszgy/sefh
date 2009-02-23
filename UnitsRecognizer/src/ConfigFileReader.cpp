@@ -27,9 +27,9 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 		multiplierStr = unitNode.getAttribute(_T("multiplier"));
 		constant = unitNode.getText();
 		
-		multiplier = strtod(StringCoverter::WStringToString(multiplierStr).c_str(),&p);
-		units->push_back(Unit(StringCoverter::WStringToString(type),
-			StringCoverter::WStringToString(constant), multiplier));
+		multiplier = strtod(StringConverter::WStringToString(multiplierStr).c_str(),&p);
+		units->push_back(Unit(StringConverter::WStringToString(type),
+			StringConverter::WStringToString(constant), multiplier));
 
 		++i;
 		unitNode = unitsNode.getChildNode(_T("Unit"), i);
@@ -43,15 +43,15 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 	XMLNode sepNode = separatorsNode.getChildNode(_T("sep"),i);
 	while(!sepNode.isEmpty())
 	{
-		isDec = StringCoverter::WStringToString(sepNode.getAttribute(_T("isDecimal")));
+		isDec = StringConverter::WStringToString(sepNode.getAttribute(_T("isDecimal")));
 		
 		if(isDec == "true")
 		{
-			decimalSeparator = StringCoverter::WStringToString(sepNode.getText());
+			decimalSeparator = StringConverter::WStringToString(sepNode.getText());
 		}
 		else
 		{
-			separators->push_back(StringCoverter::WStringToString(sepNode.getText()));	
+			separators->push_back(StringConverter::WStringToString(sepNode.getText()));	
 		}
 
 		++i; sepNode = separatorsNode.getChildNode(_T("sep"), i);

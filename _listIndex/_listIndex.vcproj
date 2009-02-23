@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="_listIndex"
+	Name="testProject"
 	ProjectGUID="{DBFC3044-7BEA-4A59-B699-5CE17F5E248D}"
 	RootNamespace="_listIndex"
 	Keyword="Win32Proj"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\lemur\Lemur 4.7\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\include&quot;"
+				AdditionalIncludeDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\dateRecognizer\include&quot;;&quot;E:\Program Files\xmlParser&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\UnitsRecognizer\include&quot;;&quot;E:\Program Files\boost\boost_1_36_0&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,9 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib lemur.lib"
+				AdditionalDependencies="wsock32.lib UnitsRecognizer.lib hunTools.lib dateRecognizer.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;E:\lemur\Lemur 4.7\lib&quot;"
+				AdditionalLibraryDirectories="&quot;E:\Program Files\boost\boost_1_36_0\lib&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\debug&quot;;&quot;E:\Program Files\xmlParser\DebugDLL&quot;"
+				DelayLoadDLLs=""
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				RandomizedBaseAddress="1"
@@ -225,6 +226,10 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{98D490CB-2AB6-469E-A363-4CC17E99899C}"
+			RelativePathToProject=".\dateRecognizer\dateRecognizer.vcproj"
+		/>
 	</References>
 	<Files>
 		<Filter
@@ -234,10 +239,6 @@
 			>
 			<File
 				RelativePath=".\_listIndex.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\stdafx.cpp"
 				>
 			</File>
 		</Filter>

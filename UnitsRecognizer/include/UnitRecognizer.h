@@ -1,6 +1,6 @@
 #pragma once
 #include "ConfigFileReader.h"
-#include <vector>
+#include <map>
 #include "Unit.h"
 #include "NumberFormats.h"
 #include <boost\regex.hpp>
@@ -12,9 +12,11 @@ public:
 	UnitRecognizer(ConfigFileReader* reader);
 	~UnitRecognizer();
 
-	std::string getUnitRecognizingRegexp();
+	std::string getUnitRecognizingRegExpFromConstants(std::string);
+	std::string getUnitsRecognizingRegExp();
 	double getSIValue(std::string);
 	std::string getTypeOfMeasure(std::string);
+	std::map<std::string, std::string>* getUnitsRecognizingRegexps();
 
 private:
 	std::vector<Unit>* units;
