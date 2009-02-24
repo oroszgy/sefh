@@ -13,9 +13,9 @@ NumberFormats::~NumberFormats(void)
 void NumberFormats::createFormatStr(std::string sep)
 {
 	if(sep == "")
-		formatString = "\\d+";
+		formatString = "(-){0,1}\\d+";
 	else
-		formatString ="\\d+(["+sep+"]{0,1}\\d)*\\d*";
+		formatString ="(-){0,1}\\d+(["+sep+"]{0,1}\\d)*\\d*";
 }
 
 NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
@@ -38,7 +38,7 @@ double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 			unit.erase(it);
 		++it;
 	}*/
-	unit = boost::regex_replace(unit, boost::regex("[^\\d"+decimalSep+"]"), "");
+	unit = boost::regex_replace(unit, boost::regex("[^-\\d"+decimalSep+"]"), "");
 	unit = boost::regex_replace(unit, boost::regex(decimalSep), ".");
 	
 	
