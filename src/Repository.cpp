@@ -43,8 +43,9 @@
 #include <string>
 #include <algorithm>
 
-#include "DateFormats.h";
-#include "HunDatefieldAnnotator.h";
+#include "DateFormats.h"
+#include "HunDatefieldAnnotator.h"
+#include "UnitFieldAnnotator.h"
 
 const static int defaultMemory = 100*1024*1024;
 
@@ -162,6 +163,9 @@ void indri::collection::Repository::_buildChain( indri::api::Parameters& paramet
 		DateFormats* df  = new DateFormats();
 		df->setSourceFile("datumformak.txt");
 		_transformations.push_back( new HunDatefieldAnnotator( _fields[i].name, df) );
+	}
+	else if(_fields[i].parserName == "UnitFieldAnnotator" ) {
+		_transformations.push_back( new UnitFieldAnnotator( UnitRecognizerFactory::getDefault() ) );
 	}
   }
 
