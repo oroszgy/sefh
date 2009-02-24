@@ -39,13 +39,13 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 	//minden karaktersotozatnak reguláris alakja
 	separators = new std::vector<std::string>();
 	XMLNode separatorsNode= xMainNode.getChildNode(_T("Separators"));
-	i=0; std::string isDec;
+	i=0; std::wstring isDec;
 	XMLNode sepNode = separatorsNode.getChildNode(_T("sep"),i);
 	while(!sepNode.isEmpty())
 	{
-		isDec = StringConverter::WStringToString(sepNode.getAttribute(_T("isDecimal")));
+		isDec = sepNode.getAttribute(_T("isDecimal"));
 		
-		if(isDec == "true")
+		if(isDec == L"true")
 		{
 			decimalSeparator = StringConverter::WStringToString(sepNode.getText());
 		}

@@ -11,7 +11,7 @@ UnitRecognizer::~UnitRecognizer()
 {
 }
 
-std::string UnitRecognizer::getUnitsRecognizingRegExp()
+std::string UnitRecognizer::getRecognizingRegExp()
 {
 	std::string unitConstants;
 	for(int i=0; i<units->size(); ++i)
@@ -20,11 +20,11 @@ std::string UnitRecognizer::getUnitsRecognizingRegExp()
 		if(i<units->size()-1)
 			unitConstants+="|";
 	}
-	return getUnitRecognizingRegExpFromConstants(unitConstants);
+	return getRecognizingRegExpFromConstants(unitConstants);
 }
 
 //TODO:: lekezelni azt az esetet amikor nincs semmi
-std::string UnitRecognizer::getUnitRecognizingRegExpFromConstants(std::string unitConstants)
+std::string UnitRecognizer::getRecognizingRegExpFromConstants(std::string unitConstants)
 {
 	std::string sep;
 	for(int i=0; i<separators->size(); ++i)
@@ -56,7 +56,7 @@ std::map<std::string, std::string>* UnitRecognizer::getUnitsRecognizingRegexps()
 	std::map<std::string, std::string>::iterator mapIt;
 	for(mapIt = map->begin(); mapIt != map->end(); ++mapIt)
 	{
-		mapIt->second = getUnitRecognizingRegExpFromConstants(mapIt->second.substr(1));
+		mapIt->second = getRecognizingRegExpFromConstants(mapIt->second.substr(1));
 	}
 
 	return map;
@@ -66,20 +66,13 @@ double UnitRecognizer::getSIValue(std::string unit)
 {
 	for(int i=0; i<units->size(); ++i)
 	{
-		int found = unit.find(units->at(i).constant);
-		if(found != std::string::npos)
+		std::string re = getRecognizingRegExpFromConstants(units->at(i).constant);
+		if(boost::regex_match(unit.begin(), unit.end(), boost::regex(re)))
 		{
-			//mûködik, és ha igen, akkor miért is van szükségünk a separatorsra?
-			//TODO: meg kellene különböztetni 2 félét... vagy azt mondani, hogy a sep csak
-			//az elválasztóra vonatkozik
-			//TODO:: konverzió
-
-			//a tizedes elválasztó a '.'
-			////////////elvileg a fentiek mûködnek, ellenõrizd le
-			boost::regex re(getUnitsRecognizingRegExp());
+			boost::regex re(getRecognizingRegExp());
 			std::string value = boost::regex_replace(unit, re, "$1");
-			
-			return NumberFormats::convertToDouble(decSep[0], value);
+	
+			return NumberFormats::convertToDouble(decSep, value) * units->at(i).multiplier;
 		}
 	}
 

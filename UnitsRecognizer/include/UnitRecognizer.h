@@ -12,8 +12,8 @@ public:
 	UnitRecognizer(ConfigFileReader* reader);
 	~UnitRecognizer();
 
-	std::string getUnitRecognizingRegExpFromConstants(std::string);
-	std::string getUnitsRecognizingRegExp();
+	std::string getRecognizingRegExpFromConstants(std::string);
+	std::string getRecognizingRegExp();
 	double getSIValue(std::string);
 	std::string getTypeOfMeasure(std::string);
 	std::map<std::string, std::string>* getUnitsRecognizingRegexps();
