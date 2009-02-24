@@ -43,7 +43,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\Program Files\boost\boost_1_36_0&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\dateRecognizer\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;../include;../contrib/antlr/include;../contrib/xpdf/include;../contrib/lemur/include;../contrib/zlib/include;../hunTools/include"
+				AdditionalIncludeDirectories="&quot;E:\Program Files\boost\boost_1_36_0&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\dateRecognizer\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\UnitsRecognizer\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;../include;../contrib/antlr/include;../contrib/xpdf/include;../contrib/lemur/include;../contrib/zlib/include;../hunTools/include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
