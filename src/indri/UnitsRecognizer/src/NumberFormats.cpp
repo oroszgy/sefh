@@ -15,7 +15,7 @@ void NumberFormats::createFormatStr(std::string sep)
 	if(sep == "")
 		formatString = "\\d+";
 	else
-		formatString ="^\\d+(["+sep+"]{0,1}\\d)*\\d*";
+		formatString ="\\d+(["+sep+"]{0,1}\\d)*\\d*";
 }
 
 NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
@@ -28,18 +28,19 @@ std::string NumberFormats::getRegExpString()
 	return formatString;
 }
 
-double NumberFormats::convertToDouble(char decimalSep, std::string _unit)
+double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 {
 	std::string unit(_unit);
-	std::string::iterator it = unit.begin();
+	/*std::string::iterator it = unit.begin();
 	while(it!=unit.end())
 	{
-		if(!isInt(*it) && *it != decimalSep)
+		if(!isInt(*it) && *it != boost::)
 			unit.erase(it);
 		++it;
-	}
-
-	unit[unit.find(decimalSep)]='.';
+	}*/
+	unit = boost::regex_replace(unit, boost::regex("[^\\d"+decimalSep+"]"), "");
+	unit = boost::regex_replace(unit, boost::regex(decimalSep), ".");
+	
 	
 
 	return atof(unit.c_str());

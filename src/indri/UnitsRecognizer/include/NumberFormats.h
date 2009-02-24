@@ -1,11 +1,12 @@
 #pragma once
-#include<string>
-#include<queue>
+#include <string>
+#include <queue>
+#include <boost/regex.hpp>
 
 class NumberFormats
 {
 public:
-	static double convertToDouble(char decimalSep, std::string unit);
+	static double convertToDouble(std::string decimalSep, std::string unit);
 	static NumberFormats* getNumberFormatFromSeparators(std::string);
 	std::string getRegExpString();
 	~NumberFormats(void);
