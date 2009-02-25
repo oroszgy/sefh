@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;&quot;E:\Program Files\boost\boost_1_36_0&quot;;..\include"
+				AdditionalIncludeDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\contrib\lemur\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\include\indri&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;&quot;E:\Program Files\boost\boost_1_36_0&quot;;..\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -162,6 +162,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UnitFieldAnnotator.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\UnitRecognizer.cpp"
 				>
 			</File>
@@ -189,6 +193,10 @@
 			</File>
 			<File
 				RelativePath=".\include\Unit.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\UnitFieldAnnotator.h"
 				>
 			</File>
 			<File

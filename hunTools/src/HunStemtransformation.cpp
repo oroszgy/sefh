@@ -29,11 +29,11 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 	for( size_t i=0; i<terms.size(); i++)
 	{
 		char* term = terms[i];
-		if(!term || StringCoverter::UTF8ToUnicode(term)==L"")
+		if(!term || StringConverter::UTF8ToUnicode(term)==L"")
 			continue;
 
 		std::vector<std::wstring>*  v = 
-			morphTools->getStems(StringCoverter::UTF8ToUnicode(term));
+			morphTools->getStems(StringConverter::UTF8ToUnicode(term));
 		if(v==NULL || !(atoi(term) == 0 && std::string(term) != "0"))
 		{
 			stems->push_back(term);
@@ -44,7 +44,7 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 
 		for(int j=0; j< v->size(); ++j)
 		{
-			std::string _term = StringCoverter::UnicodeToUTF8(v->at(j));
+			std::string _term = StringConverter::UnicodeToUTF8(v->at(j));
 			const char * _t = _term.c_str();
 			char* tt = new char[100];
 			strcpy(tt, _t);

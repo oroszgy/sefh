@@ -165,7 +165,7 @@ void indri::collection::Repository::_buildChain( indri::api::Parameters& paramet
 		_transformations.push_back( new HunDatefieldAnnotator( _fields[i].name, df) );
 	}
 	else if(_fields[i].parserName == "UnitFieldAnnotator" ) {
-		_transformations.push_back( new UnitFieldAnnotator( UnitRecognizerFactory::getDefault() ) );
+		_transformations.push_back( new UnitFieldAnnotator( UnitRecognizerFactory::getDefault(), _fields[i].name ) );
 	}
   }
 

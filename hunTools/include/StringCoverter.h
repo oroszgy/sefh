@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-class StringCoverter
+class StringConverter
 {
 public:
 static std::wstring StringToWString(const std::string& s);
