@@ -5,7 +5,7 @@
 #include "atlstr.h"
 #include "comutil.h"
 
-std::wstring StringCoverter::StringToWString(const std::string& s)
+std::wstring StringConverter::StringToWString(const std::string& s)
 {
 	USES_CONVERSION;
 	std::string temp(s.length(),L'û');
@@ -17,7 +17,7 @@ std::wstring StringCoverter::StringToWString(const std::string& s)
 }
 
 
-std::string StringCoverter::WStringToString(const std::wstring& s)
+std::string StringConverter::WStringToString(const std::wstring& s)
 {
 	USES_CONVERSION;
 	CString cstring(s.c_str());
@@ -28,7 +28,7 @@ std::string StringCoverter::WStringToString(const std::wstring& s)
 	//return temp;
 }
 
-std::wstring StringCoverter::UTF8ToUnicode(const std::string &s)
+std::wstring StringConverter::UTF8ToUnicode(const std::string &s)
 {
 	wchar_t buffer[1000];
 	MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, buffer, 1000);
@@ -36,7 +36,7 @@ std::wstring StringCoverter::UTF8ToUnicode(const std::string &s)
 	return ret;
 }
 
-std::string StringCoverter::UnicodeToUTF8(const std::wstring &wstr)
+std::string StringConverter::UnicodeToUTF8(const std::wstring &wstr)
 {
     // Convert a Unicode string to an ASCII string
     std::string strTo;

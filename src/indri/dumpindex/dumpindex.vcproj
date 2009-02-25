@@ -64,7 +64,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib hunTools.lib dateRecognizer.lib"
+				AdditionalDependencies="wsock32.lib hunTools.lib dateRecognizer.lib UnitsRecognizer.lib"
 				OutputFile="$(OutDir)/dumpindex.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;E:\Program Files\boost\boost_1_36_0\lib&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\debug&quot;"
