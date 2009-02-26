@@ -29,27 +29,23 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
           if( _field == extent->name ) {
             int dateStart = document->positions[extent->begin].begin; 
             int dateEnd = document->positions[extent->end-1].end;
-			int dateLen = dateEnd - dateStart ;
-            std::string date;
-			//Converting
-			/*std::wstring wtext = StringCoverter::UTF8ToUnicode(document->text);
-			std::string text = StringCoverter::WStringToString(wtext);*/
+			
 			std::string text(document->text);
-
-			int dateD1 = document->positions[extent->end-1].begin;
-			int dateD2 = document->positions[extent->end-1].end;
-			int dateM1 = document->positions[extent->end-2].begin;
-			int dateM2 = document->positions[extent->end-2].end;
-			std::string tmp0 = text.substr(dateStart, dateD1-dateStart);
-			std::string tmp1 = text.substr(dateStart, dateD2-dateStart);
-			std::string tmp2 = text.substr(dateStart, dateM1-dateStart);
-			std::string tmp3 = text.substr(dateStart, dateM2-dateStart);
+			int dateLen = findExtentEnd(dateEnd, text) - dateStart ;
+            std::string date;
 
 			date = text.substr(dateStart, dateLen);
             _parseDate(date, extent);
           }
         }
         return document;
+}
+
+int HunDatefieldAnnotator::findExtentEnd(int supposedEnd, std::string text)
+{
+	while(text[supposedEnd] != '<')
+		++supposedEnd;
+	return supposedEnd;
 }
 
 //P: Exists a parser which can recognize

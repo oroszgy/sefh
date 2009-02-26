@@ -17,6 +17,7 @@ public:
 	void setHandler( indri::parse::ObjectHandler<indri::api::ParsedDocument>& handler );
 private:
 	indri::parse::ObjectHandler<indri::api::ParsedDocument>* _handler;
+	int findExtentEnd(int supposedEnd, std::string text);
 	std::string& _field;
 	DateFormats* _dateFormats;
 
