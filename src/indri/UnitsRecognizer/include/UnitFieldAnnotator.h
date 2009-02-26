@@ -7,7 +7,7 @@ class UnitFieldAnnotator :
 	public indri::parse::Transformation
 {
 public:
-	UnitFieldAnnotator(UnitRecognizer* ur, std::string fn);
+	UnitFieldAnnotator(std::string fn);
 	~UnitFieldAnnotator(void);
 	indri::api::ParsedDocument* transform( indri::api::ParsedDocument* document );
     void handle( indri::api::ParsedDocument* document );

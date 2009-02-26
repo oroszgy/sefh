@@ -1,8 +1,8 @@
 #include "..\include\UnitFieldAnnotator.h"
 
-UnitFieldAnnotator::UnitFieldAnnotator(UnitRecognizer* ur, std::string fn) : unitRecognizer(ur),
-fieldName(fn)
+UnitFieldAnnotator::UnitFieldAnnotator(std::string fn) : fieldName(fn)
 {
+	unitRecognizer = UnitRecognizerFactory::getDefault();
 }
 
 UnitFieldAnnotator::~UnitFieldAnnotator(void)

@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
 #include <boost\regex.hpp>
+#include "ConfigFileReader.h"
 
 class DateFormat
 {
 public:
-	DateFormat(std::string formatString);
+	static std::vector<DateFormat>* getInstances();
 	~DateFormat();
 
 	boost::regex getRecognizerRegExp();
@@ -19,6 +20,7 @@ public:
 	std::string getDayIntegerString(std::string date);
 	
 private:
+	DateFormat(std::string formatString);
 	int yearPos, monthPos, dayPos;
 	std::string recognizerRegExp;
 	std::string formatString;

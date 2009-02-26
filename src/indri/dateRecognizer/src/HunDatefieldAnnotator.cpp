@@ -2,9 +2,9 @@
 #include "..\include\DateFormat.h"
 
 
-HunDatefieldAnnotator::HunDatefieldAnnotator(std::string& field, DateFormats* dateFormats) :
+HunDatefieldAnnotator::HunDatefieldAnnotator(std::string field) :
 _field(field)  {
-	_dateFormats = dateFormats;
+	_dateFormats = DateFormat::getInstances();
 }
 
 HunDatefieldAnnotator::~HunDatefieldAnnotator(void)
@@ -54,14 +54,13 @@ void HunDatefieldAnnotator::_parseDate(const std::string& date, indri::parse::Ta
 	std::wstring wdate = StringConverter::UTF8ToUnicode(date);
 	std::string _date = StringConverter::WStringToString(wdate);
 	std::string day, month, year;
-	std::vector<DateFormat>* dfs = _dateFormats->getDateFormats();
 
 	DateFormat* matchingDateFormat;
-	for(int i=0; i<dfs->size(); ++i)
+	for(int i=0; i<_dateFormats->size(); ++i)
 	{
-		if(boost::regex_match(_date,	dfs->at(i).getRecognizerRegExp()))
+		if(boost::regex_match(_date, _dateFormats->at(i).getRecognizerRegExp()))
 		{
-			matchingDateFormat = &(dfs->at(i));
+			matchingDateFormat = &(_dateFormats->at(i));
 			break;
 		}
 	}

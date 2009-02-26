@@ -209,10 +209,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\DateFormats.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\FileCompleter.cpp"
 				>
 			</File>
@@ -228,10 +224,6 @@
 			>
 			<File
 				RelativePath=".\include\DateFormat.h"
-				>
-			</File>
-			<File
-				RelativePath=".\include\DateFormats.h"
 				>
 			</File>
 			<File

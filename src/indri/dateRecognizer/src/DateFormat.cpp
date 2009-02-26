@@ -3,13 +3,26 @@
 
 DateFormat::DateFormat(std::string _formatString)
 {
+	isNumericMonth=true;
 	formatString = _formatString;
 	_parseDateFormat(_formatString);
-	isNumericMonth=true;
 }
 
 DateFormat::~DateFormat()
 {
+}
+
+std::vector<DateFormat>* DateFormat::getInstances()
+{
+	ConfigFileReader* cfr = ConfigFileReader::getDefault();
+	std::vector<std::string>* dfs = cfr->getDateFormatStrings();
+	std::vector<DateFormat>* ret = new std::vector<DateFormat>();
+	for(int i=0; i<dfs->size(); ++i)
+	{
+		ret->push_back(*(new DateFormat(dfs->at(i))));
+	}
+
+	return ret;
 }
 
 boost::regex DateFormat::getRecognizerRegExp()

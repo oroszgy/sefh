@@ -10,11 +10,11 @@ FileCompleter::~FileCompleter()
 {
 }
 
-void FileCompleter::doReplace(const std::string fileName, DateFormats* dateFormats)
+void FileCompleter::doReplace(const std::string fileName)
 {
 	std::string inputString = parseFile(fileName);
 
-	std::string modInputString = doTransformation(inputString, dateFormats);
+	std::string modInputString = doTransformation(inputString);
 	
 	writeFile(fileName, modInputString);
 }
@@ -32,9 +32,9 @@ void FileCompleter::doReplace(const std::string fileName, DateFormats* dateForma
 }*/
 
 
-std::string FileCompleter::doDateTransformation(const std::string& inputString, DateFormats* dateFormats)
+std::string FileCompleter::doDateTransformation(const std::string& inputString)
 {
-	std::vector<DateFormat>* dates = dateFormats->getDateFormats();
+	std::vector<DateFormat>* dates = DateFormat::getInstances();
 	//std::vector<boost::regex> * dateRegexps = new std::vector<boost::regex>();
 	
 	
@@ -61,10 +61,10 @@ std::string FileCompleter::doDateTransformation(const std::string& inputString, 
 }
 
 
-std::string FileCompleter::doTransformation(const std::string &inputString, DateFormats *dateFormats)
+std::string FileCompleter::doTransformation(const std::string &inputString)
 {
 	std::string str;
-	str = doDateTransformation(inputString, dateFormats);
+	str = doDateTransformation(inputString);
 	return doUnitTransformation(str);
 }
 

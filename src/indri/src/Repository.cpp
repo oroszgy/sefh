@@ -43,7 +43,6 @@
 #include <string>
 #include <algorithm>
 
-#include "DateFormats.h"
 #include "HunDatefieldAnnotator.h"
 #include "UnitFieldAnnotator.h"
 
@@ -159,13 +158,10 @@ void indri::collection::Repository::_buildChain( indri::api::Parameters& paramet
     }
 	//Added by Orosz Gyorgy 2009.02.02.
 	else if(_fields[i].parserName == "HunDateFieldAnnotator" ) {
-		//TODO: more generally. e.g. from the parameters list
-		DateFormats* df  = new DateFormats();
-		df->setSourceFile("datumformak.txt");
-		_transformations.push_back( new HunDatefieldAnnotator( _fields[i].name, df) );
+		_transformations.push_back( new HunDatefieldAnnotator( _fields[i].name) );
 	}
 	else if(_fields[i].parserName == "UnitFieldAnnotator" ) {
-		_transformations.push_back( new UnitFieldAnnotator( UnitRecognizerFactory::getDefault(), _fields[i].name ) );
+		_transformations.push_back( new UnitFieldAnnotator( _fields[i].name ) );
 	}
   }
 

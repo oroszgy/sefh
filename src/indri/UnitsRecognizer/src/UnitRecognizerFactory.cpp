@@ -10,7 +10,7 @@ UnitRecognizer* UnitRecognizerFactory::getDefault()
 
 	return defaultInstance;*/
 	
-	ConfigFileReader* cfr = new ConfigFileReader(L"units.txt");
+	ConfigFileReader* cfr = ConfigFileReader::getDefault();
 	return  new UnitRecognizer(cfr);
 	
 }

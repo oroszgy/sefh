@@ -17,8 +17,8 @@ int main(int argc, char **argvs)
 	std::string filename(argvs[1]);
 	std::string dateFile(argvs[2]);
 
-	DateFormats* df = new DateFormats();
-	df->setSourceFile(dateFile);
+	DateFormatsContainer* df = new DateFormatsContainer();
+	df->setConfigFile(dateFile);
 
 	f.doReplace(filename, df);
 	

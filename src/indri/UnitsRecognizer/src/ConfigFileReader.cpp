@@ -1,6 +1,8 @@
 #include "..\include\ConfigFileReader.h"
 #include "StringCoverter.h"
 
+ConfigFileReader* ConfigFileReader::defaultInstance = NULL;
+
 ConfigFileReader::ConfigFileReader(std::wstring fileName)
 {
 	parseFile(fileName);
@@ -8,6 +10,16 @@ ConfigFileReader::ConfigFileReader(std::wstring fileName)
 
 ConfigFileReader::~ConfigFileReader()
 {
+}
+
+ConfigFileReader* ConfigFileReader::getDefault()
+{
+	if(defaultInstance == NULL)
+	{
+		defaultInstance = new ConfigFileReader(L"units.txt");
+	}
+
+	return defaultInstance;
 }
 
 void ConfigFileReader::parseFile(std::wstring fileName)
@@ -56,6 +68,18 @@ void ConfigFileReader::parseFile(std::wstring fileName)
 
 		++i; sepNode = separatorsNode.getChildNode(_T("sep"), i);
 	}
+
+	dateFormats = new std::vector<std::string>();
+	XMLNode dateNode = xMainNode.getChildNode(_T("Dates"));
+	i=0; std::string tmpR;
+	XMLNode dateFormatNode = dateNode.getChildNode(_T("date"), i);
+	while(!dateFormatNode.isEmpty())
+	{
+		tmpR = StringConverter::WStringToString(dateFormatNode.getText());
+		dateFormats->push_back( tmpR );
+
+		++i; dateFormatNode = dateNode.getChildNode(_T("date"), i);
+	}
 }
 
 std::vector<Unit>* ConfigFileReader::getUnits()
@@ -71,4 +95,9 @@ std::vector<std::string>* ConfigFileReader::getSeparators()
 std::string ConfigFileReader::getDecimalSeparator()
 {
 	return decimalSeparator;
+}
+
+std::vector<std::string>* ConfigFileReader::getDateFormatStrings()
+{
+	return dateFormats;
 }
