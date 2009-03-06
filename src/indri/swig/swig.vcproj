@@ -65,9 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
+				AdditionalDependencies="wsock32.lib dateRecognizer.lib hunTools.lib UnitsRecognizer.lib"
 				OutputFile="$(OutDir)/indri_jni.dll"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\debug&quot;;&quot;E:\Program Files\boost\boost_1_36_0\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/swig.pdb"
 				SubSystem="2"
