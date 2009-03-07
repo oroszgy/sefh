@@ -4,6 +4,7 @@
 	Version="9,00"
 	Name="indrid"
 	ProjectGUID="{6B9EE4C1-7010-41C4-B599-CD17486927D1}"
+	RootNamespace="indrid"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -64,9 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wsock32.lib"
+				AdditionalDependencies="wsock32.lib dateRecognizer.lib hunTools.lib UnitsRecognizer.lib"
 				OutputFile="$(OutDir)/indrid.exe"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\debug&quot;;&quot;E:\Program Files\boost\boost_1_36_0\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/indrid.pdb"
 				SubSystem="1"

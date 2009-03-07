@@ -35,7 +35,7 @@ std::string UnitRecognizer::getRecognizingRegExpFromConstants(std::string unitCo
 
 	NumberFormats* nf = NumberFormats::getNumberFormatFromSeparators(sep);
 	std::string REStr = "(" + nf->getRegExpString() + ")";
-	REStr += "\\s*(";
+	REStr += "\\s+(";
 	
 	REStr += unitConstants;
 

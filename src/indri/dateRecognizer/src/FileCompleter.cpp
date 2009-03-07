@@ -12,9 +12,11 @@ FileCompleter::~FileCompleter()
 
 void FileCompleter::doReplace(const std::string fileName)
 {
-	std::string inputString = parseFile(fileName);
+	std::string inputString = StringConverter::WStringToString(
+		StringConverter::UTF8ToUnicode(parseFile(fileName)));
 
-	std::string modInputString = doTransformation(inputString);
+	std::string modInputString = StringConverter::UnicodeToUTF8(
+		StringConverter::StringToWString(doTransformation(inputString)));
 	
 	writeFile(fileName, modInputString);
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "DateFormat.h"
+#include "StringCoverter.h"
 
 class FileCompleter
 {

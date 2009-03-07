@@ -15,19 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1E94BFB22CA747508BFD63D35493007A"
+        "MsmKey" = "8:_0C4A1A35F2D145D88AB97C75559E683E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2BC38553008544708A110ECDC1FA5883"
+        "MsmKey" = "8:_2BEE91F279C8421B91FA2EC55E6087A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D554C70717643C6A80B71FEA843F474"
+        "MsmKey" = "8:_2C7B4A24B82F43D09C2CB6A7BDDC2F11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,61 +39,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3869D50A911E4676AB04AB6B48C0B4C0"
+        "MsmKey" = "8:_44298456DCF04A95800A962DFDB1E36E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4F4A86D8FF9E4597AB2EB4E389C88B51"
-        "OwnerKey" = "8:_717F1C997A5F4B6988D49418EAC48F09"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_717F1C997A5F4B6988D49418EAC48F09"
-        "OwnerKey" = "8:_316850E270AE4A4199E4BC66E86C79C9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_717F1C997A5F4B6988D49418EAC48F09"
-        "OwnerKey" = "8:_F22A781C507D44DBBA167A3B2896EB52"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_717F1C997A5F4B6988D49418EAC48F09"
-        "OwnerKey" = "8:_A6A18D1138E641AD99E62C07D8018D7E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_717F1C997A5F4B6988D49418EAC48F09"
-        "OwnerKey" = "8:_9EE1AF3826F54E2EB08FE7B165C51991"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_82440102F56D492BB4BFDB0FAD7B92ED"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_951227888D074947A4BA591EAC017AD2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9D52C95D9CE74339B540E7089A18F13E"
+        "MsmKey" = "8:_488317109B1649FFB71BBB5B4BF18824"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9EE1AF3826F54E2EB08FE7B165C51991"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A081B3FDFA4D4B6CBA60F75F2BCAF4FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -123,19 +87,61 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E1E2366254E74283BB74A3EBAE03301F"
+        "MsmKey" = "8:_B1E886410585432DB65ACB0BA122141B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC6EE91E7FD54F608D48C96C42387380"
+        "OwnerKey" = "8:_316850E270AE4A4199E4BC66E86C79C9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC6EE91E7FD54F608D48C96C42387380"
+        "OwnerKey" = "8:_F22A781C507D44DBBA167A3B2896EB52"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC6EE91E7FD54F608D48C96C42387380"
+        "OwnerKey" = "8:_A6A18D1138E641AD99E62C07D8018D7E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC6EE91E7FD54F608D48C96C42387380"
+        "OwnerKey" = "8:_9EE1AF3826F54E2EB08FE7B165C51991"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC8F8D6E008B482BA607ECBE3732DE7D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BF9F9958A18E420D91EFDF1EA5DD9F6B"
+        "OwnerKey" = "8:_BC6EE91E7FD54F608D48C96C42387380"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D09DF66068D34C1797365777BB1AD9D7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E7A8F07802784A418C48982EFBF50881"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F22A781C507D44DBBA167A3B2896EB52"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FAAAE63FC1B447CBB7DD269F0B3D5626"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,7 +153,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\setup.msi"
+        "OutputFilename" = "8:Debug\\SEFHsetup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -164,6 +170,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -188,6 +207,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -210,89 +242,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E94BFB22CA747508BFD63D35493007A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C4A1A35F2D145D88AB97C75559E683E"
             {
-            "SourcePath" = "8:E:\\release0.1\\datumformak.txt"
-            "TargetName" = "8:datumformak.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BC38553008544708A110ECDC1FA5883"
-            {
-            "SourcePath" = "8:E:\\release0.1\\lex\\HUASTEM.LEX"
-            "TargetName" = "8:HUASTEM.LEX"
-            "Tag" = "8:"
-            "Folder" = "8:_187C2ED0F36B47A2A1276A553AF83693"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D554C70717643C6A80B71FEA843F474"
-            {
-            "SourcePath" = "8:E:\\release0.1\\lex\\msth3hu.lex"
-            "TargetName" = "8:msth3hu.lex"
-            "Tag" = "8:"
-            "Folder" = "8:_187C2ED0F36B47A2A1276A553AF83693"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3869D50A911E4676AB04AB6B48C0B4C0"
-            {
-            "SourcePath" = "8:E:\\release0.1\\stem2005.dll"
-            "TargetName" = "8:stem2005.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82440102F56D492BB4BFDB0FAD7B92ED"
-            {
-            "SourcePath" = "8:E:\\release0.1\\lex\\huau.lex"
+            "SourcePath" = "8:E:\\teszt\\lex\\huau.lex"
             "TargetName" = "8:huau.lex"
             "Tag" = "8:"
             "Folder" = "8:_187C2ED0F36B47A2A1276A553AF83693"
@@ -310,9 +262,49 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_951227888D074947A4BA591EAC017AD2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BEE91F279C8421B91FA2EC55E6087A5"
             {
-            "SourcePath" = "8:E:\\release0.1\\README.txt"
+            "SourcePath" = "8:E:\\teszt\\lex\\msth3hu.lex"
+            "TargetName" = "8:msth3hu.lex"
+            "Tag" = "8:"
+            "Folder" = "8:_187C2ED0F36B47A2A1276A553AF83693"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C7B4A24B82F43D09C2CB6A7BDDC2F11"
+            {
+            "SourcePath" = "8:E:\\teszt\\teszt.bat"
+            "TargetName" = "8:teszt.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_44298456DCF04A95800A962DFDB1E36E"
+            {
+            "SourcePath" = "8:E:\\teszt\\README.txt"
             "TargetName" = "8:README.txt"
             "Tag" = "8:"
             "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
@@ -330,12 +322,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D52C95D9CE74339B540E7089A18F13E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_488317109B1649FFB71BBB5B4BF18824"
             {
-            "SourcePath" = "8:E:\\release0.1\\parQ.xml"
-            "TargetName" = "8:parQ.xml"
+            "SourcePath" = "8:E:\\teszt\\teszt.html"
+            "TargetName" = "8:teszt.html"
             "Tag" = "8:"
             "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A081B3FDFA4D4B6CBA60F75F2BCAF4FB"
+            {
+            "SourcePath" = "8:E:\\teszt\\lex\\HUASTEM.LEX"
+            "TargetName" = "8:HUASTEM.LEX"
+            "Tag" = "8:"
+            "Folder" = "8:_187C2ED0F36B47A2A1276A553AF83693"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -370,9 +382,49 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E1E2366254E74283BB74A3EBAE03301F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B1E886410585432DB65ACB0BA122141B"
             {
-            "SourcePath" = "8:E:\\release0.1\\par.xml"
+            "SourcePath" = "8:E:\\teszt\\parQ.xml"
+            "TargetName" = "8:parQ.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC8F8D6E008B482BA607ECBE3732DE7D"
+            {
+            "SourcePath" = "8:E:\\teszt\\conf.xml"
+            "TargetName" = "8:conf.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D09DF66068D34C1797365777BB1AD9D7"
+            {
+            "SourcePath" = "8:E:\\teszt\\par.xml"
             "TargetName" = "8:par.xml"
             "Tag" = "8:"
             "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
@@ -390,10 +442,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FAAAE63FC1B447CBB7DD269F0B3D5626"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7A8F07802784A418C48982EFBF50881"
             {
-            "SourcePath" = "8:E:\\release0.1\\helyes.html"
-            "TargetName" = "8:helyes.html"
+            "SourcePath" = "8:E:\\teszt\\stem2005.dll"
+            "TargetName" = "8:stem2005.dll"
             "Tag" = "8:"
             "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
             "Condition" = "8:"
@@ -442,7 +494,7 @@
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:TARGETDIR"
@@ -476,21 +528,21 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:setup"
-        "ProductCode" = "8:{D315D106-A8E4-4DFB-AD97-377587D44881}"
-        "PackageCode" = "8:{77042811-D1CC-4E1C-A301-ABCDC8E7D8B1}"
+        "ProductName" = "8:SEFH"
+        "ProductCode" = "8:{53493048-EBEE-4EBD-B4D1-5B6E17E93280}"
+        "PackageCode" = "8:{8CFDB02A-0EF9-4D54-8DD0-6B95FB275C3F}"
         "UpgradeCode" = "8:{8EE8B183-5666-481B-9D94-827C1F87B4BC}"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
-        "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "RemovePreviousVersions" = "11:TRUE"
+        "DetectNewerInstalledVersion" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:0.2"
+        "Manufacturer" = "8:Orosz György"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
-        "Title" = "8:setup"
+        "ARPHELPLINK" = "8:http://code.google.com/p/sefh/"
+        "Title" = "8:SEFH installer"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Orosz György"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -597,6 +649,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2634E81584B14C07A88094487F6FE59F"
+            {
+            "Name" = "8:SEFH directory"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Folder" = "8:_12DDC4BA11A54FC39CEA8914D95F7787"
+            "WorkingFolder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -993,11 +1059,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_4F4A86D8FF9E4597AB2EB4E389C88B51"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_BC6EE91E7FD54F608D48C96C42387380"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:microsoft_vc90_debugcrt_x86.msm"
+            "SourcePath" = "8:policy_9_0_Microsoft_VC90_DebugCRT_x86.msm"
                 "Properties"
                 {
                 }
@@ -1007,11 +1073,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_717F1C997A5F4B6988D49418EAC48F09"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_BF9F9958A18E420D91EFDF1EA5DD9F6B"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_9_0_Microsoft_VC90_DebugCRT_x86.msm"
+            "SourcePath" = "8:microsoft_vc90_debugcrt_x86.msm"
                 "Properties"
                 {
                 }
@@ -1054,7 +1120,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9EE1AF3826F54E2EB08FE7B165C51991"
             {
-            "SourcePath" = "8:..\\debug\\createDateField.exe"
+            "SourcePath" = "8:..\\Debug\\createfields.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FB595EFF77304E6FBC1B2A86DCF52E59"

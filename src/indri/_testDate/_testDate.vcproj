@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="createDateField"
+	Name="createfields"
 	ProjectGUID="{1F759FAA-7991-48BD-A4BC-A2AA4D30779E}"
 	RootNamespace="_testDate"
 	Keyword="Win32Proj"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;../hunTools/include;&quot;E:\Program Files\boost\boost_1_36_0&quot;;../dateRecognizer/include"
+				AdditionalIncludeDirectories="&quot;E:\indri\Indri 2.7\src_vs_2005\UnitsRecognizer\include&quot;;&quot;E:\indri\Indri 2.7\src_vs_2005\hunTools\include&quot;;../hunTools/include;&quot;E:\Program Files\boost\boost_1_36_0&quot;;../dateRecognizer/include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

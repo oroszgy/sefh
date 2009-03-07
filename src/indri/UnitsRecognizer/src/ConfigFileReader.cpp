@@ -16,7 +16,7 @@ ConfigFileReader* ConfigFileReader::getDefault()
 {
 	if(defaultInstance == NULL)
 	{
-		defaultInstance = new ConfigFileReader(L"units.txt");
+		defaultInstance = new ConfigFileReader(L"conf.xml");
 	}
 
 	return defaultInstance;
