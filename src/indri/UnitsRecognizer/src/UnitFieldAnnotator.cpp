@@ -37,7 +37,10 @@ indri::api::ParsedDocument* UnitFieldAnnotator::transform( indri::api::ParsedDoc
 
 			//double -> integer 2 tizedesig pontos
 			UINT64 value = 0;
-			value += unitRecognizer->getSIValue(unit) * 100;
+			
+			std::wstring wunit = StringConverter::UTF8ToUnicode(unit);
+			std::string _unit = StringConverter::WStringToString(wunit);
+			value += unitRecognizer->getSIValue(_unit) * 100;
 			extent->number = value;
           }
         }

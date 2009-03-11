@@ -2,6 +2,7 @@
 #include "indri/Transformation.hpp"
 #include "UnitRecognizer.h"
 #include "UnitRecognizerFactory.h"
+#include "StringCoverter.h"
 
 class UnitFieldAnnotator :
 	public indri::parse::Transformation
