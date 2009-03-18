@@ -6,12 +6,12 @@
 MorphTools* MorphToolsFactory::getDefault()
 {
 #ifdef UNICODE
-	const wchar_t* DLL_PATH = L"stem2005.dll";
-	const wchar_t* LEX_PATH = L"lex";
+const wchar_t* DLL_PATH = L"e:\\teszt\\stem2005.dll";
+const wchar_t* LEX_PATH = L"e:\\teszt\\lex";
 #endif
 #ifndef UNICODE
-	char* DLL_PATH = "stem2005.dll";
-	char* LEX_PATH = "lex";
+	char* DLL_PATH = "e:\\teszt\\stem2005.dll";
+	char* LEX_PATH = "e:\\teszt\\lex";
 #endif
 
 

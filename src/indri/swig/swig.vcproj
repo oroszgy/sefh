@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Program Files\Java\jdk1.5.0_07\include\win32&quot;;&quot;C:\Program Files\Java\jdk1.5.0_07\include&quot;;..\include;..\contrib\lemur\include"
+				AdditionalIncludeDirectories="&quot;C:\Program Files\Java\jdk1.6.0_10\include\win32&quot;;&quot;C:\Program Files\Java\jdk1.6.0_10\include&quot;;..\include;..\contrib\lemur\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;SWIG_EXPORTS;INDRI_STANDALONE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -237,6 +237,18 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{98D490CB-2AB6-469E-A363-4CC17E99899C}"
+			RelativePathToProject=".\dateRecognizer\dateRecognizer.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{7F4DFE6C-83CA-4C89-A7AB-9683E0AEA751}"
+			RelativePathToProject=".\hunTools\hunTools.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{D4FA0227-8695-4951-A1AE-F6F780F11866}"
+			RelativePathToProject=".\UnitsRecognizer\UnitsRecognizer.vcproj"
+		/>
 	</References>
 	<Files>
 		<Filter

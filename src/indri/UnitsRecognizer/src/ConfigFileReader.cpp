@@ -16,7 +16,7 @@ ConfigFileReader* ConfigFileReader::getDefault()
 {
 	if(defaultInstance == NULL)
 	{
-		defaultInstance = new ConfigFileReader(L"conf.xml");
+	defaultInstance = new ConfigFileReader(L"e:\\teszt\\conf.xml");
 	}
 
 	return defaultInstance;
