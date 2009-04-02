@@ -1,0 +1,5 @@
+#created by Gyorgy Orosz for extending the indri toolkit
+
+ADDINCPATH=-I../../unitRecognizer/include -I../../dateRecognizer/include -I../../hunStemmer/include -I../../humor/include -I../../utils/include
+ADDLIBPATH=-L../../unitRecognizer/include -L../../dateRecognizer/Debug -L../../hunStemmer/Debug -L../../humor/Debug
+ADDLIBS=-lunitRecognizer -lhumor -lhunStemmer -ldateRecognizer -lboost_regex
