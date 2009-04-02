@@ -1,0 +1,18 @@
+<UDML>
+<separators>
+	<sep isDecimal="true">\.</sep>
+	<sep isDecimal="false">\s</sep>
+</separators>
+<units>
+	<unit type="weight" multiplier="1000">kg</unit>
+	<unit type="weight" multiplier="1">g</unit>
+	<unit type="length" multiplier="1">m</unit>
+	<unit type="weight" multiplier="0.01">cm</unit>
+</units>
+<dates>
+	<date>yyyy. month d.</date>
+	<date>yyyy. month dd.</date>
+	<date>yyyy-mm-dd</date>
+</dates>
+</UDML>
+

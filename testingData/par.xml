@@ -1,0 +1,22 @@
+<parameters>
+  <corpus>
+	<path>helyes.html</path>
+	<class>html</class>
+  </corpus>
+  <memory>256m</memory>
+  <index>index_hun</index>
+  <stemmer><name>hunStemmer</name></stemmer>
+<field>
+   <name>date</name>
+   <numeric>true</numeric>
+   <parserName>HunDateFieldAnnotator</parserName>
+</field>
+<field>
+   <name>weight</name>
+   <numeric>true</numeric>
+   <parserName>UnitFieldAnnotator</parserName>
+</field>
+
+</parameters>
+
+
