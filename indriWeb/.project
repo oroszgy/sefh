@@ -3,6 +3,7 @@
 	<name>indriWeb</name>
 	<comment></comment>
 	<projects>
+		<project>indriUI</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

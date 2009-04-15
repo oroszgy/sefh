@@ -142,6 +142,20 @@ public class SnippetBuilder {
 
     return segments;
   }
+  
+  public static String SubStringByBytes(String str, int startPos, int endPos)
+  {
+	  byte[] strBytes = str.getBytes();
+	  byte[] retBytes = new byte[endPos-startPos];
+	  int j=0;
+	  for(int i= startPos; i<endPos; ++i)
+	  {
+		  retBytes[j] = strBytes[i];
+		  ++j;
+	  }
+	  String returnStr = new String(retBytes);
+	  return returnStr;
+  }
 
   public static String buildSnippet( QueryAnnotation annotation,
                                      int document,
@@ -151,10 +165,13 @@ public class SnippetBuilder {
                                      int smallContext,
                                      int largeContext )
   {  
+	  //egyezések sorszámaai
     ArrayList matches = getMatches( annotation, document );
+    //egyezések szélessége
     int matchWidth = (int) (windowSize / (float) matches.size());
-
+//leegalább ekkora
     matchWidth = Math.max( smallContext, matchWidth );
+    //legfeljebb ekkora
     matchWidth = Math.min( largeContext, matchWidth );
 
     // come up with a list of match segments--these are the bits of the
@@ -198,10 +215,12 @@ public class SnippetBuilder {
       while( inner.hasNext() ) {
         Match match = (Match) inner.next();
        
-        String preMatchText = documentText.substring( lastEndChar, positions[ match.getBegin() ].begin );
-        String matchText = documentText.substring( positions[ match.getBegin() ].begin,
-                                                   positions[ match.getEnd()-1 ].end );
-        lastEndChar = positions[ match.getEnd()-1 ].end;
+        int beginPos = positions[ match.getBegin() ].begin;
+		String preMatchText = SubStringByBytes(documentText, lastEndChar, beginPos);
+        int endPos = positions[ match.getEnd()-1 ].end;
+		String matchText = SubStringByBytes(documentText, beginPos,
+                                                   endPos );
+        lastEndChar = endPos;
 
         builder.append( Strip.strip( preMatchText ) );
         builder.append( "<strong>" );
@@ -210,7 +229,7 @@ public class SnippetBuilder {
       }
 
       int end2 = positions[ end-1 ].end;
-	String endText = documentText.substring( lastEndChar, end2 );
+	String endText = SubStringByBytes(documentText, lastEndChar, end2 );
       builder.append( Strip.strip( endText ) );
       words += (end - begin);
       
