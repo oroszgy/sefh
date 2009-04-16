@@ -20,6 +20,7 @@ HunStemtransformation::~HunStemtransformation()
 indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::ParsedDocument* document )
 {
 
+	//printDbg(document);
 	indri::utility::greedy_vector<char*>* stems = new indri::utility::greedy_vector<char*>();
 	indri::utility::greedy_vector<indri::parse::TermExtent>* stemPos = new indri::utility::
 		greedy_vector<indri::parse::TermExtent>();
@@ -37,16 +38,21 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 		std::vector<std::string>*  v =
 			com::weblib::linguist::HumorCPP::getStem(term);
 		// if there is no stem, or the term is a number
+		stems->push_back(term);
+		/*if(document->positions.size()>i)
+			stemPos->push_back(document->positions[i]);*/
 		if(v==NULL || !(atoi(term) == 0 && std::string(term) != "0"))
 		{
-			stems->push_back(term);
-			if(document->positions.size()>i)
-				stemPos->push_back(document->positions[i]);
 			continue;
 		}
 
+		const char * _t = v->at(0).c_str();
+		char* tt = new char[100];
+		strcpy(tt, _t);
+		document->terms[i] = tt;
+
 		//add all the stems to the index
-		for(int j=0; j< v->size(); ++j)
+	/*	for(int j=0; j< v->size(); ++j)
 		{
 			std::string _term = v->at(j);
 			const char * _t = _term.c_str();
@@ -55,16 +61,38 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 
 
 			stems->push_back(tt);
+
 			if(document->positions.size()>i)
-				stemPos->push_back(document->positions[i]);
-		}
+			{
+				indri::parse::TermExtent tmpTermExtent;
+				tmpTermExtent.begin=document->positions[i].begin;
+				tmpTermExtent.end=document->positions[i].end;
+				stemPos->push_back(tmpTermExtent);
+			}
+		}*/
 
 	}
 
-	document->terms = *stems;
-	document->positions = *stemPos;
+/*	document->terms = *stems;
+	document->positions = *stemPos;*/
 
+	//printDbg(document);
 	return document;
+}
+
+void HunStemtransformation::printDbg(indri::api::ParsedDocument* doc)
+{
+	std::cout<<"Terms:\n";
+	for(int i=0; i<doc->terms.size(); ++i)
+		std::cout<<doc->terms[i]<<std::endl;
+	std::cout<<"Positions:\n";
+	for(int i=0; i<doc->positions.size(); ++i)
+		std::cout<<doc->positions[i].begin<<"\t"<<doc->positions[i].end<<std::endl;
+	std::cout<<"Tags:\n";
+	for(int i=0; i<doc->tags.size(); ++i)
+			std::cout<<doc->tags[i]<<std::endl;
+	for(int i=0; i<doc->metadata.size(); ++i)
+		std::cout<<doc->metadata[i].key<<std::endl;
 }
 
 void HunStemtransformation::handle( indri::api::ParsedDocument* document )

@@ -24,6 +24,7 @@ namespace com
 			indri::api::ParsedDocument* transform( indri::api::ParsedDocument* document );
 		    void handle( indri::api::ParsedDocument* document );
 			void setHandler( indri::parse::ObjectHandler<indri::api::ParsedDocument>& handler );
+			static void printDbg(indri::api::ParsedDocument* doc);
 
 		private:
 			indri::parse::ObjectHandler<indri::api::ParsedDocument>* _handler;
