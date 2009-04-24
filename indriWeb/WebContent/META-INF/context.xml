@@ -6,8 +6,9 @@
                value="root" />
   <Environment name="index.dbpassword" type="java.lang.String"
                value="passz" />
-  <Environment name="index.indri" type="java.lang.String"
-               value="index_hun" />
+  <Environment name="index.indri.stemmed" type="java.lang.String"
+               value="stemmedIndex" />
+  <Environment name="index.indri.unstemmed" type="java.lang.String" value="unstemmedIndex"></Environment>
   <Environment name="rerankCount" type="java.lang.Integer"
                value="20" ></Environment>
   <Environment name="resultCount" type="java.lang.Integer"

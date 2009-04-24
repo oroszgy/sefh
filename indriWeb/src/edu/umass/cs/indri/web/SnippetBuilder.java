@@ -143,12 +143,12 @@ public class SnippetBuilder {
     return segments;
   }
   
-  public static String SubStringByBytes(String str, int startPos, int endPos)
+  public static String substringByBytes(String str, int startPos, int endPos)
   {
 	  byte[] strBytes = str.getBytes();
 	  byte[] retBytes = new byte[endPos-startPos];
 	  int j=0;
-	  for(int i= startPos; i<endPos; ++i)
+	  for(int i= startPos; i<Math.min(endPos,strBytes.length); ++i)
 	  {
 		  retBytes[j] = strBytes[i];
 		  ++j;
@@ -216,9 +216,9 @@ public class SnippetBuilder {
         Match match = (Match) inner.next();
        
         int beginPos = positions[ match.getBegin() ].begin;
-		String preMatchText = SubStringByBytes(documentText, lastEndChar, beginPos);
+		String preMatchText = substringByBytes(documentText, lastEndChar, beginPos);
         int endPos = positions[ match.getEnd()-1 ].end;
-		String matchText = SubStringByBytes(documentText, beginPos,
+		String matchText = substringByBytes(documentText, beginPos,
                                                    endPos );
         lastEndChar = endPos;
 
@@ -229,7 +229,7 @@ public class SnippetBuilder {
       }
 
       int end2 = positions[ end-1 ].end;
-	String endText = SubStringByBytes(documentText, lastEndChar, end2 );
+	String endText = substringByBytes(documentText, lastEndChar, end2 );
       builder.append( Strip.strip( endText ) );
       words += (end - begin);
       

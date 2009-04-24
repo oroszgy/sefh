@@ -24,15 +24,13 @@ pageEncoding="utf-8"
   <form action="query.jsp" method="post">
     <div id="query">
      <textarea name="query" cols="90" rows="4"></textarea><br/>
+     Use stemmed collection: <input type="checkbox" name="isStemmed" value="true"></br>
      <input type="submit" value="Search"><br/>
      <br/>
      <%= (String) context.lookup( "java:comp/env/collection" ) %>
     </div> <!-- query -->
    </form>
 
-  <div id="footer">
-    <a href="http://ciir.cs.umass.edu/"><img src="images/ciirlogo.gif" alt="CIIR @ UMass" /></a>
-  </div> <!-- footer -->
 </div> <!-- content -->
 
 </body>

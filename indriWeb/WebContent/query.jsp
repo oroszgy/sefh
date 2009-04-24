@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <%@ page isELIgnored ="false" %>
 
@@ -22,8 +21,11 @@ pageEncoding="utf-8"
   System.out.println("teste\n");
   //von
   String query = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
+  String isStemmedString = request.getParameter("isStemmed");
+  Boolean isStemmed = isStemmedString == null ? false : true;
   
-  String indexName = (String) context.lookup( "java:comp/env/index.indri" );
+  String stemmedIndexName = (String) context.lookup( "java:comp/env/index.indri.stemmed" );
+  String unstemmedIndexName = (String) context.lookup( "java:comp/env/index.indri.unstemmed" );
   boolean rerank = ((Boolean) context.lookup( "java:comp/env/rerank" )).booleanValue();
   int rerankCount = ((Integer) context.lookup( "java:comp/env/rerankCount" )).intValue();
   int resultCount = ((Integer) context.lookup( "java:comp/env/resultCount" )).intValue();
@@ -31,13 +33,13 @@ pageEncoding="utf-8"
   String dbuser = (String) context.lookup( "java:comp/env/index.dbuser" );
 
   String dbpassword = (String) context.lookup( "java:comp/env/index.dbpassword" );
-  System.out.println("teste\n");
   boolean judge = ((Boolean) context.lookup( "java:comp/env/judge" )).booleanValue();
-  System.out.println("teste\n");
 
   QueryEnvironment qenv = new QueryEnvironment();
-  qenv.addIndex( indexName );
-  System.out.println("teste\n");
+  if(isStemmed)
+	  qenv.addIndex( stemmedIndexName );
+  else
+  	qenv.addIndex( unstemmedIndexName );
 
   int[] reranked = null;
   ScoredExtentResult[] results = null;
