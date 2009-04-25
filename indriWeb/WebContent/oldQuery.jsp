@@ -18,7 +18,7 @@ pageEncoding="utf-8"
   long endRerankTime = 0;
   long endDocumentTime = 0;
 
-  System.out.println("teste\n");
+  
   //von
   String query = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
   String isStemmedString = request.getParameter("isStemmed");
