@@ -17,16 +17,16 @@
 <h2>Search engine with Hungarian NLP tools</h2>
 </div>
 
-<form action="myIndex.jsp" method="post">
+<form action="index.jsp" method="get">
 <div id="query"><input type="text" name="query" size="70"><input
 	type="submit" value="Search"><br />
 Use stemmed collection: <input type="checkbox" name="isStemmed"
 	value="true"><br />
 <br />
 </div>
-<!-- query -->
-</form>
-</div><!-- content -->
+<!-- query --></form>
+</div>
+<!-- content -->
 <%
 	InitialContext context = new InitialContext();
 	if (request != null && request.getParameter("query") != null) {
@@ -73,10 +73,12 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 
 			//creating query environment
 			QueryEnvironment qenv = new QueryEnvironment();
+			String indexName;
 			if (useStemmedCollection)
-				qenv.addIndex(stemmedIndexName);
+				indexName = stemmedIndexName;
 			else
-				qenv.addIndex(unstemmedIndexName);
+				indexName = unstemmedIndexName;
+			qenv.addIndex(indexName);
 
 			int[] reranked = null;
 			ScoredExtentResult[] results = null;
@@ -152,7 +154,8 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 						+ title + endLink + "</h2>\n" + "<div id=\"snippet\">"
 						+ snippet + "</div>\n"
 						+ "[ <a href=\"showdoc.jsp?documentID=" + documentID
-						+ ">Cached</a> ]</div>\n" + "</div>\n";
+						+ "&index=" + indexName + ">Cached</a> ]</div>\n"
+						+ "</div>\n";
 			}
 			return resultHeader + "\n" + queryResult;
 		} catch (Exception e) {
