@@ -1,4 +1,4 @@
 ﻿<parameters>
-<index>index_hun</index>
-<query>#datebefore(24/12/2009)</query>
+<index>plainIndex</index>
+<query>országgyűlés</query>
 </parameters>

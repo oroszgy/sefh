@@ -1,0 +1,14 @@
+<!-- XML -->
+<!ELEMENT UDML (separators, units, dates)>
+<!ELEMENT separators (sep+)>
+<!ELEMENT sep (#PCDATA)>
+<!ATTLIST sep isDecimal CDATA #REQUIRED>
+
+
+<!ELEMENT units (unit+)>
+<!ELEMENT unit (#PCDATA)>
+<!ATTLIST unit type CDATA #REQUIRED>
+<!ATTLIST unit multiplier CDATA #REQUIRED>
+
+<!ELEMENT dates (date+)>
+<!ELEMENT date (#PCDATA)>
