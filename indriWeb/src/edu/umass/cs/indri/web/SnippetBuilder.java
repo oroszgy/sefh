@@ -183,7 +183,9 @@ public class SnippetBuilder {
     String ellipsis = "<strong>...</strong>";
     int words = 0;
 
+    //int ij = 3;
     while( iter.hasNext() && words < windowSize ) {
+    	//ij--;
       ArrayList segment = (ArrayList) iter.next();
 //
       int begin = Integer.MAX_VALUE;

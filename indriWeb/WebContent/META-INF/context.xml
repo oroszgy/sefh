@@ -1,14 +1,15 @@
 
-<Context path="/indriweb" docBase="indriweb" debug="0" privileged="true">
+<Context path="/indriweb" docBase="indriweb" debug="0" privileged="true" swallowOutput="true">
   <Environment name="index.db" type="java.lang.String"
-               value="jdbc:mysql://localhost/vm" />
+               value="indri" />
   <Environment name="index.dbuser" type="java.lang.String"
-               value="root" />
+               value="mee" />
   <Environment name="index.dbpassword" type="java.lang.String"
                value="passz" />
-  <Environment name="index.indri.stemmed" type="java.lang.String"
-               value="stemmedIndex" />
-  <Environment name="index.indri.unstemmed" type="java.lang.String" value="unstemmedIndex"></Environment>
+  <Environment name="index.indri.stemmed" type="java.lang.String" value="/home/mee/workspaces/sefh/testingData/stemmedIndex" />
+  <Environment name="index.indri.stopped" type="java.lang.String" value="/home/mee/workspaces/sefh/testingData/stoppedIndex"></Environment>
+  <Environment name="index.indri.stemmedstopped" type="java.lang.String" value="/home/mee/workspaces/sefh/testingData/stoppedStemmedIndex"></Environment>
+  <Environment name="index.indri.plain" type="java.lang.String" value="/home/mee/workspaces/sefh/testingData/plainIndex"></Environment>
   <Environment name="rerankCount" type="java.lang.Integer"
                value="20" ></Environment>
   <Environment name="resultCount" type="java.lang.Integer"
@@ -21,5 +22,9 @@
                value="false" />
   <Environment name="collection" type="java.lang.String"
                value="Index hun" />
+  <Valve className="org.apache.catalina.valves.AccessLogValve"
+         prefix="localhost_access_log." suffix=".txt"
+         pattern="common"/>
+  
 </Context>
 

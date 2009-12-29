@@ -14,39 +14,59 @@
 <div id="content">
 <div id="header">
 <h1><a href="http://code.google.com/p/sefh">SEFH</a></h1>
-<h2>Search engine with Hungarian NLP tools</h2>
+<h2>Országgyűlési naplók</h2>
 </div>
 
+<!-- content -->
+<%
+	String query = "";
+	Boolean isStemmed = true;
+	Boolean isStopped = true;
+	InitialContext context = new InitialContext();
+	//TEST
+	//String w = "parlament;költségvetés;kereskedelem;törvény;előterjesztés";
+	//w +="külügyi bizottság;kormánypárti frakciók;módosító indítvány;Orbán Viktor;Gyurcsány Ferenc";
+	//w +="Antall Imre emlék;Parlament létszám csökkentés;módosító javaslat elfogadás;ellenzék Fidesz szavazás;köztársasági elnök választás";
+	//w +="kormány autópálya építés korrpució;választási költségvetés költekezés hazugság;ülés felszólal Horn Gyula;Torgyán József mondjon le";
+	//out.println(test(Arrays.asList(w.split(";")), context));
+	//ENDTEST
+	if (request != null && request.getParameter("query") != null) {
+		query = new String(request.getParameter("query")
+				.getBytes("ISO-8859-1"), "UTF-8");
+		if (query != "") {
+			String isStemmedString = request.getParameter("isStemmed");
+			String isStoppeddString = request.getParameter("isStopped");
+			isStemmed = (isStemmedString == null ? false : true);
+			isStopped = (isStoppeddString == null ? false : true);
+		}
+	}
+%>
+
 <form action="index.jsp" method="get">
-<div id="query"><input type="text" name="query" size="70"><input
-	type="submit" value="Search"><br />
-Use stemmed collection: <input type="checkbox" name="isStemmed"
-	value="true"><br />
+<div id="query">
+	<input type="text" name="query" size="70" value="<%=query%>">
+	<inputtype="submit" value="Search"><br />
+	Szótövezés 
+	<input type="checkbox" name="isStemmed" <%if(isStemmed) out.print("checked");%>></input><br />
+	Tiltilistás szavak szűrése
+	<input type="checkbox" name="isStopped" <%if(isStopped) out.print("checked");%>></input><br />
 <br />
 </div>
 <!-- query --></form>
 </div>
-<!-- content -->
+
 <%
-	InitialContext context = new InitialContext();
-	if (request != null && request.getParameter("query") != null) {
-		String query = new String(request.getParameter("query")
-				.getBytes("ISO-8859-1"), "UTF-8");
-		String isStemmedString = request.getParameter("isStemmed");
-		Boolean isStemmed = isStemmedString == null ? false : true;
-		out.println(getQueryResult(query, isStemmed, context));
-	}
+	out.println(getQueryResult(query, isStemmed, isStopped, context));
 %>
-
-
 </body>
 </html>
 
 <%!Integer documentID = null;%>
 
 <%!public String getQueryResult(String queryString,
-			boolean useStemmedCollection, InitialContext context) {
+			boolean useStemmedCollection, boolean useStoppedCollection, InitialContext context) {
 
+	
 		long beginQuery = System.currentTimeMillis();
 		long endQuery = 0;
 		long endRerankTime = 0;
@@ -55,8 +75,13 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 		try {
 			String stemmedIndexName = (String) context
 					.lookup("java:comp/env/index.indri.stemmed");
-			String unstemmedIndexName = (String) context
-					.lookup("java:comp/env/index.indri.unstemmed");
+			String stoppedIndexName = (String) context
+					.lookup("java:comp/env/index.indri.stopped");
+			String stemmedStoppedIndexName = (String) context
+			.lookup("java:comp/env/index.indri.stemmedstopped");
+			String plainIndexName = (String) context
+			.lookup("java:comp/env/index.indri.plain");
+			
 			boolean rerank = ((Boolean) context.lookup("java:comp/env/rerank"))
 					.booleanValue();
 			int rerankCount = ((Integer) context
@@ -74,10 +99,14 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 			//creating query environment
 			QueryEnvironment qenv = new QueryEnvironment();
 			String indexName;
-			if (useStemmedCollection)
+			if (useStemmedCollection && useStoppedCollection)
+				indexName = stemmedStoppedIndexName;
+			else if(useStemmedCollection)
 				indexName = stemmedIndexName;
+			else if(useStoppedCollection)
+				indexName = stoppedIndexName;
 			else
-				indexName = unstemmedIndexName;
+				indexName = plainIndexName;
 			qenv.addIndex(indexName);
 
 			int[] reranked = null;
@@ -89,7 +118,7 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 				endQuery = System.currentTimeMillis();
 
 				Query hits = new Query();
-				reranked = hits.rerank(qenv, "mysql", database, dbuser,
+				reranked = hits.rerank(qenv, database, "mysql", dbuser,
 						dbpassword, results, resultCount);
 				annotation = qenv.runAnnotatedQuery(queryString, reranked,
 						reranked.length);
@@ -138,8 +167,6 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 				if (docnoBytes != null)
 					docno = Query.getStringFromCBytes(docnoBytes);
 
-				byte[] blabytes = title.getBytes();
-
 				if (title == null)
 					title = docno;
 
@@ -150,16 +177,18 @@ Use stemmed collection: <input type="checkbox" name="isStemmed"
 						reranked[i], text, positions, 100, 10, 35);
 				documentID = new Integer(reranked[i]);
 
-				queryResult += "<div id=\"result\">\n" + "<h2>" + beginLink
+				queryResult += "<div id=\"result\">\n" + "<h2>" + String.valueOf(i+1) + beginLink
 						+ title + endLink + "</h2>\n" + "<div id=\"snippet\">"
 						+ snippet + "</div>\n"
 						+ "[ <a href=\"showdoc.jsp?documentID=" + documentID
-						+ "&index=" + indexName + ">Cached</a> ]</div>\n"
-						+ "</div>\n";
+						+ "&index=" + indexName + "\">Cached</a> ]</div>\n";
+				//+ "</div>\n";
 			}
+			qenv.close();
 			return resultHeader + "\n" + queryResult;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Throwable e) {
+			System.out.println(e.getMessage());
+			System.out.println("An exception occured");
 		}
 		return "";
 	}%>

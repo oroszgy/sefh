@@ -13,8 +13,8 @@ public class Strip {
       begin = input.indexOf( tagStart, start );
       end = input.indexOf( tagEnd, begin );
       
-      if(begin < 0 || end<0)
-      	return input;
+      //if(begin < 0 || end<0)
+      //	return input;
       
       if( builder == null ) {
         if( begin < 0 ) {
@@ -38,15 +38,16 @@ public class Strip {
   }
 
   public static String strip( String input ) {
+	  return input;
     // strip comments
-    input = stripStringPair( input, "<!--", "-->" );
+    //input = stripStringPair( input, "<!--", "-->" );
     // strip script 
-    input = stripStringPair( input, "<script", "</script>" );
+    //input = stripStringPair( input, "<script", "</script>" );
     // strip tags
     
-    input = stripStringPair( input, "<", ">" );
+    //input = stripStringPair( input, "<", ">" );
 
-    return input;
+    //return input;
   }
 }
 
