@@ -9,7 +9,7 @@ using namespace com::sefh::hunstemmer;
 HunStemtransformation::HunStemtransformation()
 {
 	//TODO: config fájlba egy bejegyzés
-	com::weblib::linguist::HumorCPP::initialize("./lex", 1038);
+	com::weblib::linguist::HumorCPP::initialize("./lex");
 }
 
 HunStemtransformation::~HunStemtransformation()
@@ -21,35 +21,43 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 {
 
 	//printDbg(document);
-	indri::utility::greedy_vector<char*>* stems = new indri::utility::greedy_vector<char*>();
-	indri::utility::greedy_vector<indri::parse::TermExtent>* stemPos = new indri::utility::
-		greedy_vector<indri::parse::TermExtent>();
+	//indri::utility::greedy_vector<char*>* stems = new indri::utility::greedy_vector<char*>();
+	//indri::utility::greedy_vector<indri::parse::TermExtent>* stemPos = new indri::utility::
+	//	greedy_vector<indri::parse::TermExtent>();
 
 	indri::utility::greedy_vector<char*>& terms = document->terms;
-
 	for( size_t i=0; i<terms.size(); i++)
 	{
 		char* term = terms[i];
 		//if the term is empty do nothing
 		//TODO:: biztos jó ez így?
-		if(!term || term=="")
-			continue;
 
-		std::vector<std::string>*  v =
-			com::weblib::linguist::HumorCPP::getStem(term);
-		// if there is no stem, or the term is a number
-		stems->push_back(term);
-		/*if(document->positions.size()>i)
-			stemPos->push_back(document->positions[i]);*/
-		if(v==NULL || !(atoi(term) == 0 && std::string(term) != "0"))
+		if(!term)
+			continue;
+		std::string input(term);
+		if(!(atoi(term) == 0 && input != "0") || input == "")
 		{
 			continue;
 		}
+		//std::cout<<input;
 
-		const char * _t = v->at(0).c_str();
+		std::vector<std::string>  v =
+			com::weblib::linguist::HumorCPP::getStem(input);
+
+		if(v.size() == 0)
+			continue;
+		// if there is no stem, or the term is a number
+		//stems->push_back(term);
+		/*if(document->positions.size()>i)
+			stemPos->push_back(document->positions[i]);*/
+
+
+		const char * _t = v[0].c_str();
 		char* tt = new char[100];
 		strcpy(tt, _t);
+
 		document->terms[i] = tt;
+
 
 		//add all the stems to the index
 	/*	for(int j=0; j< v->size(); ++j)
@@ -77,6 +85,7 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 	document->positions = *stemPos;*/
 
 	//printDbg(document);
+
 	return document;
 }
 
