@@ -1,5 +1,5 @@
 #!/bin/sh
-INDRI=/home/mee/workspaceCPP/indri/site-search
+INDRI=/home/mee/workspaces/sefh/indri/site-search
 FOREGROUND=true
 export FOREGROUND
 JAVA_HOME=

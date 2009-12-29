@@ -3,6 +3,12 @@
 	<name>indri</name>
 	<comment></comment>
 	<projects>
+		<project>dateRecognizer</project>
+		<project>fileAnnotator</project>
+		<project>humor</project>
+		<project>hunStemmer</project>
+		<project>unitRecognizer</project>
+		<project>utils</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

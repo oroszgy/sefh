@@ -160,7 +160,6 @@ public void setNumericField(String fieldName, boolean isNumeric, String parserNa
        Set the numeric property of a field. 
        @param fieldName the field.
        @param isNumeric true if the field is a numeric field, false if not.
-       @param parserName The name of the Transformation to use to compute the numeric value of the field. Repository currently recognizes the name NumericFieldAnnotator.
 @throws Exception if a lemur::api::Exception was thrown by the JNI library.
 */
 public void setNumericField(String fieldName, boolean isNumeric) throws java.lang.Exception {
@@ -240,7 +239,6 @@ public void create(String repositoryPath, IndexStatus callback) throws java.lang
 /**
        create a new index and repository
        @param repositoryPath the path to the repository
-       @param callback IndexStatus object to be notified of indexing progress.
 @throws Exception if a lemur::api::Exception was thrown by the JNI library.
 */
 public void create(String repositoryPath) throws java.lang.Exception {
@@ -262,7 +260,6 @@ public void open(String repositoryPath, IndexStatus callback) throws java.lang.E
 /**
        open an existing index and repository
        @param repositoryPath the path to the repository
-       @param callback IndexStatus object to be notified of indexing progress.
 @throws Exception if a lemur::api::Exception was thrown by the JNI library.
 */
 public void open(String repositoryPath) throws java.lang.Exception {
@@ -318,7 +315,7 @@ public int addString(String fileName, String fileClass, Map metadata) throws jav
   
 /**
        add an already parsed document to the index and repository
-       @param document the document to add
+       @param documentString the document to add
 @throws Exception if a lemur::api::Exception was thrown by the JNI library.
 */
 public int addString(String documentString, String fileClass, Map metadata, TagExtent[] tags) throws java.lang.Exception {

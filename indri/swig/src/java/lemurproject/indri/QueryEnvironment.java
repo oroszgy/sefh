@@ -245,7 +245,7 @@ public int[] documentIDsFromMetadata(String attributeName, String[] attributeVal
 /**
         Fetch all documents with a metadata key that matches attributeName, with a value matching one of the attributeValues.
        @param attributeName the name of the metadata attribute (e.g. 'url' or 'docno')
-       @param attributeValues values that the metadata attribute should match
+       @param attributeValue values that the metadata attribute should match
        @return a vector of ParsedDocuments that match the given metadata criteria
 @throws Exception if a lemur::api::Exception was thrown by the JNI library.
 */

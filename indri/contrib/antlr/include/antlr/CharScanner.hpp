@@ -20,11 +20,11 @@
 #include <cctype>
 #endif
 
-#if ( _MSC_VER == 1200 )
+//#if ( _MSC_VER == 1200 )
 // VC6 seems to need this
 // note that this is not a standard C++ include file.
 # include <stdio.h>
-#endif
+//#endif
 
 #include <antlr/TokenStream.hpp>
 #include <antlr/RecognitionException.hpp>

@@ -64,6 +64,7 @@
 
 #include "indri/VocabularyIterator.hpp"
 
+#include "../../hunStemmer/include/HunSynonym.h"
 using namespace lemur::api;
 
 // debug code: should be gone soon
@@ -847,8 +848,13 @@ std::vector<indri::api::ScoredExtentResult> indri::api::QueryEnvironment::_runQu
                                                                                      indri::api::QueryAnnotation** annotation,
                                                                                      const std::string &queryType ) {
   INIT_TIMER
-    QueryParserWrapper *parser = QueryParserFactory::get(q, queryType);
 
+  //preprocess by HunSysnonym
+  std::string newQuery(q);
+  newQuery = com::sefh::hunstemmer::HunSynonym::getInstance()->processQuery(newQuery);
+  std::cout<<newQuery;
+    QueryParserWrapper *parser = QueryParserFactory::get(newQuery, queryType);
+  std::cout<<"-ok";
   PRINT_TIMER( "Initialization complete" );
 
   indri::lang::ScoredExtentNode* rootNode;

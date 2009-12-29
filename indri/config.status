@@ -331,7 +331,7 @@ Copyright (C) 2006 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/mee/workspaceCPP/indri'
+ac_pwd='/home/mee/workspaces/sefh/indri'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 # If no file are specified by the user, then we need to provide default
@@ -500,7 +500,7 @@ s,@psdir@,|#_!!_#|${docdir},g
 s,@libdir@,|#_!!_#|${exec_prefix}/lib,g
 s,@localedir@,|#_!!_#|${datarootdir}/locale,g
 s,@mandir@,|#_!!_#|${datarootdir}/man,g
-s,@DEFS@,|#_!!_#|-DPACKAGE_NAME=\\"Indri\\" -DPACKAGE_TARNAME=\\"indri\\" -DPACKAGE_VERSION=\\"2.8\\" -DPACKAGE_STRING=\\"Indri\\ 2.8\\" -DPACKAGE_BUGREPORT=\\"indri-info@|#_!!_#|ciir.cs.umass.edu\\" -DYYTEXT_POINTER=1 -DINDRI_STANDALONE=1 -DHAVE_LIBM=1 -DHAVE_LIBPTHREAD=1 -DHAVE_LIBZ=1 -DHAVE_NAMESPACES= -DISNAN_IN_NAMESPACE_STD= -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -D_FILE_OFFSET_BITS=64 -DHAVE_FSEEKO=1 -DHAVE_EXT_ATOMICITY_H=1 -DP_NEEDS_GNU_CXX_NAMESPACE=1 -DHAVE_MKSTEMP=1 -DNDEBUG=1,g
+s,@DEFS@,|#_!!_#|-DPACKAGE_NAME=\\"Indri\\" -DPACKAGE_TARNAME=\\"indri\\" -DPACKAGE_VERSION=\\"2.8\\" -DPACKAGE_STRING=\\"Indri\\ 2.8\\" -DPACKAGE_BUGREPORT=\\"indri-info@|#_!!_#|ciir.cs.umass.edu\\" -DINDRI_STANDALONE=1 -DHAVE_LIBM=1 -DHAVE_LIBPTHREAD=1 -DHAVE_LIBZ=1 -DHAVE_NAMESPACES= -DISNAN_IN_NAMESPACE_STD= -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -D_FILE_OFFSET_BITS=64 -DHAVE_FSEEKO=1 -DHAVE_EXT_ATOMICITY_H=1 -DP_NEEDS_GNU_CXX_NAMESPACE=1 -DHAVE_MKSTEMP=1 -DNDEBUG=1,g
 s,@ECHO_C@,|#_!!_#|,g
 s,@ECHO_N@,|#_!!_#|-n,g
 s,@ECHO_T@,|#_!!_#|,g
@@ -526,9 +526,9 @@ s,@OBJEXT@,|#_!!_#|o,g
 s,@CXX@,|#_!!_#|g++,g
 s,@CXXFLAGS@,|#_!!_#|-g -O3,g
 s,@ac_ct_CXX@,|#_!!_#|g++,g
-s,@LEX@,|#_!!_#|flex,g
-s,@LEX_OUTPUT_ROOT@,|#_!!_#|lex.yy,g
-s,@LEXLIB@,|#_!!_#|-lfl,g
+s,@LEX@,|#_!!_#|:,g
+s,@LEX_OUTPUT_ROOT@,|#_!!_#|,g
+s,@LEXLIB@,|#_!!_#|,g
 s,@INSTALL_PROGRAM@,|#_!!_#|${INSTALL},g
 s,@INSTALL_SCRIPT@,|#_!!_#|${INSTALL},g
 s,@INSTALL_DATA@,|#_!!_#|${INSTALL} -m 644,g

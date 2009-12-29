@@ -24,6 +24,7 @@
 #include "indri/IndriTokenizer.hpp"
 #include "indri/Path.hpp"
 #include "indri/Conflater.hpp"
+#include "../../hunStemmer/include/HunStemtransformation.h"
 
 void indri::api::IndexEnvironment::_getParsingContext( indri::parse::Parser** parser,
                                                        indri::parse::Tokenizer** tokenizer,
@@ -62,7 +63,7 @@ void indri::api::IndexEnvironment::_getParsingContext( indri::parse::Parser** pa
 }
 
 std::vector<indri::parse::Transformation*> indri::api::IndexEnvironment::_createAnnotators( const std::string& fileName,
-                                                                                            const std::string& fileClass, 
+                                                                                            const std::string& fileClass,
                                                                                             indri::parse::Conflater** conflater ) {
   indri::parse::AnchorTextAnnotator* annotator = 0;
   indri::parse::OffsetAnnotationAnnotator* oa_annotator = 0;
@@ -82,7 +83,7 @@ std::vector<indri::parse::Transformation*> indri::api::IndexEnvironment::_create
       anchorTextPath = _anchorTextRoot;
     _annotator.open( anchorTextPath );
     annotator = &_annotator;
-    annotators.push_back( annotator ); 
+    annotators.push_back( annotator );
   }
 
   if( _offsetAnnotationsRoot.length() ) {
@@ -105,9 +106,9 @@ std::vector<indri::parse::Transformation*> indri::api::IndexEnvironment::_create
     std::string offsetMetadataPath;
     // only do path combining on directories. Otherwise, assume a single file
     // for all corpus documents.
-    if( indri::file::Path::isDirectory( _offsetMetadataRoot ) && relativePath.length() > 0 ) 
+    if( indri::file::Path::isDirectory( _offsetMetadataRoot ) && relativePath.length() > 0 )
       offsetMetadataPath = indri::file::Path::combine( _offsetMetadataRoot, relativePath );
-    else 
+    else
       offsetMetadataPath = _offsetMetadataRoot;
     _om_annotator.open( offsetMetadataPath );
     om_annotator = &_om_annotator;
@@ -120,8 +121,8 @@ std::vector<indri::parse::Transformation*> indri::api::IndexEnvironment::_create
 indri::api::ParsedDocument* indri::api::IndexEnvironment::_applyAnnotators( std::vector<indri::parse::Transformation*>& annotators,
                                                                             indri::api::ParsedDocument* parsed ) {
   for( size_t i=0; i<annotators.size(); i++ ) {
-    if( annotators[i] ) { 
-      parsed = annotators[i]->transform( parsed ); 
+    if( annotators[i] ) {
+      parsed = annotators[i]->transform( parsed );
     }
   }
 
@@ -181,7 +182,7 @@ void indri::api::IndexEnvironment::setOffsetAnnotationIndexHint(indri::parse::Of
   _oa_annotator.setHint(hintType);
 }
 
-void indri::api::IndexEnvironment::addFileClass( const std::string& name, 
+void indri::api::IndexEnvironment::addFileClass( const std::string& name,
                                                  const std::string& iter,
                                                  const std::string& parser,
                                                  const std::string& tokenizer,
@@ -191,7 +192,7 @@ void indri::api::IndexEnvironment::addFileClass( const std::string& name,
                                                  const std::vector<std::string>& include,
                                                  const std::vector<std::string>& exclude,
                                                  const std::vector<std::string>& index,
-                                                 const std::vector<std::string>& metadata, 
+                                                 const std::vector<std::string>& metadata,
                                                  const std::map<indri::parse::ConflationPattern*,std::string>& conflations )
 {
   this->_fileClassFactory.addFileClass( name, iter, parser, tokenizer, startDocTag, endDocTag, endMetadataTag,
@@ -203,7 +204,7 @@ void indri::api::IndexEnvironment::setIndexedFields( const std::vector<std::stri
   bool existingFields = _parameters.exists( "field" );
   // if setNumericField or setOrdinalField was called before setIndexedFields, there
   // will be an existing entry in the fields.
-  for( unsigned int i=0; i<fieldNames.size(); i++) { 
+  for( unsigned int i=0; i<fieldNames.size(); i++) {
     bool found = false;
     if( existingFields ) {
       Parameters fields = _parameters["field"];
@@ -215,7 +216,7 @@ void indri::api::IndexEnvironment::setIndexedFields( const std::vector<std::stri
         }
       }
     }
-    if (! found) 
+    if (! found)
       _parameters.append("field").set("name",fieldNames[i]);
   }
 }
@@ -246,16 +247,16 @@ void indri::api::IndexEnvironment::setOrdinalField( const std::string& fieldName
 
   if ( existingFields ) {
     Parameters fields = _parameters["field"];
-    
+
     for( size_t i=0; i<fields.size(); i++ ) {
       std::string parameterFieldName = fields[i]["name"];
-      
+
       if( parameterFieldName == fieldName ) {
         fields[i].set( "ordinal", isOrdinal );
         return;
       }
     }
-  }  
+  }
   Parameters field = _parameters.append("field");
   field.set( "name", fieldName );
   field.set( "ordinal", isOrdinal );
@@ -263,7 +264,7 @@ void indri::api::IndexEnvironment::setOrdinalField( const std::string& fieldName
 
 void indri::api::IndexEnvironment::setParentalField( const std::string& fieldName, bool isParental ) {
   bool existingFields = _parameters.exists( "field" );
-  
+
   if ( existingFields ) {
     Parameters fields = _parameters["field"];
 
@@ -350,7 +351,7 @@ void indri::api::IndexEnvironment::addFile( const std::string& fileName, const s
   indri::parse::Tokenizer* tokenizer = 0;
   indri::parse::DocumentIterator* iterator = 0;
   indri::parse::Conflater* conflater = 0;
-  
+
   _getParsingContext( &parser, &tokenizer, &iterator, &conflater, fileClass );
 
   if( !parser || !iterator ) {
@@ -394,7 +395,7 @@ void indri::api::IndexEnvironment::addFile( const std::string& fileName, const s
             _repository.addDocument( parsed );
             _documentsIndexed++;
         } // else mention the dupe?
-        
+        //com::sefh::hunstemmer::HunStemtransformation::printDbg(parsed);
         if( _callback ) (*_callback)( indri::api::IndexStatus::DocumentCount, fileName, _error, _documentsIndexed, _documentsSeen );
       }
 
@@ -431,7 +432,7 @@ lemur::api::DOCID_T indri::api::IndexEnvironment::addString( const std::string& 
   document.metadata = metadata;
   document.content = document.text;
   document.contentLength = document.textLength - 1;
-  
+
   _getParsingContext( &parser, &tokenizer, &iterator, &conflater, fileClass );
 
   if( parser == 0 ) {
@@ -460,13 +461,13 @@ lemur::api::DOCID_T indri::api::IndexEnvironment::addString( const std::string& 
   indri::parse::Conflater* conflater;
   indri::parse::OffsetAnnotationAnnotator *annote;
   std::string docno = "";
-  
+
   for ( size_t i=0; i<metadata.size(); i++ ) {
     const char* attributeName = metadata[i].key;
     const char* attributeValue = (const char*) metadata[i].value;
     if ( ! strcmp( attributeName, "docno" ) ) docno = attributeValue;
   }
-  
+
   std::string nothing;
 
   _documentsSeen++;
@@ -476,11 +477,11 @@ lemur::api::DOCID_T indri::api::IndexEnvironment::addString( const std::string& 
   document.metadata = metadata;
   document.content = document.text;
   document.contentLength = document.textLength - 1;
-  
+
   _getParsingContext( &parser, &tokenizer, &iterator, &conflater, fileClass );
   annote = new indri::parse::OffsetAnnotationAnnotator(conflater);
   annote->setTags(docno.c_str(), tags);
-  
+
   if( parser == 0 ) {
     LEMUR_THROW( LEMUR_RUNTIME_ERROR, "File class '" + fileClass + "' wasn't recognized." );
   }
@@ -488,7 +489,7 @@ lemur::api::DOCID_T indri::api::IndexEnvironment::addString( const std::string& 
 
   ParsedDocument* parsed = parser->parse( tokenized );
   parsed = annote->transform(parsed);
-  
+
   lemur::api::DOCID_T documentID =_repository.addDocument( parsed );
 
   _documentsIndexed++;
@@ -509,7 +510,7 @@ lemur::api::DOCID_T indri::api::IndexEnvironment::addParsedDocument( ParsedDocum
   lemur::api::DOCID_T documentID = _repository.addDocument( document );
   _documentsIndexed++;
   if( _callback ) (*_callback)( indri::api::IndexStatus::DocumentCount, nothing, _error, _documentsIndexed, _documentsSeen );
-  
+
   return documentID;
 }
 
