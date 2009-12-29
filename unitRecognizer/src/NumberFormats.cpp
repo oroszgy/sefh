@@ -1,6 +1,8 @@
 #include "../include/NumberFormats.h"
 #include <StringConverter.h>
 #include <boost/regex.hpp>
+#include <boost/algorithm/string.hpp>
+#include <iostream>
 
 using namespace com::sefh::unitrecognition;
 
@@ -10,39 +12,56 @@ char* NumberFormats::hundred = "száz";
 char* NumberFormats::thousand = "ezer";
 char* NumberFormats::million = "millió";
 char* NumberFormats::milliard = "milliárd";
+char* NumberFormats::thousandmilliard = "ezermilliárd";
 
 double NumberFormats::writtenNumberToDouble(std::string input)
 {
+
 	char* text = new char[150];
 	text = strcpy(text,input.c_str());
-	char *milliardP, *millionP, *thousandP, *e, *tmpP;
+	char *milliardP, *millionP, *thousandP, *e, *tmpP, *thousandmilliardP;
 	char partOfNum[100];
-	double returnValue;
+	double returnValue = 0;
 
-	milliardP = strstr(text, milliard);
-
-	if(milliardP)
+	thousandmilliardP = strstr(text, thousandmilliard);
+	if(thousandmilliardP != NULL)
 	{
-		strncpy(partOfNum, text, milliardP - text);
-		tmpP = milliardP + strlen(milliard);
-		returnValue = 1e9 * partOfNumberValue(partOfNum);
-	}
-	else
-	{
+		if(thousandmilliardP == text)
+			return 1e12;
+		else {
+			strncpy(partOfNum, text, thousandmilliardP - text);
+			tmpP = thousandmilliardP + strlen(thousandmilliard);
+			returnValue += 1e12 * partOfNumberValue(partOfNum);
+		}
+	} else {
 		tmpP = text;
-		returnValue = 0;
+	}
+
+	milliardP = strstr(tmpP, milliard);
+	if(milliardP != NULL)
+	{
+		if(milliardP == tmpP || returnValue == 0)
+			return 1e9;
+		else
+		{
+			strncpy(partOfNum, tmpP, milliardP - tmpP);
+			tmpP = milliardP + strlen(milliard);
+			returnValue += 1e9 * partOfNumberValue(partOfNum);
+		}
 	}
 
 	millionP = strstr(tmpP, million);
-	if(millionP)
+	if(millionP != NULL)
 	  {
+		if(millionP == tmpP || returnValue == 0)
+			return 1e6;
 		strncpy(partOfNum, tmpP, millionP - tmpP);
 		tmpP = millionP + strlen(million);
 		returnValue += 1e6 * partOfNumberValue(partOfNum);
 	  }
 
-	thousandP = strstr(text, thousand);
-	if(thousandP)
+	thousandP = strstr(tmpP, thousand);
+	if(thousandP != NULL)
 	{
 		strncpy(partOfNum, tmpP, thousandP - tmpP);
 		tmpP = thousandP + 4;
@@ -53,11 +72,24 @@ double NumberFormats::writtenNumberToDouble(std::string input)
 
 	if(*tmpP) returnValue += partOfNumberValue(tmpP);
 
+	free(text);
 	return returnValue;
 }
 
 int NumberFormats::partOfNumberValue(std::string input)
 {
+	if(input == "")
+		return 1;
+
+	//if the number is not a string
+	std::string trimmedInput(input);
+	boost::trim(trimmedInput);
+
+	if(isInt(trimmedInput))
+	{
+		return atoi(trimmedInput.c_str());
+	}
+
 	char *hundredP, *tmpP;
 	char *text = new char[150];
 	text = strcpy(text,input.c_str());
@@ -107,6 +139,7 @@ int NumberFormats::partOfNumberValue(std::string input)
         }
     }
 
+    free(text);
     return returnValue;
 }
 
@@ -126,7 +159,7 @@ void NumberFormats::createFormatStr(std::string sep)
 		formatString = "(-){0,1}\\d+";
 	else
 		formatString ="(-){0,1}\\d+(["+sep+"]{0,1}\\d)*\\d*";
-	formatString ="("+formatString+")|(\\w+)";
+	formatString ="("+formatString+")|([^\\d\\s]+)|(\\d+\\s(milliárd|millió|ezer))";
 }
 
 NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
@@ -151,7 +184,14 @@ double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 	}*/
 	unit = boost::regex_replace(unit, boost::regex("[^-\\d"+decimalSep+"]"), "");
 	if(unit == "")
-		return writtenNumberToDouble(_unit);
+	{
+		try{
+			return writtenNumberToDouble(_unit);
+		} catch(...) {
+			std::cout<<"Conversation problem with " + _unit;
+			return 0;
+		}
+	}
 	unit = boost::regex_replace(unit, boost::regex(decimalSep), ".");
 
 
@@ -166,4 +206,12 @@ bool NumberFormats::isInt(char c)
 	char* cic = new char[10];
 	cic	= itoa(ci, cic, 10);
 	return cic[0] == c;
+}
+
+bool NumberFormats::isInt(std::string& str) {
+	for(size_t i=0; i<str.length(); ++i) {
+		if(!isInt(str[i]))
+			return false;
+	}
+	return true;
 }

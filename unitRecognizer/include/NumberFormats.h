@@ -31,13 +31,15 @@ public:
 	 */
 	std::string getRegExpString();
 	~NumberFormats(void);
+	static int partOfNumberValue(std::string);
 private:
 	NumberFormats(std::string separators);
 	void createFormatStr(std::string sep);
 	static bool isInt(char c);
+	static bool isInt(std::string& str);
 	std::string formatString;
 
-	static int partOfNumberValue(std::string);
+
 
 	static char* digits[10];
 	static char* tens[12];
@@ -45,6 +47,7 @@ private:
 	static char* thousand;
 	static char* million;
 	static char* milliard;
+	static char* thousandmilliard;
 };
 }
 }

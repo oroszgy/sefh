@@ -1,5 +1,6 @@
 #include "../include/UnitFieldAnnotator.h"
 #include "../include/UnitRecognizer.h"
+#include <iostream>
 
 using namespace com::sefh::unitrecognition;
 
@@ -10,8 +11,9 @@ UnitFieldAnnotator::UnitFieldAnnotator(std::string fn) : fieldName(fn)
 
 UnitFieldAnnotator::~UnitFieldAnnotator(void)
 {
-	if(unitRecognizer != NULL)
-		delete unitRecognizer;
+	//TODO :fix
+//	if(unitRecognizer != NULL)
+//		delete unitRecognizer;
 }
 
 void UnitFieldAnnotator::setHandler(indri::parse::ObjectHandler<indri::api::ParsedDocument> &handler)
@@ -41,8 +43,12 @@ indri::api::ParsedDocument* UnitFieldAnnotator::transform( indri::api::ParsedDoc
 			//double -> integer 2 tizedesig pontos
 			UINT64 value = 0;
 
+			try{
 			value += unitRecognizer->getSIValue(unit) * 100;
 			extent->number = value;
+			} catch(...) {
+				std::cout<<"Error with: "<<unit<<"\n";
+			}
           }
         }
         return document;
