@@ -7,16 +7,16 @@
 
 using namespace com::sefh::utils;
 
-void FieldAnnotator::doReplace(const std::string fileName)
+void FieldAnnotator::doReplace(const std::string fileName, const std::string outputFileName)
 {
 	/*std::string inputString = StringConverter::WStringToString(
 		StringConverter::UTF8ToUnicode(parseFile(fileName)));
 
 	std::string modInputString = StringConverter::UnicodeToUTF8(
 		StringConverter::StringToWString(doTransformation(inputString)));*/
-	std::string modInputStirng = fileName;
+	std::string modInputStirng = doTransformation(fileName);
 
-	writeFile(fileName, modInputStirng);
+	writeFile(outputFileName, modInputStirng);
 }
 
 /*indri::parse::UnparsedDocument* FieldAnnotator::doTransformation(indri::parse::UnparsedDocument* document, DateFormats* df)
@@ -65,7 +65,7 @@ std::string FieldAnnotator::doDateTransformation(const std::string& inputString)
 std::string FieldAnnotator::doTransformation(const std::string &inputString)
 {
 	std::string str;
-	str = doDateTransformation(inputString);
+	str = doDateTransformation(parseFile(inputString));
 	return doUnitTransformation(str);
 }
 
@@ -95,11 +95,11 @@ std::string FieldAnnotator::parseFile(std::string fileName)
 	std::ifstream* inputFile;
 	inputFile = new std::ifstream();
 	inputFile->open(fileName.c_str());
-	char* line = new char[1024];
+	char* line = new char[10240];
 
 	while(!inputFile->eof())
 	{
-		inputFile->getline(line,1024,'\n');
+		inputFile->getline(line,10240,'\n');
 		inputFileString += line;
 
 		if(!inputFile->eof())

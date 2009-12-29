@@ -10,7 +10,7 @@ namespace utils
 	class FieldAnnotator
 	{
 	public:
-		static void doReplace(const std::string fileName);
+		static void doReplace(const std::string fileName, const std::string output);
 		static std::string doTransformation(const std::string& inputString);
 		static std::string doDateTransformation(const std::string& inputString);
 		static std::string doUnitTransformation(const std::string& inputString);
