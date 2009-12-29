@@ -45,7 +45,7 @@
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.2019720198" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug">
 <option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.1707402715" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
-<option id="gnu.cpp.link.option.userobjs.1971813614" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+<option id="gnu.cpp.link.option.userobjs.1971813614" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/Debug/libutils.a}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1890127197" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

@@ -166,18 +166,21 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	de = date.find_last_of("d");
 	if(ds == de)
 	{
-		date.replace(ds,1,"([0-9]{1,2})");
+		//date.replace(ds,1,"([0-9]{1,2})");
+		date.replace(ds,1, "(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)");
 	}
 	else
 	{
-		date.replace(ds, de-ds+1, "([0-9]{2})");
+		//date.replace(ds, de-ds+1, "([0-9]{2})");
+		date.replace(ds,de-ds+1, "(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)");
 	}
 
 	//Replacing month with nums
 	ms = date.find_first_of("m");
 	if(date.substr(ms+1,1) == "m")
 	{
-		date.replace(ms,2,"([0-9]{2})");
+		//date.replace(ms,2,"([0-9]{2})");
+		date.replace(ms,2,"(01|02|03|04|05|06|07|08|09|10|11|12)");
 	}
 	else if(date.substr(ms,5) == "month")
 	{
@@ -201,7 +204,8 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	}
 	else
 	{
-		date.replace(ms,1,"([0-9]{1,2})");
+		//date.replace(ms,1,"([0-9]{1,2})");
+		date.replace(ms,1,"(1|2|3|4|5|6|7|8|9|10|11|12)");
 	}
 
 	//TODO: replace other non-permitted strings
@@ -209,6 +213,8 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	date = boost::regex_replace(date, dotRegexp, "\\\\.");
 	boost::regex spaceRegexp(" ");
 	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
+	/*if(date[date.length()-1] == ')')
+		date += "[^\\d]";*/
 
 
 	recognizerRegExp = date;

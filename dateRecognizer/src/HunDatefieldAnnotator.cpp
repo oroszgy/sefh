@@ -1,15 +1,19 @@
 #include "../include/HunDatefieldAnnotator.h"
 #include "../include/DateFormat.h"
+#include <iostream>
 
 using namespace com::sefh::daterecognition;
 
 HunDatefieldAnnotator::HunDatefieldAnnotator(std::string field) :
 _field(field)  {
+	_dateFormats = NULL;
 	_dateFormats = DateFormat::getInstances();
 }
 
 HunDatefieldAnnotator::~HunDatefieldAnnotator(void)
 {
+	if(_dateFormats != NULL)
+		delete _dateFormats;
 }
 
 void HunDatefieldAnnotator::setHandler(indri::parse::ObjectHandler<indri::api::ParsedDocument> &handler)
@@ -36,6 +40,7 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
             std::string date;
 
 			date = text.substr(dateStart, dateLen);
+
             _parseDate(date, extent);
           }
         }
