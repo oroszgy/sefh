@@ -1,5 +1,0 @@
-#created by Gyorgy Orosz for extending the indri toolkit
-
-ADDINCPATH=-I/home/mee/Download/php/php-4.4.9/TSRM -I/home/mee/Download/php/php-4.4.9 -I/home/mee/Download/php/php-4.4.9/main -I/home/mee/Download/php/php-4.4.9/Zend -I../../unitRecognizer/include -I../../dateRecognizer/include -I../../hunStemmer/include -I../../humor/include -I../../utils/include
-ADDLIBPATH=-L../../unitRecognizer/include -L../../dateRecognizer/Debug -L../../hunStemmer/Debug -L../../humor/Debug
-ADDLIBS=-lunitRecognizer -lhumor -lstem2005 -lhunStemmer -ldateRecognizer -lboost_regex 
