@@ -67,4 +67,11 @@ Repository.o ../depend/Repository.d : ../src/Repository.cpp ../include/indri/Rep
   ../include/indri/RepositoryLoadThread.hpp \
   ../include/indri/UtilityThread.hpp \
   ../include/indri/RepositoryMaintenanceThread.hpp \
-  ../include/indri/IndriTimer.hpp ../include/indri/DirectoryIterator.hpp
+  ../include/indri/IndriTimer.hpp ../include/indri/DirectoryIterator.hpp \
+  ../src/../../utils/include/Unit.h \
+  ../src/../../dateRecognizer/include/HunDatefieldAnnotator.h \
+  ../include/indri/Transformation.hpp ../include/indri/DateParse.hpp \
+  ../src/../../dateRecognizer/include/DateFormat.h \
+  ../src/../../unitRecognizer/include/UnitFieldAnnotator.h \
+  ../include/indri/Transformation.hpp \
+  ../src/../../unitRecognizer/include/UnitRecognizer.h

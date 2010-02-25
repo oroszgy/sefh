@@ -39,6 +39,10 @@
 #include "indri/IndriTimer.hpp"
 #include "indri/DirectoryIterator.hpp" 
 
+#include "../../utils/include/Unit.h"
+#include "../../dateRecognizer/include/HunDatefieldAnnotator.h"
+#include "../../unitRecognizer/include/UnitFieldAnnotator.h"
+
 #include <math.h>
 #include <string>
 #include <algorithm>
@@ -153,6 +157,13 @@ void indri::collection::Repository::_buildChain( indri::api::Parameters& paramet
     else if( _fields[i].parserName == "DateFieldAnnotator" ) {
       _transformations.push_back( new indri::parse::DateFieldAnnotator( _fields[i].name ) );
     }
+    else if( _fields[i].parserName == "HunDateFieldAnnotator" ) {
+      _transformations.push_back( new com::sefh::daterecognition::HunDatefieldAnnotator( _fields[i].name ) );
+    }
+    else if( _fields[i].parserName == "UnitFieldAnnotator" ) {
+      _transformations.push_back( new com::sefh::unitrecognition::UnitFieldAnnotator( _fields[i].name ) );
+    }
+
   }
 
   if( _parameters.exists("stopper.word") ) {
