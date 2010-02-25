@@ -1,6 +1,7 @@
 #include "../include/HunDatefieldAnnotator.h"
 #include "../include/DateFormat.h"
 #include <iostream>
+#include "lemur/lemur-platform.h"
 
 using namespace com::sefh::daterecognition;
 

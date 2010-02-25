@@ -46,6 +46,9 @@
 <listOptionValue builtIn="false" value="unitRecognizer"/>
 <listOptionValue builtIn="false" value="dateRecognizer"/>
 </option>
+<option id="gnu.cpp.link.option.paths.667724801" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/testingData/lib}&quot;"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.608936612" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 <additionalInput kind="additionalinput" paths="$(LIBS)"/>

@@ -31,6 +31,7 @@
 <option id="gnu.cpp.compiler.so.debug.option.debugging.level.389786657" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1642240031" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/indri/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/indri/contrib/lemur/include}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/humor/include}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.625829612" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>

@@ -1,5 +1,6 @@
 #include "../include/UnitFieldAnnotator.h"
 #include "../include/UnitRecognizer.h"
+#include "lemur/lemur-platform.h"
 #include <iostream>
 
 using namespace com::sefh::unitrecognition;

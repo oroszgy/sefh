@@ -1,9 +1,9 @@
-
+include ../AdditionalMakeDefns
 include ../MakeDefns
 SHARED=
-INCPATH=-I../include $(patsubst %, -I../contrib/%/include, $(DEPENDENCIES))
-LIBPATH=-L../obj  $(patsubst %, -L../contrib/%/obj, $(DEPENDENCIES))
-LIBS=-lindri $(patsubst %, -l%, $(DEPENDENCIES))
+INCPATH=-I../include $(patsubst %, -I../contrib/%/include, $(DEPENDENCIES)) $(ADDINCPATH)
+LIBPATH=-L../obj  $(patsubst %, -L../contrib/%/obj, $(DEPENDENCIES)) $(ADDLIBPATH)
+LIBS=-lindri $(patsubst %, -l%, $(DEPENDENCIES)) $(ADDLIBS)
 APP=makeprior
 
 all:
