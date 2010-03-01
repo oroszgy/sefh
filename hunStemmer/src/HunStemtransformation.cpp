@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "HumorCPP.h"
+#include "path.h"
 
 
 using namespace com::sefh::hunstemmer;
@@ -9,7 +10,7 @@ using namespace com::sefh::hunstemmer;
 HunStemtransformation::HunStemtransformation()
 {
 	//TODO: config fájlba egy bejegyzés
-	com::weblib::linguist::HumorCPP::initialize("./lex");
+	com::weblib::linguist::HumorCPP::initialize(LEX);
 }
 
 HunStemtransformation::~HunStemtransformation()
