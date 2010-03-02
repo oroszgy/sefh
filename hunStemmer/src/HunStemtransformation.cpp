@@ -40,10 +40,14 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 		{
 			continue;
 		}
-		//std::cout<<input;
 
+		//debugging
+#ifdef SEFHDEBUG
+		std::cout<<input+"->";
+#endif
 		std::vector<std::string>  v =
 			com::weblib::linguist::HumorCPP::getStem(input);
+
 
 		if(v.size() == 0)
 			continue;
@@ -52,6 +56,10 @@ indri::api::ParsedDocument* HunStemtransformation::transform( indri::api::Parsed
 		/*if(document->positions.size()>i)
 			stemPos->push_back(document->positions[i]);*/
 
+		//debugging
+#ifdef SEFHDEBUG
+				std::cout<<v[0]+"\n";
+#endif
 
 		const char * _t = v[0].c_str();
 		char* tt = new char[100];
