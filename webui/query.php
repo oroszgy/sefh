@@ -41,14 +41,20 @@
   <?php include( "include/header.php" ) ?>
 
   <div id="resultbanner">
-    <h2>Results for <?= $_REQUEST['query']; ?></h2> 
-    [<strong>query</strong><? printf("%5.2fs", $query_time ); ?>, 
-    <strong>documents</strong><? printf("%5.2fs", $doc_time ); ?>,
-    <strong>total</strong><? printf("%5.2fs", $total_time ); ?>]
+    <h3>Erre voltál kíváncsi: <i><?= $_REQUEST['query']; ?></i></h3> 
+    ennyire gyors voltam: [<strong>lekérdezés</strong><? printf("%5.2fs", $query_time ); ?>, 
+    <strong>dokmentumgenerálás</strong><? printf("%5.2fs", $doc_time ); ?>,
+    <strong>összesen</strong><? printf("%5.2fs", $total_time ); ?>]
   </div>
 
   <div id="results">
   <?php
+  if(empty($documents))
+  {
+  	echo "<center><h2>Nincs találat! :(</h2></center>";
+  }
+  else
+  {
      for( $i=0; $i<count($results); $i++ ) {
        $doc = $documents[$i];
        $meta = $doc->metadata;
@@ -87,14 +93,16 @@
         <div id="snippet">
           <?= $snippet ?>
         </div>
-        [ <a href="<?= $cachedlink ?>">Cached</a> ] 
+        [ <a href="<?= $cachedlink ?>">Tárolt dokumentum</a> ] 
      </div>
   <?php } ?>
 
   <?= indri_printlinks( $_REQUEST, $startdoc, count($results), $indri_param[ 'page_docs' ] ) ?>
   </div>
 
-  <?php include("include/footer.php"); ?>
+  <?php
+  }
+   include("include/footer.php"); ?>
   <?php 
   	  //memory management
       unset($documents);

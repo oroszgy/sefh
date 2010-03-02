@@ -15,7 +15,7 @@
   <form action="query.php" method="post">
     <div id="query">
      <input name="query" size="70"></input><br/>
-     <input type="submit" value="Search"><br/>
+     <input type="submit" value="Keresés"><br/>
      <br/>
      <?= $indri_param['search_text'] ?>
     </div> <!-- query -->

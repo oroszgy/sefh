@@ -325,8 +325,8 @@ function indri_printlinks( $request, $startdoc, $resultCount,  $pagedocs ) {
   $nextlink = indri_nextlink( $request, $startdoc + $pagedocs );
   $prevlink = indri_nextlink( $request, $startdoc - $pagedocs );
 
-  $nextfull = "<a href=\"" . $nextlink . "\">Next " . $pagedocs . "</a>";
-  $prevfull = "<a href=\"" . $prevlink . "\">Previous " . $pagedocs . "</a>";
+  $nextfull = "<a href=\"" . $nextlink . "\">Következő " . $pagedocs . "</a>";
+  $prevfull = "<a href=\"" . $prevlink . "\">Előző " . $pagedocs . "</a>";
 
   $showprev = ( $startdoc >= $pagedocs );
   $shownext = ( $resultCount >= $pagedocs );

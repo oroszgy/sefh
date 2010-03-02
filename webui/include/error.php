@@ -1,13 +1,12 @@
 
 <head>
-<title>Indri: Query parse error</title>
+<title>SEFH: hibás lekérdezés</title>
 </head>
 
 <body>
   <div id="content">
   <?php include( "header.php" ); ?>
-    <h3>The system was unable to understand your query: <?= $_REQUEST['query'] ?></h3>
-    Please consult the query language documentation and try again.
+    <h3>Uuupsz! Nem értelek! Valamit elgépelhettél:<?= $_REQUEST['query'] ?></h3>
   <?php include( "footer.php" ); ?>
   </div>
 </body>
