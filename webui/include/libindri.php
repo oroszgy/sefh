@@ -5,7 +5,8 @@ include( "libindri_php.php" );
 
 <?php
 
-/*if (!dl( $indri_param['library'] )) {
+/*
+if (!dl( $indri_param['library'] )) {
   // failed to load shared library, bail the page
 ?>
 <html>
@@ -18,8 +19,8 @@ Unable to load library: <?= $indri_param['library'] ?>
 </html>
 <?php
   return;
-}
-*/
+}*/
+
 
 // library loaded, run the bits.
 // increase the memory limit for the script.

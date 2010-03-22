@@ -7,7 +7,7 @@
   //
 
   $indri_param['server'] = "localhost";
-  $indri_param['index'] = "/home/gyurmi/workspaces/cpp/testingData/testIndex";
+  //$indri_param['index'] = "/home/gyurmi/workspaces/cpp/testingData/testIndex";
 
   //
   // document_format: Use 'text' if the document is a text file (or 
@@ -15,13 +15,13 @@
   //        Use 'html' to attempt to render the document in the browser.
   //
 
-  $indri_param['document_format'] = "text";
+  $indri_param['document_format'] = "xml";
 
   //
   // search_text: Text to be printed under the search box
   //
 
-  $indri_param['search_text'] = ""
+  $indri_param['search_text'] = '<br/><a href="http://www.lemurproject.org/lemur/IndriQueryLanguage.php">Indri lekérdezőnyelv<br/>'
   /*
 <p><strong>The Complete Plays of William Shakespeare</strong><br/></p>
 
