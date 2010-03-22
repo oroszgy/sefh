@@ -1,0 +1,25 @@
+<parameters>
+ <corpus>
+<path>./ogy/annotated/test</path>
+<class>html</class></corpus>
+ <memory>300m</memory>
+ <index>plainIndex</index>
+<field>
+ <name>date</name>
+ <numeric>true</numeric>
+ <parserName>HunDateFieldAnnotator</parserName>
+</field>
+<field>
+<name>weight</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+<field>
+<name>deviza</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+<field>
+<name>length</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+ </parameters>
+
