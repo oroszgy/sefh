@@ -45,11 +45,13 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.1464549452" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug">
 <option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.184734414" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
 <option id="gnu.cpp.link.option.libs.1376275353" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-<listOptionValue builtIn="false" value="humor2java"/>
-<listOptionValue builtIn="false" value="gcj"/>
+<listOptionValue builtIn="false" value="stem2005"/>
 </option>
 <option id="gnu.cpp.link.option.userobjs.802820011" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/humor/misc/Humor.o}&quot;"/>
+</option>
+<option id="gnu.cpp.link.option.paths.1061848562" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/testingData/lib}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.298259948" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -508,7 +510,7 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.so.release.1250081774" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.release">
 <option id="gnu.cpp.compiler.so.release.option.optimization.level.30039305" name="Optimization Level" superClass="gnu.cpp.compiler.so.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.so.release.option.debugging.level.2090522353" name="Debug Level" superClass="gnu.cpp.compiler.so.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
-<option id="gnu.cpp.compiler.option.include.paths.91957863" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+<option id="gnu.cpp.compiler.option.include.paths.91957863" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/humor/misc}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.933139629" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -523,7 +525,7 @@
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.release.413638938" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.release">
 <option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.2083565810" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
-<option id="gnu.cpp.link.option.userobjs.45803219" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+<option id="gnu.cpp.link.option.userobjs.45803219" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/humor/misc/Humor.o}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.250762020" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

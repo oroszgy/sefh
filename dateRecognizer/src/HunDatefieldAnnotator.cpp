@@ -1,6 +1,7 @@
 #include "../include/HunDatefieldAnnotator.h"
 #include "../include/DateFormat.h"
 #include <iostream>
+#include "lemur/lemur-platform.h"
 
 using namespace com::sefh::daterecognition;
 
@@ -40,6 +41,9 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
             std::string date;
 
 			date = text.substr(dateStart, dateLen);
+
+			//DEbug
+			//std::cout<<date;
 
             _parseDate(date, extent);
           }

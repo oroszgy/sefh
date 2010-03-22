@@ -12,7 +12,8 @@ using namespace com::weblib::linguist;
 iconv_t com::weblib::linguist::HumorCPP::utc = 0;
 iconv_t com::weblib::linguist::HumorCPP::ctu = 0;
 int com::weblib::linguist::HumorCPP::morphId = 0;
-int com::weblib::linguist::HumorCPP::stemOptions = SHOW_STEM_ONLY | FILTER_STEM;
+//not necessary: filter_derived stems
+int com::weblib::linguist::HumorCPP::stemOptions = SHOW_STEM_ONLY | FILTER_STEM | FILTER_DERIVED_STEMS;
 int com::weblib::linguist::HumorCPP::synOptions = 0;
 
 void HumorCPP::initialize(std::string dir)

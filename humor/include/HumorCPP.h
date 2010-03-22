@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 #include <iconv.h>
-#include "../include/stem2005_export.h"
-#include "../include/stem2005_options.h"
+#include "stem2005_export.h"
+#include "stem2005_options.h"
 
 namespace com
 {

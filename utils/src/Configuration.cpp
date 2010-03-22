@@ -1,5 +1,6 @@
 #include "../include/Configuration.h"
 #include "../include/xmlParser.h"
+#include "../include/path.h"
 
 using namespace com::sefh::utils;
 
@@ -19,7 +20,7 @@ Configuration* Configuration::getDefault()
 	if(defaultInstance == NULL)
 	{
 		//TODO:: nem elég általános
-	defaultInstance = new Configuration("conf.xml");
+	defaultInstance = new Configuration(CONF);
 	}
 
 	return defaultInstance;

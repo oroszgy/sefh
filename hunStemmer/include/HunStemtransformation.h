@@ -1,9 +1,11 @@
 #pragma once
-#include <indri/greedy_vector>
+#include "lemur/lemur-platform.h"
+#include "indri/greedy_vector"
 #include "indri/Transformation.hpp"
 #include "indri/TermExtent.hpp"
 #include "indri/TagExtent.hpp"
 #include "indri/ParsedDocument.hpp"
+
 
 namespace com
 {

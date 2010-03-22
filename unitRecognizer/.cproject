@@ -31,6 +31,7 @@
 <option id="gnu.cpp.compiler.so.debug.option.debugging.level.516346813" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.530305643" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/include}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/indri/contrib/lemur/include}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/indri/include}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/include}&quot;"/>
 </option>
@@ -46,7 +47,7 @@
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.1490381107" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug">
 <option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.1303281468" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
-<option id="gnu.cpp.link.option.userobjs.1359192943" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+<option id="gnu.cpp.link.option.userobjs.1359192943" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/Debug/libutils.a}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1229906819" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
