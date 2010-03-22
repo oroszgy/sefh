@@ -42,6 +42,9 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 
 			date = text.substr(dateStart, dateLen);
 
+			//DEbug
+			//std::cout<<date;
+
             _parseDate(date, extent);
           }
         }
