@@ -5,7 +5,7 @@ int main(int args, char** argv)
 {
 	if(args <3)
 	{
-		std::cout<<"Usage:\n"+std::string(argv[0])+" [fileName] [toFileName]";
+		std::cout<<"Usage:\n"+std::string(argv[0])+" [fileName] [toFileName]\n";
 		return -1;
 	}
 

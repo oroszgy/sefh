@@ -53,7 +53,11 @@ std::string FieldAnnotator::doDateTransformation(const std::string& inputString)
 
 	//annotating
 	boost::regex regexp(dRegexp);
-	std::string modInputString = boost::regex_replace(inputString, regexp, "<date>$1</date>");
+
+	//Debug
+	std::cout<<regexp<<std::endl;
+
+	std::string modInputString = boost::regex_replace(inputString, regexp, "<date>$0</date>", boost::match_nosubs);
 
 	delete dates;
 
