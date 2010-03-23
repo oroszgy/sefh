@@ -2,6 +2,7 @@
 #include "../include/DateFormat.h"
 #include <iostream>
 #include "lemur/lemur-platform.h"
+#include <boost/regex.hpp>
 
 using namespace com::sefh::daterecognition;
 
@@ -42,13 +43,26 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 
 			date = text.substr(dateStart, dateLen);
 
-			//DEbug
-			//std::cout<<date;
+			date = cleanup(date);
+
+			//Debug
+			std::cout<<date<<std::endl;
 
             _parseDate(date, extent);
+
+            //Debug
+            std::cout<<extent->number<<std::endl;
           }
         }
         return document;
+}
+
+std::string HunDatefieldAnnotator::cleanup(std::string& str) {
+	boost::regex regexp("<.*?>");
+	boost::regex nl("(\\s)+");
+	std::string cleanStr = boost::regex_replace(str, regexp, "", boost::match_nosubs);
+	return boost::regex_replace(cleanStr, nl, " ");
+
 }
 
 int HunDatefieldAnnotator::findExtentEnd(int supposedEnd, std::string text)
@@ -81,6 +95,8 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	month = matchingDateFormat->getMonthIntegerString(_date);
 	year = matchingDateFormat->getYear(_date);
 	day = matchingDateFormat->getDay(_date);
+
+	std::cout<<year<<month<<day<<std::endl;
 
 	extent->number = indri::parse::DateParse::convertDate(year, month, day);
 }

@@ -7,6 +7,9 @@
 
 using namespace com::sefh::daterecognition;
 
+std::string DateFormat::XML = "xml";
+std::string DateFormat::TXT = "txt";
+
 std::string DateFormat::january = "január";
 std::string DateFormat::february = "február";
 std::string DateFormat::march = "március";
@@ -33,11 +36,12 @@ std::string DateFormat::oct = "okt";
 std::string DateFormat::nov = "nov";
 std::string DateFormat::dec = "dec";
 
-DateFormat::DateFormat(std::string _formatString)
+DateFormat::DateFormat(std::string _formatString, std::string ft)
 {
 	isNumericMonth=true;
 	formatString = _formatString;
 	_parseDateFormat(_formatString);
+	filetype = ft;
 }
 
 DateFormat::~DateFormat()
@@ -51,7 +55,7 @@ std::vector<DateFormat>* DateFormat::getInstances()
 	std::vector<DateFormat>* ret = new std::vector<DateFormat>();
 	for(size_t i=0; i<dfs->size(); ++i)
 	{
-		ret->push_back(*(new DateFormat(dfs->at(i))));
+		ret->push_back(*(new DateFormat(dfs->at(i), cfr->getFileType())));
 	}
 
 	return ret;
@@ -59,6 +63,8 @@ std::vector<DateFormat>* DateFormat::getInstances()
 
 boost::regex DateFormat::getRecognizerRegExp()
 {
+	//Debug
+	//std::cout<<recognizerRegExp;
 	return boost::regex(recognizerRegExp);
 }
 
@@ -159,7 +165,8 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	ys = dateFormat.find_first_of("y");
 	ye = dateFormat.find_last_of("y");
 	yc = ye-ys;
-	date.replace(ys, yc + 1, "([0-9]{1,4})");
+	//FIXME: year long should be the same as the count of the 'y'-s
+	date.replace(ys, yc + 1, "([0-9]{4})");
 
 	//Replacing days
 	ds = date.find_first_of("d");
@@ -212,7 +219,22 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	boost::regex dotRegexp("\\.");
 	date = boost::regex_replace(date, dotRegexp, "\\\\.");
 	boost::regex spaceRegexp(" ");
-	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
+	/*
+	 * Regex:
+	 * (((<.+?>)(\s)*))(\d{2,4})(((<.+?>)|(\s))+)(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)(((<.+?>)|(\s))+)((1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(((<.+?>)(\s)*))
+	 */
+
+	if(filetype == XML)
+		date = boost::regex_replace(date, spaceRegexp, "\\\\s");
+	else
+	{
+		std::string prefix, suffix, sep;
+		prefix = "(((<[^<>]+?>)(\\\\s)*))";
+		suffix = "([a-zöüóőúéáűíÖÜÓŐÚÉÁŰÍA-Z]*)(((</[^<>]+?>)(\\\\s)*))";
+		sep = "(((<[^<>]+?>)|(\\\\s))+)";
+		date = boost::regex_replace(date, spaceRegexp, sep);
+		date = prefix + date + suffix;
+	}
 	/*if(date[date.length()-1] == ')')
 		date += "[^\\d]";*/
 

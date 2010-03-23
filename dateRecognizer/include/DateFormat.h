@@ -66,16 +66,20 @@ public:
 	std::string getDayIntegerString(std::string date);
 
 private:
-	DateFormat(std::string formatString);
+	DateFormat(std::string formatString, std::string filetype);
 	int yearPos, monthPos, dayPos;
 	std::string recognizerRegExp;
 	std::string formatString;
 	bool isNumericMonth;
+	std::string filetype;
 
 	void _parseDateFormat(std::string formatString);
 	void _setRegExpString(std::string formatString);
 	void _setTagsPositions(int yearStart, int monthStart, int dayStart);
 	std::string getStringAtPos(int pos, std::string date);
+
+	static std::string XML;
+	static std::string TXT;
 
 	static std::string january;
 	static std::string february;
