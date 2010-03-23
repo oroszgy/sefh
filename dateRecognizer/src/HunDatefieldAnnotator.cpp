@@ -80,7 +80,7 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	DateFormat* matchingDateFormat = NULL;
 	for(size_t i=0; i<_dateFormats->size(); ++i)
 	{
-		if(boost::regex_match(_date, _dateFormats->at(i).getRecognizerRegExp()))
+		if(boost::regex_match(_date, boost::regex(_dateFormats->at(i).getSimpleRecognizerString())))
 		{
 			matchingDateFormat = &(_dateFormats->at(i));
 			break;
@@ -88,9 +88,13 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	}
 
 	//TODO: remove it in the release
-	// if there is no mathcing date format skip
-	if(matchingDateFormat == NULL)
+	// if there is no matching date format skip
+	if(matchingDateFormat == NULL) {
+		//Debug
+		std::cout<<"No matching date found!\n";
 		return;
+	}
+
 
 	month = matchingDateFormat->getMonthIntegerString(_date);
 	year = matchingDateFormat->getYear(_date);

@@ -61,12 +61,7 @@ std::vector<DateFormat>* DateFormat::getInstances()
 	return ret;
 }
 
-boost::regex DateFormat::getRecognizerRegExp()
-{
-	//Debug
-	//std::cout<<recognizerRegExp;
-	return boost::regex(recognizerRegExp);
-}
+
 
 std::string DateFormat::getDay(std::string date)
 {
@@ -224,22 +219,26 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	 * (((<.+?>)(\s)*))(\d{2,4})(((<.+?>)|(\s))+)(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)(((<.+?>)|(\s))+)((1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(((<.+?>)(\s)*))
 	 */
 
-	if(filetype == XML)
-		date = boost::regex_replace(date, spaceRegexp, "\\\\s");
-	else
-	{
-		std::string prefix, suffix, sep;
-		prefix = "(((<[^<>]+?>)(\\\\s)*))";
-		suffix = "([a-zöüóőúéáűíÖÜÓŐÚÉÁŰÍA-Z]*)(((</[^<>]+?>)(\\\\s)*))";
-		sep = "(((<[^<>]+?>)|(\\\\s))+)";
-		date = boost::regex_replace(date, spaceRegexp, sep);
-		date = prefix + date + suffix;
-	}
+	std::string prefix, suffix, sep;
+
+	suffix = "([a-zöüóőúéáűíÖÜÓŐÚÉÁŰÍA-Z]*)";
+	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
+	date += suffix;
+
+
+
+	prefix = "(((<[^<>]+?>)(\\\\s)*))";
+	suffix += "(((</[^<>]+?>)(\\\\s)*))";
+	sep = "(((<[^<>]+?>)|(\\\\s))+)";
+	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
+	xmldate = prefix + date + suffix;
+
 	/*if(date[date.length()-1] == ')')
 		date += "[^\\d]";*/
 
 
 	recognizerRegExp = date;
+	xmlrecognizerRegExp = xmldate;
 
 	_setTagsPositions(ys,ms,ds);
 }
@@ -296,5 +295,19 @@ void DateFormat::_setTagsPositions(int yearStart, int monthStart, int dayStart)
 
 std::string DateFormat::getRecognizerString()
 {
+	if(filetype == TXT)
+		return std::string(recognizerRegExp);
+	else
+		return std::string(xmlrecognizerRegExp);
+}
+
+boost::regex DateFormat::getRecognizerRegExp()
+{
+	//Debug
+	//std::cout<<recognizerRegExp;
+	return boost::regex(getRecognizerString());
+}
+
+std::string DateFormat::getSimpleRecognizerString() {
 	return std::string(recognizerRegExp);
 }

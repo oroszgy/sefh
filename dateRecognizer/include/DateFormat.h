@@ -23,6 +23,7 @@ public:
 	static std::vector<DateFormat>* getInstances();
 	~DateFormat();
 
+	std::string getSimpleRecognizerString();
 	/**
 	 * Returns a regular expression, which can be used for manipulating a
 	 * corresponding string
@@ -69,6 +70,7 @@ private:
 	DateFormat(std::string formatString, std::string filetype);
 	int yearPos, monthPos, dayPos;
 	std::string recognizerRegExp;
+	std::string xmlrecognizerRegExp;
 	std::string formatString;
 	bool isNumericMonth;
 	std::string filetype;
