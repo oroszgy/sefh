@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------- */
 
 // Try to load our extension if it's not already loaded.
-if (!extension_loaded("libindri_php")) {
+/*if (!extension_loaded("libindri_php")) {
   if (strtolower(substr(PHP_OS, 0, 3)) === 'win') {
     if (!dl('php_libindri_php.dll')) return;
   } else {
@@ -23,7 +23,7 @@ if (!extension_loaded("libindri_php")) {
       if (!dl('libindri_php.'.PHP_SHLIB_SUFFIX)) return;
     }
   }
-}
+}*/
 
 
 

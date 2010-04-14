@@ -135,7 +135,7 @@ function indri_documentMatches( $document, $annotations, $nodeNames, $range ) {
 
 function indri_sanitizetext( $rawsnippet ) {
 	$rawsnippet = preg_replace("'<style[^>]*>.*</style>'siU",'', $rawsnippet );
-	$rawsnippet = ereg_replace("~<script[^>]*>.+</script[^>]*>~isU", "", $rawsnippet ); 
+	$rawsnippet = preg_replace("~<script[^>]*>.+</script[^>]*>~isU", "", $rawsnippet ); 
 	return strip_tags( $rawsnippet );
 }
 
