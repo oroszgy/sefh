@@ -3,6 +3,7 @@
 #include <iostream>
 #include "lemur/lemur-platform.h"
 #include <boost/regex.hpp>
+#include "StringConverter.h"
 
 using namespace com::sefh::daterecognition;
 
@@ -43,7 +44,7 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 
 			date = text.substr(dateStart, dateLen);
 
-			date = cleanup(date);
+			date = com::sefh::utils::StringConverter::cleanup(date);
 
 			//Debug
 			std::cout<<date<<std::endl;
@@ -55,14 +56,6 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
           }
         }
         return document;
-}
-
-std::string HunDatefieldAnnotator::cleanup(std::string& str) {
-	boost::regex regexp("<.*?>");
-	boost::regex nl("(\\s)+");
-	std::string cleanStr = boost::regex_replace(str, regexp, "", boost::match_nosubs);
-	return boost::regex_replace(cleanStr, nl, " ");
-
 }
 
 int HunDatefieldAnnotator::findExtentEnd(int supposedEnd, std::string text)

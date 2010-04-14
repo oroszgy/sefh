@@ -2,6 +2,7 @@
 #include "../include/UnitRecognizer.h"
 #include "lemur/lemur-platform.h"
 #include <iostream>
+#include "StringConverter.h"
 
 using namespace com::sefh::unitrecognition;
 
@@ -43,9 +44,11 @@ indri::api::ParsedDocument* UnitFieldAnnotator::transform( indri::api::ParsedDoc
 
 			//double -> integer 2 tizedesig pontos
 			UINT64 value = 0;
+			unit = com::sefh::utils::StringConverter::cleanup(unit);
 
 			try{
 			value += unitRecognizer->getSIValue(unit) * 100;
+			std::cout<<value<<std::endl;
 			extent->number = value;
 			} catch(...) {
 				std::cout<<"Error with: "<<unit<<"\n";

@@ -34,19 +34,32 @@ public:
 	static int partOfNumberValue(std::string);
 private:
 	NumberFormats(std::string separators);
-	void createFormatStr(std::string sep);
+	static bool isEqual(std::string inp1, std::string inp2);
+	static std::string getStrBefore(std::string input, std::string splitter);
+	static std::string getStrAfter(std::string input, std::string splitter);
+	static bool hasStr(std::string input, std::string str);
+	static double convertDigits(std::string input);
+	static double convertTens(std::string input);
+	static double convertHundreds(std::string input);
+	static double convertThousands(std::string input);
+	static double convertMillion(std::string input);
+	static double convertMilliard(std::string input);
+	static double convertBillion(std::string input);
+	void createFormatStr(std::string s);
 	static bool isInt(char c);
 	static bool isInt(std::string& str);
+	std::string buildTextValueStr();
 	std::string formatString;
 
 
-
+	static char* half;
 	static char* digits[10];
 	static char* tens[12];
 	static char* hundred;
 	static char* thousand;
 	static char* million;
 	static char* milliard;
+	static char* billion;
 	static char* thousandmilliard;
 };
 }

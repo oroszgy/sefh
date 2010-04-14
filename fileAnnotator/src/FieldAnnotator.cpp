@@ -84,6 +84,8 @@ std::string FieldAnnotator::doUnitTransformation(const std::string& inputString)
 	for(it= unitRegExps->begin(); it != unitRegExps->end(); ++it)
 	{
 		std::string recRegExpStr = "(" + it->second + ")";
+		//Debug
+		std::cout<<"3: " +  recRegExpStr<<std::endl;
 		boost::regex unitRegExp(recRegExpStr);
 		input = boost::regex_replace(input, unitRegExp, "<" + it->first + ">" + "$1"+
 			"</" + it->first + ">");

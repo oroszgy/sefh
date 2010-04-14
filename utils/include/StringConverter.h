@@ -21,6 +21,7 @@ public:
 	 */
 	static char* iToA(int value, char* str, int radix);
 	static bool isPrefix(std::string substr, std::string word);
+	static std::string cleanup(std::string& str);
 #ifdef _GLIBCXX_USE_WCHAR_T
 	std::wstring toWstring(std::string str);
 	std::string toString(std::wstring str);

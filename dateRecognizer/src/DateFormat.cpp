@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "StringConverter.h"
 #include "Configuration.h"
+#include "constants.h"
 
 using namespace com::sefh::daterecognition;
 
@@ -221,15 +222,15 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 
 	std::string prefix, suffix, sep;
 
-	suffix = "([a-zöüóőúéáűíÖÜÓŐÚÉÁŰÍA-Z]*)";
+	suffix = ADDSTR;
 	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
 	date += suffix;
 
 
 
-	prefix = "(((<[^<>]+?>)(\\\\s)*))";
-	suffix += "(((</[^<>]+?>)(\\\\s)*))";
-	sep = "(((<[^<>]+?>)|(\\\\s))+)";
+	prefix = PREFIX;
+	suffix += SUFFIX;
+	sep = SEP;
 	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
 	xmldate = prefix + date + suffix;
 
