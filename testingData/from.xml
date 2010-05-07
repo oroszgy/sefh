@@ -1,0 +1,28 @@
+<W szoto="mintegy[KOT]" elemzes="mintegy[KOT]">mintegy</W>
+<W szoto="375" elemzes="3[SZN|DIGIT]+7[SZN|DIGIT]+5[SZN|DIGIT]+[NOM]">123</W>
+<W>,</W>
+<W szoto="375" elemzes="3[SZN|DIGIT]+7[SZN|DIGIT]+5[SZN|DIGIT]+[NOM]">122</W>
+<W szoto="millió[SZN]" elemzes="millió[SZN]+[NOM]">millió</W>
+<W szoto="forint[FN]" elemzes="forint[FN]+nyi[_MER]+[NOM]">forintnyi</W>
+<W szoto="előirányzat[FN]" elemzes="előirányzat[FN]+[NOM]">előirányzat</W>
+<W szoto="[X]" elemzes="[X]+period[PUNCT]=.">.</W>
+<W szoto="ez[FN|NM]" elemzes="ez[FN|NM]=Ez+[NOM]">Ez</W>
+<W szoto="az[DET]" elemzes="az[DET]">az</W>
+<W szoto="előirányzat[FN]" elemzes="előirányzat[FN]+[NOM]">előirányzat</W>
+<W szoto="fedez[IGE]" elemzes="fedez[IGE]+i[Te3]">fedezi</W>
+<W szoto="a[DET]" elemzes="a[DET]">a</W>
+<W szoto="mai[MN]" elemzes="mai[MN]+[NOM]">mai</W>
+<W szoto="nap[FN]" elemzes="nap[FN]+ig[TER]">napig</W>
+<W szoto="is[KOT]" elemzes="is[KOT]">is</W>
+<W szoto="állami[MN]" elemzes="állami[MN]+[NOM]">állami</W>
+<W szoto="tulajdon[FN]" elemzes="tulajdon[FN]+ban[INE]">tulajdonban</W>
+<W szoto="van[IGE]" elemzes="van[IGE]=lév+ő[_OKEP]+[NOM]">lévő</W>
+<W szoto="Zánka[FN]" elemzes="Zánka[FN]+i[_IKEP]+[NOM]">Zánkai</W>
+<W szoto="gyermek[FN]" elemzes="gyermek[FN]=Gyermek+[NOM]+-[KJ]">Gyermek-</W>
+<W szoto="és[KOT]" elemzes="és[KOT]">és</W>
+<W szoto="ifjúsági[MN]" elemzes="ifjúsági[MN]=Ifjúsági+[NOM]">Ifjúsági</W>
+<W szoto="központ[FN]" elemzes="központ[FN]=Központ+[NOM]">Központ</W>
+<W szoto="támogatás[FN]" elemzes="támogatás[FN]+a[PSe3]=á+t[ACC]">támogatását</W>
+<W szoto="ifjúsági[MN]" elemzes="ifjúsági[MN]=Ifjúsági+[NOM]">egymillió-ezerötszáz</W>
+<W szoto="támogatás[FN]" elemzes="támogatás[FN]+a[PSe3]=á+t[ACC]">forintról</W> 
+
