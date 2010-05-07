@@ -87,6 +87,6 @@ END*/
   // page_docs: Number of documents to display on each query result page.
   //
 
-  $indri_param['page_docs'] = 5;
+  $indri_param['page_docs'] = 10;
 ?>
 

@@ -260,7 +260,7 @@ double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 	bool hasNotDecimal = boost::regex_search(unit, boost::regex("[^\\\s\\\d"+decimalSep+"]"));
 	bool hasDecimal = boost::regex_search(unit, boost::regex("[\\\d]"));
 
-	std::cout<<std::endl<<unit<<hasNotDecimal<<hasDecimal<<std::endl;
+	//std::cout<<std::endl<<unit<<hasNotDecimal<<hasDecimal<<std::endl;
 	std::string unitDec = boost::regex_replace(unit, boost::regex("[^\\\d"+decimalSep+"]"), "");
 	unitDec = boost::regex_replace(unitDec, boost::regex(decimalSep), ".");
 	std::string unitAlpha = boost::regex_replace(unit, boost::regex("[-\\\s\\\d"+decimalSep+"]"), "");

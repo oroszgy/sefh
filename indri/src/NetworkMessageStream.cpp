@@ -128,6 +128,8 @@ void indri::net::NetworkMessageStream::read( MessageStreamHandler& handler ) {
     handler.request( node );
     delete node;
     _readPosition += length;
+
+    std::cout<<"XREQ: "<<node->getName()<<"\t"<<node->getValue()<<std::endl;
   } else if( strncmp( "XRPY", _buffer.front() + _readPosition, 4 ) == 0 ) {
     int length = strtol( _buffer.front() + _readPosition + 4, 0, 10 );
     _readPosition = endOfLine + 1;
@@ -153,6 +155,7 @@ void indri::net::NetworkMessageStream::read( MessageStreamHandler& handler ) {
     indri::xml::XMLNode* node = reader.read( _buffer.front() + _readPosition, length );
     handler.reply( node );
     _readPosition += length;
+    std::cout<<"XRPY: "<<node->getName()<<"\t"<<node->getValue()<<std::endl;
   } else if( strncmp( "BRPY", _buffer.front() + _readPosition, 4 ) == 0 ) {
     char* next;
     int length = strtol( _buffer.front() + _readPosition + 4, &next, 10 );
@@ -179,9 +182,12 @@ void indri::net::NetworkMessageStream::read( MessageStreamHandler& handler ) {
 
     handler.reply( name, _buffer.front() + _readPosition, length );
     _readPosition += length;
+
+    std::cout<<"BRPY: "<<name<<"\n";
   } else if( strncmp( "RFIN", _buffer.front() + _readPosition, 4 ) == 0 ) {
     _readPosition = endOfLine + 1;
     handler.replyDone();
+    std::cout<<"RFIN\n";
   } else if( strncmp( "ERR", _buffer.front() + _readPosition, 3 ) == 0 ) {
     std::string errorString;
     errorString.assign( _buffer.front() + _readPosition + 4, _buffer.front() + endOfLine );
@@ -189,10 +195,12 @@ void indri::net::NetworkMessageStream::read( MessageStreamHandler& handler ) {
     _readPosition = endOfLine + 1;
     // close on error
     _stream->close();
+    std::cout<<"ERR: "<<errorString<<std::endl;
   } else {
     _readPosition = endOfLine + 1;
     // unrecognized command
     _stream->close();
+    std::cout<<"???\n";
   }
 
   assert( _readPosition <= _writePosition );
