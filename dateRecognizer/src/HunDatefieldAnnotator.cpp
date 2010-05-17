@@ -2,6 +2,8 @@
 #include "../include/DateFormat.h"
 #include <iostream>
 #include "lemur/lemur-platform.h"
+#include <boost/regex.hpp>
+#include "StringConverter.h"
 
 using namespace com::sefh::daterecognition;
 
@@ -42,10 +44,15 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 
 			date = text.substr(dateStart, dateLen);
 
-			//DEbug
-			//std::cout<<date;
+			date = com::sefh::utils::StringConverter::cleanup(date);
+
+			//Debug
+			//std::cout<<date<<std::endl;
 
             _parseDate(date, extent);
+
+            //Debug
+            //std::cout<<extent->number<<std::endl;
           }
         }
         return document;
@@ -66,7 +73,7 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	DateFormat* matchingDateFormat = NULL;
 	for(size_t i=0; i<_dateFormats->size(); ++i)
 	{
-		if(boost::regex_match(_date, _dateFormats->at(i).getRecognizerRegExp()))
+		if(boost::regex_match(_date, boost::regex(_dateFormats->at(i).getSimpleRecognizerString())))
 		{
 			matchingDateFormat = &(_dateFormats->at(i));
 			break;
@@ -74,13 +81,19 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	}
 
 	//TODO: remove it in the release
-	// if there is no mathcing date format skip
-	if(matchingDateFormat == NULL)
+	// if there is no matching date format skip
+	if(matchingDateFormat == NULL) {
+		//Debug
+		std::cout<<"No matching date found!\n";
 		return;
+	}
+
 
 	month = matchingDateFormat->getMonthIntegerString(_date);
 	year = matchingDateFormat->getYear(_date);
 	day = matchingDateFormat->getDay(_date);
+
+	//std::cout<<year<<month<<day<<std::endl;
 
 	extent->number = indri::parse::DateParse::convertDate(year, month, day);
 }

@@ -28,6 +28,7 @@ private:
 	std::string _field;
 	std::vector<DateFormat>* _dateFormats;
 
+	std::string cleanup(std::string& str);
 	void _parseDate(const std::string& date, indri::parse::TagExtent *extent) const;
 };
 }

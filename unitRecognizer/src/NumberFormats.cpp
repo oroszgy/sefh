@@ -3,144 +3,177 @@
 #include <boost/regex.hpp>
 #include <boost/algorithm/string.hpp>
 #include <iostream>
+#include "constants.h"
+
+#define DIGITSLENGTH 10
+#define TENSLENGTH 12
 
 using namespace com::sefh::unitrecognition;
 
-char* NumberFormats::digits[10] = { "","egy","kettő","három","négy","öt","hat","hét","nyolc","kilenc" };
-char* NumberFormats::tens[12] = { "","tizen","huszon","harminc","negyven","ötven","hatvan","hetven","nyolvan","kilencven","tíz","húsz" };
+char* NumberFormats::half = "fél";
+char* NumberFormats::digits[DIGITSLENGTH] = { "","egy","kettő","három","négy","öt","hat","hét","nyolc","kilenc" };
+char* NumberFormats::tens[TENSLENGTH] = { "","tizen","huszon","harminc","negyven","ötven","hatvan","hetven","nyolvan","kilencven","tíz","húsz" };
 char* NumberFormats::hundred = "száz";
 char* NumberFormats::thousand = "ezer";
 char* NumberFormats::million = "millió";
 char* NumberFormats::milliard = "milliárd";
+char* NumberFormats::billion= "billió";
 char* NumberFormats::thousandmilliard = "ezermilliárd";
 
-double NumberFormats::writtenNumberToDouble(std::string input)
-{
+double writtenNumberToDouble(std::string input);
 
-	char* text = new char[150];
-	text = strcpy(text,input.c_str());
-	char *milliardP, *millionP, *thousandP, *e, *tmpP, *thousandmilliardP;
-	char partOfNum[100];
-	double returnValue = 0;
-
-	thousandmilliardP = strstr(text, thousandmilliard);
-	if(thousandmilliardP != NULL)
-	{
-		if(thousandmilliardP == text)
-			return 1e12;
-		else {
-			strncpy(partOfNum, text, thousandmilliardP - text);
-			tmpP = thousandmilliardP + strlen(thousandmilliard);
-			returnValue += 1e12 * partOfNumberValue(partOfNum);
-		}
-	} else {
-		tmpP = text;
-	}
-
-	milliardP = strstr(tmpP, milliard);
-	if(milliardP != NULL)
-	{
-		if(milliardP == tmpP || returnValue == 0)
-			return 1e9;
-		else
-		{
-			strncpy(partOfNum, tmpP, milliardP - tmpP);
-			tmpP = milliardP + strlen(milliard);
-			returnValue += 1e9 * partOfNumberValue(partOfNum);
-		}
-	}
-
-	millionP = strstr(tmpP, million);
-	if(millionP != NULL)
-	  {
-		if(millionP == tmpP || returnValue == 0)
-			return 1e6;
-		strncpy(partOfNum, tmpP, millionP - tmpP);
-		tmpP = millionP + strlen(million);
-		returnValue += 1e6 * partOfNumberValue(partOfNum);
-	  }
-
-	thousandP = strstr(tmpP, thousand);
-	if(thousandP != NULL)
-	{
-		strncpy(partOfNum, tmpP, thousandP - tmpP);
-		tmpP = thousandP + 4;
-		int v = partOfNumberValue(partOfNum);
-		if(v == 0) v = 1;
-		returnValue += 1000 * v ;
-	}
-
-	if(*tmpP) returnValue += partOfNumberValue(tmpP);
-
-	free(text);
-	return returnValue;
+bool NumberFormats::isEqual(std::string inp1, std::string inp2) {
+	return inp1 == inp2;
 }
 
-int NumberFormats::partOfNumberValue(std::string input)
-{
-	if(input == "")
-		return 1;
+//P:hasString
+std::string NumberFormats::getStrBefore(std::string input, std::string splitter) {
+	size_t sPos = input.find(splitter);
+	if (sPos != std::string::npos)
+		return input.substr(0, sPos);
+	else
+		return "";
+}
 
-	//if the number is not a string
-	std::string trimmedInput(input);
-	boost::trim(trimmedInput);
+//P: hasString
+std::string NumberFormats::getStrAfter(std::string input, std::string splitter) {
+	size_t sPos = input.find(splitter);
+	if (sPos != std::string::npos)
+		return input.substr(sPos + splitter.length());
+	else
+		return input;
+}
 
-	if(isInt(trimmedInput))
-	{
-		return atoi(trimmedInput.c_str());
+//P: not null
+bool NumberFormats::hasStr(std::string input, std::string str) {
+	return (input.find(str) != std::string::npos);
+}
+
+//P:hasString
+double NumberFormats::convertDigits(std::string input) {
+	if(isEqual(std::string(half), input))
+			return 0.5;
+	if(isEqual(std::string(digits[DIGITSLENGTH-1]), input))
+			return 2;
+	for(int i=0; i<DIGITSLENGTH-1; ++i) {
+		if(isEqual(std::string(digits[i]), input))
+			return i;
 	}
 
-	char *hundredP, *tmpP;
-	char *text = new char[150];
-	text = strcpy(text,input.c_str());
-    int j = 0;
-    int returnValue;
+	return -1;
+}
 
-    hundredP = strstr(text, hundred);
-	if(hundredP)
-	{
-		for(j=1; j<10; j++)
-			//if(!strnicmp(digits[j], text, strlen(digits[j])))
-			//TODO:: helyettesíteni a fenti sorokat)
-			if(true)
-            {
-				returnValue = 100*j;
-                break;
-            }
+//P:hasString
+double NumberFormats::convertTens(std::string input) {
+	for(int i=1; i<TENSLENGTH-2; ++i) {
+		if(hasStr(input, std::string(tens[i])))
+		{
+			return i*10 + convertDigits(getStrAfter(input, std::string(tens[i])));
+		}
+	}
+	for(int i=1; i<3; ++i) {
+			if(hasStr(input, std::string(tens[i+TENSLENGTH-3])))
+			{
+				return i*10;
+			}
+	}
+	return convertDigits(input);
+}
 
-		if(j==10) returnValue = 100;
-        tmpP = hundredP+4;
-    }
-    else
-    {
-		tmpP = text;
-        returnValue = 0;
-    }
+//P:hasString
+double NumberFormats::convertHundreds(std::string input) {
+	if(!hasStr(input, hundred))
+		return convertTens(input);
 
-    for(j=1; j<10; j++)
-    {
-        if(strstr(tmpP, tens[j]))
-        {
-			returnValue += 10*j;
-            tmpP = tmpP+strlen(tens[j]);
-            break;
-        }
-    }
+	std::string before, after;
+	before = getStrBefore(input, hundred);
+	after = getStrAfter(input, hundred);
+	double beforeVal, afterVal;
+	beforeVal = convertDigits(before);
+	afterVal = convertTens(after);
+	if(afterVal == -1 || beforeVal == -1)
+		return -1;
 
-    if(!strncmp(tens[10], tmpP, 3)) returnValue += 10;
-    if(!strncmp(tens[11], tmpP, 4)) returnValue += 20;
+	if(beforeVal == 0)
+		beforeVal = 1;
+	return beforeVal * 100 + afterVal;
+}
 
-    for(j=1; j<10; j++)
-    {
-		if(strstr(tmpP, digits[j]))
-        {
-			returnValue += j;
-            break;
-        }
-    }
+//P:hasString
+double NumberFormats::convertThousands(std::string input) {
+	if(!hasStr(input, thousand))
+		return convertHundreds(input);
+	std::string before, after;
+	before = getStrBefore(input, thousand);
+	after = getStrAfter(input, thousand);
+	double beforeVal, afterVal;
+	beforeVal = convertHundreds(before);
+	afterVal = convertHundreds(after);
+	if(afterVal == -1 || beforeVal == -1)
+		return -1;
 
-    free(text);
-    return returnValue;
+	if(beforeVal == 0)
+		beforeVal = 1;
+	return beforeVal * 1000 + afterVal;
+
+}
+
+double NumberFormats::convertMillion(std::string input) {
+	if(!hasStr(input, million))
+			return convertThousands(input);
+		std::string before, after;
+		before = getStrBefore(input, million);
+		after = getStrAfter(input, million);
+		double beforeVal, afterVal;
+		beforeVal = convertThousands(before);
+		afterVal = convertThousands(after);
+		if(afterVal == -1 || beforeVal == -1)
+			return -1;
+
+		if(beforeVal == 0)
+			beforeVal = 1;
+		return beforeVal * 1000 * 1000 + afterVal;
+
+
+}
+
+double NumberFormats::convertMilliard(std::string input) {
+	if(!hasStr(input, milliard))
+			return convertMillion(input);
+	std::string before, after;
+	before = getStrBefore(input, milliard);
+	after = getStrAfter(input, milliard);
+	double beforeVal, afterVal;
+	beforeVal = convertThousands(before);
+	afterVal = convertThousands(after);
+	if(afterVal == -1 || beforeVal == -1)
+		return -1;
+
+	if(beforeVal == 0)
+		beforeVal = 1;
+	return beforeVal * 1000 * 1000 * 1000 + afterVal;
+}
+
+double NumberFormats::convertBillion(std::string input) {
+	if(!hasStr(input, billion))
+			return convertMilliard(input);
+	std::string before, after;
+	before = getStrBefore(input, billion);
+	after = getStrAfter(input, billion);
+	double beforeVal, afterVal;
+	beforeVal = convertThousands(before);
+	afterVal = convertThousands(after);
+	if(afterVal == -1 || beforeVal == -1)
+		return -1;
+
+	if(beforeVal == 0)
+		beforeVal = 1;
+	return beforeVal * 1000 * 1000 * 1000 * 1000 + afterVal;
+}
+
+//positive, written in a single word, without any other character and spaces, not null
+double NumberFormats::writtenNumberToDouble(std::string input) {
+	return convertBillion(input);
 }
 
 NumberFormats::NumberFormats(std::string sep)
@@ -153,13 +186,50 @@ NumberFormats::~NumberFormats(void)
 }
 
 //TODO:: mi a helyzet a '.'-tal illetve a '\s'-szel?
-void NumberFormats::createFormatStr(std::string sep)
+void NumberFormats::createFormatStr(std::string s)
 {
+	std::string sep = std::string(SEP);
+
+	std::string ws = sep;//"(\\\\s)";
+	//std::string whitespaces = "("+whitespace+"+)";
+	std::string digit = "(\\\d)";
+	std::string digits = "("+digit+"+)";
+	std::string dws = "("+digits+ws+")";
+	std::string number = "("+dws+"*"+dws+"(,"+ws+dws+"){0,1}"+")";
+	std::string numberSuffix = "("+std::string(thousand)+"|"+std::string(million)+"|"+std::string(milliard)+"|"+std::string(billion)+")";
+	std::string numberValue = "("+number+numberSuffix+"{0,1})";
+	std::string textValue = buildTextValueStr();
+	std::string value = "("+textValue+"|"+numberValue+")";
+	formatString = value;
+	/*
 	if(sep == "")
 		formatString = "(-){0,1}\\d+";
 	else
 		formatString ="(-){0,1}\\d+(["+sep+"]{0,1}\\d)*\\d*";
-	formatString ="("+formatString+")|([^\\d\\s]+)|(\\d+\\s(milliárd|millió|ezer))";
+	formatString ="("+formatString+")|([^\\d\\s]+)|(\\d+\\s(milliárd|millió|ezer))";*/
+}
+
+std::string NumberFormats::buildTextValueStr() {
+	std::string txtNum = /*std::string(ADDSTR) +*/ "((";
+	for(int i=1; i<DIGITSLENGTH; ++i) {
+		txtNum += std::string(digits[i]) + "|";
+	}
+
+	txtNum += std::string(half) + "|";
+
+	for(int i=1; i<TENSLENGTH; ++i) {
+		txtNum += std::string(tens[i]) + "|";
+	}
+
+	txtNum += std::string(hundred) + "|";
+	txtNum += std::string(thousand) + "|";
+	txtNum += std::string(million) + "|";
+	txtNum += std::string(milliard) + "|";
+	txtNum += std::string(billion);
+
+	txtNum += std::string(")+") /*+ ADDSTR*/ + ")";
+
+	return "(("+txtNum+"-)*"+txtNum +")";
 }
 
 NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
@@ -169,12 +239,15 @@ NumberFormats* NumberFormats::getNumberFormatFromSeparators(std::string sep)
 
 std::string NumberFormats::getRegExpString()
 {
+	//Debug
+	//std::cout<<formatString<<std::endl;
 	return formatString;
 }
 
 double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 {
 	std::string unit(_unit);
+
 	/*std::string::iterator it = unit.begin();
 	while(it!=unit.end())
 	{
@@ -182,21 +255,39 @@ double NumberFormats::convertToDouble(std::string decimalSep, std::string _unit)
 			unit.erase(it);
 		++it;
 	}*/
-	unit = boost::regex_replace(unit, boost::regex("[^-\\d"+decimalSep+"]"), "");
-	if(unit == "")
+
+	//contains not deciaml character?
+	bool hasNotDecimal = boost::regex_search(unit, boost::regex("[^\\\s\\\d"+decimalSep+"]"));
+	bool hasDecimal = boost::regex_search(unit, boost::regex("[\\\d]"));
+
+	//std::cout<<std::endl<<unit<<hasNotDecimal<<hasDecimal<<std::endl;
+	std::string unitDec = boost::regex_replace(unit, boost::regex("[^\\\d"+decimalSep+"]"), "");
+	unitDec = boost::regex_replace(unitDec, boost::regex(decimalSep), ".");
+	std::string unitAlpha = boost::regex_replace(unit, boost::regex("[-\\\s\\\d"+decimalSep+"]"), "");
+	if(hasDecimal && !hasNotDecimal)
+	{
+		double numval = atof(unitDec.c_str());
+		return numval;
+	}
+	else if (hasNotDecimal && !hasDecimal)
 	{
 		try{
-			return writtenNumberToDouble(_unit);
+			double res = writtenNumberToDouble(unitAlpha);
+			if( res > 0)
+				return res;
+			else
+				return 0;
 		} catch(...) {
 			std::cout<<"Conversation problem with " + _unit;
 			return 0;
 		}
+	} else if (hasNotDecimal && hasDecimal) {
+		double numVal = atof(unitDec.c_str());
+		double alphaVal = writtenNumberToDouble(unitAlpha);
+		return numVal * alphaVal;
 	}
-	unit = boost::regex_replace(unit, boost::regex(decimalSep), ".");
 
-
-
-	return atof(unit.c_str());
+	return 0;
 
 }
 

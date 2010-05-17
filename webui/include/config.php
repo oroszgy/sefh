@@ -7,7 +7,7 @@
   //
 
   $indri_param['server'] = "localhost";
-  //$indri_param['index'] = "/home/gyurmi/workspaces/cpp/testingData/testIndex";
+  //$indri_param['index'] = "/home/mee/workspaces/sefh/sefh/testingData/indeces/testIndex";
 
   //
   // document_format: Use 'text' if the document is a text file (or 
@@ -87,6 +87,6 @@ END*/
   // page_docs: Number of documents to display on each query result page.
   //
 
-  $indri_param['page_docs'] = 5;
+  $indri_param['page_docs'] = 10;
 ?>
 

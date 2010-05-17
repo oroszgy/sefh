@@ -2,6 +2,8 @@
 #include <boost/regex.hpp>
 #include "../include/NumberFormats.h"
 #include "Configuration.h"
+#include "constants.h"
+#include "StringConverter.h"
 
 using namespace com::sefh::unitrecognition;
 
@@ -34,13 +36,18 @@ UnitRecognizer::~UnitRecognizer()
 
 std::string UnitRecognizer::getRecognizingRegExp()
 {
+	//std::cout<<ADDSTR<<std::endl;
 	std::string unitConstants;
 	for(int i=0; i<units->size(); ++i)
 	{
 		unitConstants+=units->at(i).constant;
 		if(i<units->size()-1)
-			unitConstants+="|";
+			unitConstants+= /*std::string(ADDSTR) +*/ "|" /*+ std::string(SUFFIX)*/;
 	}
+
+	//DEBUG:
+	//std::cout<<std::endl<<"1 :"+unitConstants<<std::endl;
+
 	return getRecognizingRegExpFromConstants(unitConstants);
 }
 
@@ -48,20 +55,27 @@ std::string UnitRecognizer::getRecognizingRegExp()
 std::string UnitRecognizer::getRecognizingRegExpFromConstants(std::string unitConstants)
 {
 	std::string sep;
-	for(int i=0; i<separators->size(); ++i)
+	for(size_t i=0; i<separators->size(); ++i)
 	{
 		sep += separators->at(i);
 	}
 	sep += decSep;
 
 	NumberFormats* nf = NumberFormats::getNumberFormatFromSeparators(sep);
-	std::string REStr = "(" + nf->getRegExpString() + ")";
-	REStr += "\\s+(";
 
-	REStr += unitConstants;
+	std::string REStr = "(";
+	REStr += std::string(PREFIX) + nf->getRegExpString();
+	//Debug
+	//std::cout<<std::endl<<"-1: " + REStr<<std::endl<<std::endl;
+	//std::cout<<std::endl<<"-1.1: " + unitConstants<<std::endl<<std::endl;
+	//std::cout<<std::endl<<"-1.1: " + std::string(SUFFIX)<<std::endl<<std::endl;
+	REStr += std::string(SEP);
+	REStr += "("+unitConstants+std::string(ADDSTR)+")";
 
-	REStr += ')';
+	REStr += ')' + std::string(SUFFIX);
 	//REStr += "$";
+	//Debug
+	//std::cout<<std::endl<<"0: " + REStr<<std::endl<<std::endl;
 	return REStr;
 }
 
@@ -74,10 +88,14 @@ std::map<std::string, std::string>* UnitRecognizer::getUnitsRecognizingRegexps()
 		(*map)[(*vecIt).type] += "|" + (*vecIt).constant;
 	}
 
+
+	//Debug:
+	//std::cout<<"1:\n";
 	std::map<std::string, std::string>::iterator mapIt;
 	for(mapIt = map->begin(); mapIt != map->end(); ++mapIt)
 	{
 		mapIt->second = getRecognizingRegExpFromConstants(mapIt->second.substr(1));
+		//std::cout<<std::endl<<"2: "<<(mapIt->second)<<std::endl;
 	}
 
 	return map;
@@ -87,11 +105,14 @@ double UnitRecognizer::getSIValue(std::string unit)
 {
 	for(int i=0; i<units->size(); ++i)
 	{
-		std::string re = getRecognizingRegExpFromConstants(units->at(i).constant);
-		if(boost::regex_match(unit.begin(), unit.end(), boost::regex(re)))
+		std::string r = "("+units->at(i).constant + std::string(ADDSTR)+")";
+		//getRecognizingRegExpFromConstants(units->at(i).constant);
+		boost::regex re(r);
+		if(boost::regex_search(unit.begin(), unit.end(), re))
 		{
-			boost::regex re(getRecognizingRegExp());
-			std::string value = boost::regex_replace(unit, re, "$1");
+			std::string value = boost::regex_replace(unit, re, "");
+			//std::cout<<"val:"<<value<<"regexp:"<<re<<std::endl;
+			//std::cout<<"splitted:"<<value<<"\n";
 
 			return NumberFormats::convertToDouble(decSep, value) * units->at(i).multiplier;
 		}

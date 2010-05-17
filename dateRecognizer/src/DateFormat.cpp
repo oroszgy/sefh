@@ -4,8 +4,12 @@
 #include <stdlib.h>
 #include "StringConverter.h"
 #include "Configuration.h"
+#include "constants.h"
 
 using namespace com::sefh::daterecognition;
+
+std::string DateFormat::XML = "xml";
+std::string DateFormat::TXT = "txt";
 
 std::string DateFormat::january = "január";
 std::string DateFormat::february = "február";
@@ -33,11 +37,12 @@ std::string DateFormat::oct = "okt";
 std::string DateFormat::nov = "nov";
 std::string DateFormat::dec = "dec";
 
-DateFormat::DateFormat(std::string _formatString)
+DateFormat::DateFormat(std::string _formatString, std::string ft)
 {
 	isNumericMonth=true;
 	formatString = _formatString;
 	_parseDateFormat(_formatString);
+	filetype = ft;
 }
 
 DateFormat::~DateFormat()
@@ -51,16 +56,13 @@ std::vector<DateFormat>* DateFormat::getInstances()
 	std::vector<DateFormat>* ret = new std::vector<DateFormat>();
 	for(size_t i=0; i<dfs->size(); ++i)
 	{
-		ret->push_back(*(new DateFormat(dfs->at(i))));
+		ret->push_back(*(new DateFormat(dfs->at(i), cfr->getFileType())));
 	}
 
 	return ret;
 }
 
-boost::regex DateFormat::getRecognizerRegExp()
-{
-	return boost::regex(recognizerRegExp);
-}
+
 
 std::string DateFormat::getDay(std::string date)
 {
@@ -159,7 +161,8 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	ys = dateFormat.find_first_of("y");
 	ye = dateFormat.find_last_of("y");
 	yc = ye-ys;
-	date.replace(ys, yc + 1, "([0-9]{1,4})");
+	//FIXME: year long should be the same as the count of the 'y'-s
+	date.replace(ys, yc + 1, "([0-9]{4})");
 
 	//Replacing days
 	ds = date.find_first_of("d");
@@ -211,13 +214,38 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	//TODO: replace other non-permitted strings
 	boost::regex dotRegexp("\\.");
 	date = boost::regex_replace(date, dotRegexp, "\\\\.");
+
 	boost::regex spaceRegexp(" ");
+
+	date += std::string(ADDSTR);
+
+
+	/*
+	 * Regex:
+	 * (((<.+?>)(\s)*))(\d{2,4})(((<.+?>)|(\s))+)(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)(((<.+?>)|(\s))+)((1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(((<.+?>)(\s)*))
+	 */
+
+	std::string prefix, suffix, sep;
+
+	prefix = std::string(PREFIX);
+	suffix += std::string(SUFFIX);
+	sep = std::string(SEP);
+	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
+	xmldate = prefix + xmldate + suffix;
+
+	suffix = ADDSTR;
+	//TODO: test it with xml and txt files as well.
 	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
+	date += suffix;
+
+	//Debug
+	//std::cout << xmldate << std::endl;
 	/*if(date[date.length()-1] == ')')
 		date += "[^\\d]";*/
 
 
 	recognizerRegExp = date;
+	xmlrecognizerRegExp = xmldate;
 
 	_setTagsPositions(ys,ms,ds);
 }
@@ -274,5 +302,20 @@ void DateFormat::_setTagsPositions(int yearStart, int monthStart, int dayStart)
 
 std::string DateFormat::getRecognizerString()
 {
+	//std::cout<<filetype<<"\t"<<std::string(TXT)<<recognizerRegExp<<xmlrecognizerRegExp<<"\n";
+	if(filetype == std::string(TXT))
+		return std::string(recognizerRegExp);
+	else
+		return std::string(xmlrecognizerRegExp);
+}
+
+boost::regex DateFormat::getRecognizerRegExp()
+{
+	//Debug
+	//std::cout<<recognizerRegExp;
+	return boost::regex(getRecognizerString());
+}
+
+std::string DateFormat::getSimpleRecognizerString() {
 	return std::string(recognizerRegExp);
 }

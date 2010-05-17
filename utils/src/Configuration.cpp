@@ -83,6 +83,9 @@ void Configuration::parseFile(std::string fileName)
 
 		++i; dateFormatNode = dateNode.getChildNode("date", i);
 	}
+
+	XMLNode ftNode = xMainNode.getChildNode("filetype");
+	filetype = ftNode.getText();
 }
 
 std::vector<com::sefh::unitrecognition::Unit>* Configuration::getUnits()
@@ -103,4 +106,8 @@ std::string Configuration::getDecimalSeparator()
 std::vector<std::string>* Configuration::getDateFormatStrings()
 {
 	return dateFormats;
+}
+
+std::string Configuration::getFileType() {
+	return filetype;
 }

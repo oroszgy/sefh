@@ -1,4 +1,5 @@
 #include "../include/StringConverter.h"
+#include <boost/regex.hpp>
 
 using namespace com::sefh::utils;
 char* StringConverter::iToA(int value, char* str, int radix) {
@@ -25,6 +26,14 @@ char* StringConverter::iToA(int value, char* str, int radix) {
     for (p = str, q = p + n/2; p != q; ++p, --q)
         c = *p, *p = *q, *q = c;
     return str;
+}
+
+std::string StringConverter::cleanup(std::string& str) {
+	boost::regex regexp("<.*?>");
+	boost::regex nl("(\\s)+");
+	std::string cleanStr = boost::regex_replace(str, regexp, "", boost::match_nosubs);
+	return boost::regex_replace(cleanStr, nl, " ");
+
 }
 
 bool StringConverter::isPrefix(std::string substr, std::string word)

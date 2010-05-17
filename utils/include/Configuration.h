@@ -37,12 +37,16 @@ public:
 	 */
 	std::vector<std::string>* getDateFormatStrings();
 
+	std::string getFileType();
+
 private:
 	Configuration(std::string fileName);
 	std::vector<std::string>* separators;
 	std::string decimalSeparator;
 	std::vector<com::sefh::unitrecognition::Unit>* units;
 	std::vector<std::string>* dateFormats;
+
+	std::string filetype;
 
 	void parseFile(std::string fileName);
 

@@ -5,8 +5,8 @@ include( "libindri_php.php" );
 
 <?php
 
-/*
-if (!dl( $indri_param['library'] )) {
+
+/*if (!dl( $indri_param['library'] )) {
   // failed to load shared library, bail the page
 ?>
 <html>
@@ -135,7 +135,7 @@ function indri_documentMatches( $document, $annotations, $nodeNames, $range ) {
 
 function indri_sanitizetext( $rawsnippet ) {
 	$rawsnippet = preg_replace("'<style[^>]*>.*</style>'siU",'', $rawsnippet );
-	$rawsnippet = ereg_replace("~<script[^>]*>.+</script[^>]*>~isU", "", $rawsnippet ); 
+	$rawsnippet = preg_replace("~<script[^>]*>.+</script[^>]*>~isU", "", $rawsnippet ); 
 	return strip_tags( $rawsnippet );
 }
 
@@ -271,6 +271,9 @@ function indri_buildsnippet( $text, $matches, $positions, $windowSize, $range ) 
 
 function indri_setupenvironment( $param, $env, $request ) {
    $env->addServer($indri_param['server']);
+   //$env->addIndex( $param[ 'index' ] );
+   //$rules = array( "method:dirichlet,mu:250,field:mainbody,operator:term", "method:dirichlet,mu:1000,field:mainbody,operator:window", "method:dirichlet,mu:100,field:inlink,operator:term", "method:dirichlet,mu:100,field:inlink,operator:window", "method:dirichlet,mu:10,field:title,operator:term", "method:dirichlet,mu:5,field:title,operator:window", "method:dirichlet,mu:40,field:heading,operator:term", "method:dirichlet,mu:80,field:heading,operator:window" );
+   //$env->setScoringRules( $rules );
 
    if (isset($request['startdoc'])) {
      $startdoc = urldecode($request['startdoc']);

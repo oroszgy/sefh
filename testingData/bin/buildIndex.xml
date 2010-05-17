@@ -1,11 +1,10 @@
 <parameters>
-  <corpus>
-	<path>ogy/annotated</path>
-	<class>html</class>
-  </corpus>
-  <memory>512m</memory>
-  <index>unstemmedIndex</index>
-  <stopper>
+ <corpus>
+<path>/home/mee/Projects/ogy/xml/annotated</path>
+<class>xml</class></corpus>
+ <memory>800m</memory>
+ <index>testIndex</index> <stemmer><name>hunStemmer</name></stemmer> 
+<stopper>
 <word>a</word>
 <word>az</word>
 <word>abban</word>
@@ -297,7 +296,6 @@
 <word>új</word>
 <word>újabb</word>
 <word>újra</word>
-<word>úr</word>
 <word>után</word>
 <word>utána</word>
 <word>utolsó</word>
@@ -324,9 +322,29 @@
 <word>volna</word>
 <word>volt</word>
 <word>voltak</word>
-<word>voltam</word>
-<word>voltunk</word>
-  </stopper>
-</parameters>
+<word>voltam</word></stopper>
+<field>
+ <name>datum</name>
+ <numeric>true</numeric>
+ <parserName>HunDateFieldAnnotator</parserName>
+</field>
+<field>
+ <name>date</name>
+ <numeric>true</numeric>
+ <parserName>HunDateFieldAnnotator</parserName>
+</field>
+<field>
+<name>weight</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+<field>
+<name>deviza</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+<field>
+<name>length</name><numeric>true</numeric>
+<parserName>UnitFieldAnnotator</parserName>
+</field>
+ </parameters>
 
-
+ 

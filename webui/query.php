@@ -14,19 +14,30 @@
 
    $startdoc = indri_setupenvironment( $indri_param, $env, $_REQUEST );
    $query = indri_cleanquery( $_REQUEST['query'] );
-
+echo "time memory<br>";
+echo time();
+echo " - 1 ",memory_get_usage(),"<br>";
    // run the query
    $start_time = indri_timer();
    $annotatedResults = $env->runAnnotatedQuery( $query, $startdoc + 10 );
    $doc_end = $query_end = indri_timer();
    $results = array();
-
+echo time();
+echo " - 2 ",memory_get_usage(),"<br>";
    if( $annotatedResults ) {
- 	 $results = array_slice( $annotatedResults->getResults(), $startdoc );
+   	 $res = $annotatedResults->getResults();
+//$annotatedResults = array();
+ 	 $results = array_slice( $res, $startdoc );
+$res = array();
+echo time();
+echo " - 3 ",memory_get_usage(),"<br>";
      $documents = $env->documents( $results );
+echo time();
+echo " - 4 ",memory_get_usage(),"<br>";
      $doc_end = indri_timer();        
-
 	   $nodes = indri_getRawNodes( $annotatedResults->getQueryTree() );
+echo time();
+echo " - 5 ",memory_get_usage(),"<br>";	   
    } else {
      include( "include/error.php" );
      return;
@@ -66,8 +77,6 @@
                             $range );
 
        $snippet = indri_buildsnippet( $doc->text, $matches, $doc->positions, $indri_param['snippet_length'], $range );
-       //memory management
-       unset($doc);
 
        $title = substr( $snippet, 0, 50 ) . "...";
        $title = isset($meta["docno"]) ? $meta["docno"] : $title; 
@@ -95,21 +104,33 @@
         </div>
         [ <a href="<?= $cachedlink ?>">Tárolt dokumentum</a> ] 
      </div>
-  <?php } ?>
+  <?php
+  	unset($doc);
+  	unset($snippet);
+  	unset($matches); 
+  	unset($range);
+  	
+  } 
+  ?>
 
   <?= indri_printlinks( $_REQUEST, $startdoc, count($results), $indri_param[ 'page_docs' ] ) ?>
   </div>
 
   <?php
+  //memory management
+  	 unset($nodes);
+     unset($documents);
+     unset($results);
+     unset($annotatedResults);
   }
    include("include/footer.php"); ?>
   <?php 
-  	  //memory management
-      unset($documents);
-      //unset($results);
-      //unset($annotatedResults);
+  	//$env->close();
+  	unset($env);
+  	echo "<br>";
+  	echo memory_get_usage();
+  	echo "<br>";
   ?>
-  <?php $env->close(); ?>
 </div> <!-- content -->
 
 </body>

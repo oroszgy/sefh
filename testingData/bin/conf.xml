@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE UDML SYSTEM "conf.dtd">
+<UDML>
+<filetype>xml</filetype>
+<separators>
+	<sep isDecimal="true">,</sep>
+	<sep isDecimal="false">\s</sep>
+</separators>
+<units>
+	<unit type="weight" multiplier="1000">kg</unit>
+	<unit type="length" multiplier="1000">km</unit>
+	<unit type="weight" multiplier="1000">kilogramm</unit>
+	<unit type="length" multiplier="1000">kilométer</unit>
+	<unit type="length" multiplier="1">méter</unit>
+	
+	<unit type="deviza" multiplier="1">forint</unit>
+	<unit type="deviza" multiplier="270">euro </unit>
+	<unit type="deviza" multiplier="270">euró</unit>
+	<unit type="deviza" multiplier="180">dollár</unit>
+</units>
+<dates>
+	<date>yyyy month d</date> 
+	<date>yyyy. month d.</date>
+	<date>yyyy. month dd.</date>
+	<date>yyyy. month d-</date>
+	<date>yyyy. month dd-</date>
+	<date>yyyy. mon. d.</date>
+	<date>yyyy. mon. dd.</date>
+	<date>yyyy. mon. d-</date>
+	<date>yyyy. mon. dd-</date>
+	<date>yyyy. month d.</date>
+	<date>yyyy.mm.dd.</date>
+	<date>yyyy.mm.d.</date>
+	<date>yyyy.mm.dd</date>
+	<date>yyyy.mm.d</date>
+</dates>
+</UDML>
+
