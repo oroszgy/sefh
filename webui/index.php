@@ -2,7 +2,11 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" > 
-<title>Indri search</title>
+<title>SEFH<?php
+$q = $_REQUEST['query'];
+if(isset($q) && $q != "")
+echo " - ", $q  
+?></title>
 <link rel="stylesheet" type="text/css" href="style/style.css" title="stylesheet" />
 </head>
 <body>
