@@ -1,43 +1,37 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 <?php include("include/libindri.php") ?>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" > 
-<title>Indri: Results for <?= $_REQUEST['query']; ?></title>
-<link rel="stylesheet" type="text/css" href="style/style.css" title="stylesheet" />
-</head>
-<body>
-
 <?php 
+function debug($i) {
+	//echo time();
+	//echo " -",$i ," ",memory_get_usage(),"<br>";
+}
+$i=1;
    $env = new QueryEnvironment();
 
    $startdoc = indri_setupenvironment( $indri_param, $env, $_REQUEST );
    $query = indri_cleanquery( $_REQUEST['query'] );
-echo "time memory<br>";
-echo time();
-echo " - 1 ",memory_get_usage(),"<br>";
+   if(!isset($query) || $query == "")
+   {
+   	return;
+   }
+debug($i++);
    // run the query
    $start_time = indri_timer();
    $annotatedResults = $env->runAnnotatedQuery( $query, $startdoc + 10 );
    $doc_end = $query_end = indri_timer();
    $results = array();
-echo time();
-echo " - 2 ",memory_get_usage(),"<br>";
+debug($i++);
    if( $annotatedResults ) {
    	 $res = $annotatedResults->getResults();
 //$annotatedResults = array();
  	 $results = array_slice( $res, $startdoc );
 $res = array();
-echo time();
-echo " - 3 ",memory_get_usage(),"<br>";
+debug($i++);
      $documents = $env->documents( $results );
-echo time();
-echo " - 4 ",memory_get_usage(),"<br>";
+debug($i++);
      $doc_end = indri_timer();        
 	   $nodes = indri_getRawNodes( $annotatedResults->getQueryTree() );
-echo time();
-echo " - 5 ",memory_get_usage(),"<br>";	   
+debug($i++);
    } else {
      include( "include/error.php" );
      return;
@@ -48,16 +42,8 @@ echo " - 5 ",memory_get_usage(),"<br>";
    $total_time = $doc_end - $start_time;
 ?>
 
-<div id="content">
-  <?php include( "include/header.php" ) ?>
-
-  <div id="resultbanner">
-    <h3>Erre voltál kíváncsi: <i><?= $_REQUEST['query']; ?></i></h3> 
-    ennyire gyors voltam: [<strong>lekérdezés</strong><? printf("%5.2fs", $query_time ); ?>, 
-    <strong>dokmentumgenerálás</strong><? printf("%5.2fs", $doc_time ); ?>,
-    <strong>összesen</strong><? printf("%5.2fs", $total_time ); ?>]
-  </div>
-
+<div id="results">
+  
   <div id="results">
   <?php
   if(empty($documents))
@@ -115,7 +101,12 @@ echo " - 5 ",memory_get_usage(),"<br>";
 
   <?= indri_printlinks( $_REQUEST, $startdoc, count($results), $indri_param[ 'page_docs' ] ) ?>
   </div>
-
+  <div id="resultbanner">
+  <hr></hr> 
+    ennyire gyors voltam: [<strong>lekérdezés</strong><? printf("%5.2fs", $query_time ); ?>, 
+    <strong>dokmentumgenerálás</strong><? printf("%5.2fs", $doc_time ); ?>,
+    <strong>összesen</strong><? printf("%5.2fs", $total_time ); ?>]
+  </div>
   <?php
   //memory management
   	 unset($nodes);
@@ -127,12 +118,9 @@ echo " - 5 ",memory_get_usage(),"<br>";
   <?php 
   	//$env->close();
   	unset($env);
-  	echo "<br>";
-  	echo memory_get_usage();
-  	echo "<br>";
+  	debug($i++);
   ?>
+  
 </div> <!-- content -->
 
-</body>
-</html>
 

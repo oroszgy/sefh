@@ -21,7 +21,7 @@
   // search_text: Text to be printed under the search box
   //
 
-  $indri_param['search_text'] = '<br/><a href="http://www.lemurproject.org/lemur/IndriQueryLanguage.php">Indri lekérdezőnyelv<br/>'
+  $indri_param['search_text'] = 'http://www.lemurproject.org/lemur/IndriQueryLanguage.php'
   /*
 <p><strong>The Complete Plays of William Shakespeare</strong><br/></p>
 

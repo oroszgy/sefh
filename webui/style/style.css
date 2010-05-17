@@ -9,13 +9,18 @@ a {
 }
 
 #content {
-  width: 600px;
+  width: 700px;
   border: 1px solid gray;
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
   font-size: 11pt;
+}
+
+#resultbanner {
+	font-size: 9pt;
+	text-align: center;
 }
 
 #content td {

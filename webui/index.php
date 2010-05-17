@@ -12,17 +12,20 @@
 <div id="content">
   <?php include("include/header.php"); ?>
 
-  <form action="query.php" method="post">
+  <form action="index.php" method="post">
     <div id="query">
-     <input name="query" size="70"></input><br/>
+     <input name="query" size="70" value=<?= $_REQUEST['query']; ?>><a href=<?= $indri_param['search_text'] ?>> </input><img alt="Indri Query Language" src="img/qm.png" height="20px"></a><br/>
      <input type="submit" value="Keresés"><br/>
      <br/>
-     <?= $indri_param['search_text'] ?>
+     
     </div> <!-- query -->
    </form>
 
+	<?php include("query.php");?>
+
   <?php include("include/footer.php"); ?>
 </div> <!-- content -->
+
 
 </body>
 </html>
