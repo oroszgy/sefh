@@ -1,6 +1,6 @@
 <parameters>
  <corpus>
-<path>/home/mee/Projects/ogy/xml/2000/annotated/</path>
+<path>/home/mee/Projects/ogy/xml/annotated</path>
 <class>xml</class></corpus>
  <memory>800m</memory>
  <index>testIndex</index> <stemmer><name>hunStemmer</name></stemmer> 

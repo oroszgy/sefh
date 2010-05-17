@@ -430,7 +430,7 @@ void indri::net::NetworkServerStub::_handleSetMaxWildcardTerms( indri::xml::XMLN
 void indri::net::NetworkServerStub::request( indri::xml::XMLNode* input ) {
   try {
     const std::string& type = input->getName();
-    std::cout<<"type: "<<type<<std::endl;
+    //std::cout<<"type: "<<type<<std::endl;
 
     if( type == "query" ) {
       _handleQuery( input );

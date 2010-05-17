@@ -47,12 +47,12 @@ indri::api::ParsedDocument*  HunDatefieldAnnotator::transform(indri::api::Parsed
 			date = com::sefh::utils::StringConverter::cleanup(date);
 
 			//Debug
-			std::cout<<date<<std::endl;
+			//std::cout<<date<<std::endl;
 
             _parseDate(date, extent);
 
             //Debug
-            std::cout<<extent->number<<std::endl;
+            //std::cout<<extent->number<<std::endl;
           }
         }
         return document;
@@ -93,7 +93,7 @@ void HunDatefieldAnnotator::_parseDate(const std::string& _date, indri::parse::T
 	year = matchingDateFormat->getYear(_date);
 	day = matchingDateFormat->getDay(_date);
 
-	std::cout<<year<<month<<day<<std::endl;
+	//std::cout<<year<<month<<day<<std::endl;
 
 	extent->number = indri::parse::DateParse::convertDate(year, month, day);
 }

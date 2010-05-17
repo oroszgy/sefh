@@ -565,23 +565,23 @@ std::vector<indri::api::ParsedDocument*> indri::api::QueryEnvironment::documents
 
   // split document numbers into lists for each query server
   qenv_scatter_document_ids( documentIDs, docIDLists, docIDPositions, (int)_servers.size() );
-std::cout<<"1\n";
+//std::cout<<"1\n";
   indri::utility::greedy_vector<indri::server::QueryServerDocumentsResponse*> responses;
 
   // send out requests for processing
   for( size_t i=0; i<docIDLists.size(); i++ ) {
     indri::server::QueryServerDocumentsResponse* response = 0;
-std::cout<<std::string("1.")<<i<<std::string("\n");
+//std::cout<<std::string("1.")<<i<<std::string("\n");
     if( docIDLists[i].size() ) {
       response = _servers[i]->documents( docIDLists[i] );
     } 
 
     responses.push_back(response);
   }
-std::cout<<"2\n";
+//std::cout<<"2\n";
   // fold the results back into one master list (this method will delete the responses)
   qenv_gather_document_results( docIDLists, docIDPositions, responses, results );
-std::cout<<"3\n";
+//std::cout<<"3\n";
   return results;
 }
 
@@ -589,7 +589,7 @@ std::cout<<"3\n";
 std::vector<indri::api::ParsedDocument*> indri::api::QueryEnvironment::documents( const std::vector<indri::api::ScoredExtentResult>& results ) {
   // copy into an int vector
   std::vector<DOCID_T> documentIDs;
-  std::cout<<"0\n";
+  //std::cout<<"0\n";
   documentIDs.reserve(results.size());
 
   for( size_t i=0; i<results.size(); i++ ) {

@@ -72,14 +72,14 @@ namespace indri
         :
         _documents(results)
       {
-    	  std::cout<<"LocalQueryServerDocumentsResponse()\n";
-    	  std::system("date");
+    	  //std::cout<<"LocalQueryServerDocumentsResponse()\n";
+    	  //std::system("date");
       }
 
       // caller's responsibility to delete these results
       std::vector<indri::api::ParsedDocument*>& getResults() {
-    	std::cout<<"LocalQueryServerDocumentsResponse::getResults()\n";
-    	std::system("date");
+    	//std::cout<<"LocalQueryServerDocumentsResponse::getResults()\n";
+    	//std::system("date");
         return _documents;
       }
     };
@@ -202,13 +202,13 @@ indri::server::QueryServerMetadataResponse* indri::server::LocalQueryServer::doc
 }
 
 indri::server::QueryServerDocumentsResponse* indri::server::LocalQueryServer::documents( const std::vector<lemur::api::DOCID_T>& documentIDs ) {
-  std::cout<<"indri::server::LocalQueryServer::documents()\n";
-	std::system("date");
+  //std::cout<<"indri::server::LocalQueryServer::documents()\n";
+	//std::system("date");
   std::vector<indri::api::ParsedDocument*> result;
   for( size_t i=0; i<documentIDs.size(); i++ ) {
     result.push_back( document(documentIDs[i]) );
   }
-  std::system("date");
+  //std::system("date");
   return new indri::server::LocalQueryServerDocumentsResponse( result );
 }
 
@@ -365,8 +365,8 @@ INT64 indri::server::LocalQueryServer::documentStemCount( const std::string& ste
 }
 
 indri::server::QueryServerResponse* indri::server::LocalQueryServer::runQuery( std::vector<indri::lang::Node*>& roots, int resultsRequested, bool optimize ) {
-	std::cout<<"indri::server::LocalQueryServer::runQuery()\n";
-	std::system("date");
+	//std::cout<<"indri::server::LocalQueryServer::runQuery()\n";
+	//std::system("date");
   indri::lang::TreePrinterWalker printer;
 
   // use UnnecessaryNodeRemover to get rid of window nodes, ExtentAnd nodes and ExtentOr nodes
@@ -406,7 +406,7 @@ indri::server::QueryServerResponse* indri::server::LocalQueryServer::runQuery( s
   indri::infnet::InferenceNetwork* network = builder.getNetwork();
   indri::infnet::InferenceNetwork::MAllResults result;
   result = network->evaluate();
-  std::system("date");
+  //std::system("date");
   return new indri::server::LocalQueryServerResponse( result );
 }
 

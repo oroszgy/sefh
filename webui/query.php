@@ -14,6 +14,7 @@
 
    $startdoc = indri_setupenvironment( $indri_param, $env, $_REQUEST );
    $query = indri_cleanquery( $_REQUEST['query'] );
+echo "time memory<br>";
 echo time();
 echo " - 1 ",memory_get_usage(),"<br>";
    // run the query

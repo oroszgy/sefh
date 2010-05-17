@@ -9,6 +9,9 @@
 <units>
 	<unit type="weight" multiplier="1000">kg</unit>
 	<unit type="length" multiplier="1000">km</unit>
+	<unit type="weight" multiplier="1000">kilogramm</unit>
+	<unit type="length" multiplier="1000">kilométer</unit>
+	<unit type="length" multiplier="1">méter</unit>
 	
 	<unit type="deviza" multiplier="1">forint</unit>
 	<unit type="deviza" multiplier="270">euro </unit>

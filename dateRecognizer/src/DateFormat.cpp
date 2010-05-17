@@ -214,7 +214,12 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 	//TODO: replace other non-permitted strings
 	boost::regex dotRegexp("\\.");
 	date = boost::regex_replace(date, dotRegexp, "\\\\.");
+
 	boost::regex spaceRegexp(" ");
+
+	date += std::string(ADDSTR);
+
+
 	/*
 	 * Regex:
 	 * (((<.+?>)(\s)*))(\d{2,4})(((<.+?>)|(\s))+)(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)(((<.+?>)|(\s))+)((1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31))(((<.+?>)(\s)*))
@@ -222,18 +227,19 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 
 	std::string prefix, suffix, sep;
 
+	prefix = std::string(PREFIX);
+	suffix += std::string(SUFFIX);
+	sep = std::string(SEP);
+	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
+	xmldate = prefix + xmldate + suffix;
+
 	suffix = ADDSTR;
+	//TODO: test it with xml and txt files as well.
 	date = boost::regex_replace(date, spaceRegexp, "\\\\s");
 	date += suffix;
 
-
-
-	prefix = PREFIX;
-	suffix += SUFFIX;
-	sep = SEP;
-	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
-	xmldate = prefix + date + suffix;
-
+	//Debug
+	//std::cout << xmldate << std::endl;
 	/*if(date[date.length()-1] == ')')
 		date += "[^\\d]";*/
 
@@ -296,7 +302,8 @@ void DateFormat::_setTagsPositions(int yearStart, int monthStart, int dayStart)
 
 std::string DateFormat::getRecognizerString()
 {
-	if(filetype == TXT)
+	//std::cout<<filetype<<"\t"<<std::string(TXT)<<recognizerRegExp<<xmlrecognizerRegExp<<"\n";
+	if(filetype == std::string(TXT))
 		return std::string(recognizerRegExp);
 	else
 		return std::string(xmlrecognizerRegExp);

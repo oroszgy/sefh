@@ -7,7 +7,7 @@
   //
 
   $indri_param['server'] = "localhost";
-  //$indri_param['index'] = "/home/gyurmi/workspaces/cpp/testingData/testIndex";
+  //$indri_param['index'] = "/home/mee/workspaces/sefh/sefh/testingData/indeces/testIndex";
 
   //
   // document_format: Use 'text' if the document is a text file (or 
