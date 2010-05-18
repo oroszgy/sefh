@@ -9,7 +9,7 @@ $i=1;
    $env = new QueryEnvironment();
 
    $startdoc = indri_setupenvironment( $indri_param, $env, $_REQUEST );
-   $query = indri_cleanquery( $_REQUEST['query'] );
+   $query = indri_cleanquery( $SYNQUERY );
    if(!isset($query) || $query == "")
    {
    	return;

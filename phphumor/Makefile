@@ -1,6 +1,8 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		HunSyn_wrap.o
+OBJS =		Humor_wrap.o Humor.o
+
+SRCS = 		Humor_wrap.cpp Humor.cpp
 
 LIBS =
 
@@ -8,10 +10,14 @@ TARGET =	phphumor.so
 
 
 all:
-	swig -php -c++ HunSyn.i
-	gcc `php-config --includes` -fpic -c HunSyn_wrap.cpp -o $(OBJS)
-	gcc -shared HunSyn_wrap.o -o $(TARGET)
+	swig -php -c++ Humor.i
+	g++ `php-config --includes` -fpic -c Humor_wrap.cpp -o Humor_wrap.o
+	g++ `php-config --includes` -fpic -c Humor.cpp -o Humor.o
+	g++ -shared Humor_wrap.o  Humor.o -o $(TARGET) -lhumor -lstem2005
+	g++ -c main.cpp
+	g++ main.o Humor.o -o test -lhumor -lstem2005
+	chmod +x ./test
 
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) *.o *.so

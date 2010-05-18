@@ -1011,11 +1011,12 @@ static void SWIG_Php_SetModule(swig_module_info *pointer) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym swig_types[0]
-#define SWIGTYPE_p_std__string swig_types[1]
+#define SWIGTYPE_p_Humor swig_types[0]
+#define SWIGTYPE_p_size_type swig_types[1]
 #define SWIGTYPE_p_std__vectorT_std__string_t swig_types[2]
-static swig_type_info *swig_types[4];
-static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
+#define SWIGTYPE_p_value_type swig_types[3]
+static swig_type_info *swig_types[5];
+static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1114,29 +1115,57 @@ extern "C" {
 
  /* Includes the header in the wrapper code */
  
- #include "../hunStemmer/include/HunSynonym.h"
+ #include "Humor.h"
  
+SWIGINTERN bool std_vector_Sl_std_string_Sg__is_empty(std::vector< std::string > const *self){
+        return self->empty();
+      }
+SWIGINTERN std::string std_vector_Sl_std_string_Sg__pop(std::vector< std::string > *self){
+        if (self->size() == 0)
+          throw std::out_of_range("pop from empty vector");
+        std::string x = self->back();
+        self->pop_back();
+        return x;
+      }
+SWIGINTERN std::vector< std::string >::const_reference std_vector_Sl_std_string_Sg__get(std::vector< std::string > *self,int i){
+        int size = int(self->size());
+        if (i>=0 && i<size)
+          return (*self)[i];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_std_string_Sg__set(std::vector< std::string > *self,int i,std::vector< std::string >::value_type const &val){
+        int size = int(self->size());
+        if (i>=0 && i<size)
+          (*self)[i] = val;
+        else
+          throw std::out_of_range("vector index out of range");
+      }
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_com__sefh__hunstemmer__HunSynonym = {"_p_com__sefh__hunstemmer__HunSynonym", "com::sefh::hunstemmer::HunSynonym *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Humor = {"_p_Humor", "Humor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_t = {"_p_std__vectorT_std__string_t", "std::vector< std::string > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_com__sefh__hunstemmer__HunSynonym,
-  &_swigt__p_std__string,
+  &_swigt__p_Humor,
+  &_swigt__p_size_type,
   &_swigt__p_std__vectorT_std__string_t,
+  &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_com__sefh__hunstemmer__HunSynonym[] = {  {&_swigt__p_com__sefh__hunstemmer__HunSynonym, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Humor[] = {  {&_swigt__p_Humor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_t[] = {  {&_swigt__p_std__vectorT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_com__sefh__hunstemmer__HunSynonym,
-  _swigc__p_std__string,
+  _swigc__p_Humor,
+  _swigc__p_size_type,
   _swigc__p_std__vectorT_std__string_t,
+  _swigc__p_value_type,
 };
 
 
@@ -1144,22 +1173,355 @@ static swig_cast_info *swig_cast_initial[] = {
 
 /* end header section */
 /* vdecl subsection */
-static int le_swig__p_com__sefh__hunstemmer__HunSynonym=0; /* handle for HunSynonym */
-static int le_swig__p_std__vectorT_std__string_t=0; /* handle for _p_std__vectorT_std__string_t */
-static int le_swig__p_std__string=0; /* handle for _p_std__string */
+static int le_swig__p_value_type=0; /* handle for _p_value_type */
+static int le_swig__p_std__vectorT_std__string_t=0; /* handle for StringVector */
+static int le_swig__p_size_type=0; /* handle for _p_size_type */
+static int le_swig__p_Humor=0; /* handle for Humor */
 /* end vdecl subsection */
 /* wrapper section */
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_getInstance) {
-  com::sefh::hunstemmer::HunSynonym *result = 0 ;
+ZEND_NAMED_FUNCTION(_wrap_new_StringVector__SWIG_0) {
+  std::vector< std::string > *result = 0 ;
   
   SWIG_ResetError();
   if(ZEND_NUM_ARGS() != 0) {
     WRONG_PARAM_COUNT;
   }
   
-  result = (com::sefh::hunstemmer::HunSynonym *)com::sefh::hunstemmer::HunSynonym::getInstance();
+  result = (std::vector< std::string > *)new std::vector< std::string >();
   
-  SWIG_SetPointerZval(return_value, (void *)result, SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym, 0);
+  SWIG_SetPointerZval(return_value, (void *)result, SWIGTYPE_p_std__vectorT_std__string_t, 1);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_new_StringVector__SWIG_1) {
+  std::vector< std::string >::size_type arg1 ;
+  zval **args[1];
+  std::vector< std::string > *result = 0 ;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  
+  /*@SWIG:/usr/share/swig1.3/php/utils.i,7,CONVERT_INT_IN@*/
+  convert_to_long_ex(args[0]);
+  arg1 = (std::vector< std::string >::size_type) Z_LVAL_PP(args[0]);
+  /*@SWIG@*/;
+  
+  result = (std::vector< std::string > *)new std::vector< std::string >(arg1);
+  
+  SWIG_SetPointerZval(return_value, (void *)result, SWIGTYPE_p_std__vectorT_std__string_t, 1);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_new_StringVector) {
+  int argc;
+  zval **argv[1];
+  
+  argc = ZEND_NUM_ARGS();
+  zend_get_parameters_array_ex(argc,argv);
+  if (argc == 0) {
+    return _wrap_new_StringVector__SWIG_0(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (Z_TYPE_PP(argv[0]) == IS_LONG); 
+    if (_v) {
+      return _wrap_new_StringVector__SWIG_1(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+    }
+  }
+  
+  SWIG_ErrorCode() = E_ERROR;
+  SWIG_ErrorMsg() = "No matching function for overloaded 'new_StringVector'";
+  zend_error(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_size) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  zval **args[1];
+  std::vector< std::string >::size_type result;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_size. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  result = ((std::vector< std::string > const *)arg1)->size();
+  {
+    ZVAL_LONG(return_value,result);
+  }
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_capacity) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  zval **args[1];
+  std::vector< std::string >::size_type result;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_capacity. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  result = ((std::vector< std::string > const *)arg1)->capacity();
+  {
+    ZVAL_LONG(return_value,result);
+  }
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_reserve) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type arg2 ;
+  zval **args[2];
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 2 || zend_get_parameters_array_ex(2, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_reserve. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  
+  /*@SWIG:/usr/share/swig1.3/php/utils.i,7,CONVERT_INT_IN@*/
+  convert_to_long_ex(args[1]);
+  arg2 = (std::vector< std::string >::size_type) Z_LVAL_PP(args[1]);
+  /*@SWIG@*/;
+  
+  (arg1)->reserve(arg2);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_clear) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  zval **args[1];
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_clear. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  (arg1)->clear();
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_push) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::value_type *arg2 = 0 ;
+  std::string temp2 ;
+  zval **args[2];
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 2 || zend_get_parameters_array_ex(2, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_push. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  
+  convert_to_string_ex(args[1]);
+  temp2.assign(Z_STRVAL_PP(args[1]), Z_STRLEN_PP(args[1]));
+  arg2 = &temp2;
+  
+  (arg1)->push_back((std::vector< std::string >::value_type const &)*arg2);
+  
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_is_empty) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  zval **args[1];
+  bool result;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_is_empty. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  result = (bool)std_vector_Sl_std_string_Sg__is_empty((std::vector< std::string > const *)arg1);
+  {
+    ZVAL_BOOL(return_value,(result)?1:0);
+  }
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_pop) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  zval **args[1];
+  std::string result;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_pop. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  try {
+    result = std_vector_Sl_std_string_Sg__pop(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    (void)_e;
+    SWIG_PHP_Error(E_ERROR, "C++ std::out_of_range exception thrown");
+    
+  }
+  
+  
+  ZVAL_STRINGL(return_value, const_cast<char*>((&result)->data()), (&result)->size(), 1);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_get) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  int arg2 ;
+  zval **args[2];
+  std::vector< std::string >::value_type *result = 0 ;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 2 || zend_get_parameters_array_ex(2, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_get. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  
+  /*@SWIG:/usr/share/swig1.3/php/utils.i,7,CONVERT_INT_IN@*/
+  convert_to_long_ex(args[1]);
+  arg2 = (int) Z_LVAL_PP(args[1]);
+  /*@SWIG@*/;
+  
+  try {
+    result = (std::vector< std::string >::value_type *) &std_vector_Sl_std_string_Sg__get(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    (void)_e;
+    SWIG_PHP_Error(E_ERROR, "C++ std::out_of_range exception thrown");
+    
+  }
+  
+  
+  ZVAL_STRINGL(return_value, const_cast<char*>(result->data()), result->size(), 1);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_StringVector_set) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  int arg2 ;
+  std::vector< std::string >::value_type *arg3 = 0 ;
+  std::string temp3 ;
+  zval **args[3];
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 3 || zend_get_parameters_array_ex(3, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_std__vectorT_std__string_t, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of StringVector_set. Expected SWIGTYPE_p_std__vectorT_std__string_t");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  
+  /*@SWIG:/usr/share/swig1.3/php/utils.i,7,CONVERT_INT_IN@*/
+  convert_to_long_ex(args[1]);
+  arg2 = (int) Z_LVAL_PP(args[1]);
+  /*@SWIG@*/;
+  
+  
+  convert_to_string_ex(args[2]);
+  temp3.assign(Z_STRVAL_PP(args[2]), Z_STRLEN_PP(args[2]));
+  arg3 = &temp3;
+  
+  try {
+    std_vector_Sl_std_string_Sg__set(arg1,arg2,(std::string const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    (void)_e;
+    SWIG_PHP_Error(E_ERROR, "C++ std::out_of_range exception thrown");
+    
+  }
+  
+  
   
   return;
 fail:
@@ -1169,16 +1531,16 @@ fail:
 
 /* This function is designed to be called by the zend list destructors */
 /* to typecast and do the actual destruction */
-static void __wrap_delete_HunSynonym(zend_rsrc_list_entry *rsrc, const char *type_name TSRMLS_DC) {
+static void __wrap_delete_StringVector(zend_rsrc_list_entry *rsrc, const char *type_name TSRMLS_DC) {
   swig_object_wrapper *value=(swig_object_wrapper *) rsrc->ptr ;
   void *ptr=value->ptr ;
   int newobject=value->newobject ;
-  com::sefh::hunstemmer::HunSynonym *arg1 = (com::sefh::hunstemmer::HunSynonym *) 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   
   efree(value);
   if (! newobject) return; /* can't delete it! */
-  arg1 = (com::sefh::hunstemmer::HunSynonym *)SWIG_ZTS_ConvertResourceData(ptr,type_name,SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym TSRMLS_CC);
-  if (! arg1) zend_error(E_ERROR, "com::sefh::hunstemmer::HunSynonym resource already free'd");
+  arg1 = (std::vector< std::string > *)SWIG_ZTS_ConvertResourceData(ptr,type_name,SWIGTYPE_p_std__vectorT_std__string_t TSRMLS_CC);
+  if (! arg1) zend_error(E_ERROR, "std::vector<(std::string)> resource already free'd");
   delete arg1;
   return;
 fail:
@@ -1186,35 +1548,17 @@ fail:
 }
 
 
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_processQuery) {
-  com::sefh::hunstemmer::HunSynonym *arg1 = (com::sefh::hunstemmer::HunSynonym *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string temp2 ;
-  zval **args[2];
-  std::string result;
+ZEND_NAMED_FUNCTION(_wrap_new_Humor__SWIG_0) {
+  Humor *result = 0 ;
   
   SWIG_ResetError();
-  if(ZEND_NUM_ARGS() != 2 || zend_get_parameters_array_ex(2, args) != SUCCESS) {
+  if(ZEND_NUM_ARGS() != 0) {
     WRONG_PARAM_COUNT;
   }
   
-  {
-    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym, 0) < 0) {
-      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of HunSynonym_processQuery. Expected SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym");
-    }
-  }
-  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  result = (Humor *)new Humor();
   
-  convert_to_string_ex(args[1]);
-  temp2.assign(Z_STRVAL_PP(args[1]), Z_STRLEN_PP(args[1]));
-  arg2 = &temp2;
-  
-  result = (arg1)->processQuery(*arg2);
-  
-  ZVAL_STRINGL(return_value, const_cast<char*>((&result)->data()), (&result)->size(), 1);
-  
-  
-  ZVAL_STRINGL(*(args[1]), const_cast<char*>(arg2->data()), arg2->size(), 1);
+  SWIG_SetPointerZval(return_value, (void *)result, SWIGTYPE_p_Humor, 1);
   
   return;
 fail:
@@ -1222,12 +1566,79 @@ fail:
 }
 
 
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_getSyns) {
-  com::sefh::hunstemmer::HunSynonym *arg1 = (com::sefh::hunstemmer::HunSynonym *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string temp2 ;
+ZEND_NAMED_FUNCTION(_wrap_new_Humor__SWIG_1) {
+  std::string arg1 ;
+  zval **args[1];
+  Humor *result = 0 ;
+  
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  
+  convert_to_string_ex(args[0]);
+  (&arg1)->assign(Z_STRVAL_PP(args[0]), Z_STRLEN_PP(args[0]));
+  
+  result = (Humor *)new Humor(arg1);
+  
+  SWIG_SetPointerZval(return_value, (void *)result, SWIGTYPE_p_Humor, 1);
+  
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_new_Humor) {
+  int argc;
+  zval **argv[1];
+  
+  argc = ZEND_NUM_ARGS();
+  zend_get_parameters_array_ex(argc,argv);
+  if (argc == 0) {
+    return _wrap_new_Humor__SWIG_0(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+  }
+  if (argc == 1) {
+    int _v;
+    
+    _v = ( Z_TYPE_PP(argv[0]) == IS_STRING ) ? 1 : 0;
+    
+    if (_v) {
+      return _wrap_new_Humor__SWIG_1(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+    }
+  }
+  
+  SWIG_ErrorCode() = E_ERROR;
+  SWIG_ErrorMsg() = "No matching function for overloaded 'new_Humor'";
+  zend_error(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+/* This function is designed to be called by the zend list destructors */
+/* to typecast and do the actual destruction */
+static void __wrap_delete_Humor(zend_rsrc_list_entry *rsrc, const char *type_name TSRMLS_DC) {
+  swig_object_wrapper *value=(swig_object_wrapper *) rsrc->ptr ;
+  void *ptr=value->ptr ;
+  int newobject=value->newobject ;
+  Humor *arg1 = (Humor *) 0 ;
+  
+  efree(value);
+  if (! newobject) return; /* can't delete it! */
+  arg1 = (Humor *)SWIG_ZTS_ConvertResourceData(ptr,type_name,SWIGTYPE_p_Humor TSRMLS_CC);
+  if (! arg1) zend_error(E_ERROR, "Humor resource already free'd");
+  delete arg1;
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_Humor_getSyns) {
+  Humor *arg1 = (Humor *) 0 ;
+  std::string arg2 ;
   zval **args[2];
-  SwigValueWrapper< std::vector< std::string > > result;
+  std::vector< std::string > result;
   
   SWIG_ResetError();
   if(ZEND_NUM_ARGS() != 2 || zend_get_parameters_array_ex(2, args) != SUCCESS) {
@@ -1235,23 +1646,45 @@ ZEND_NAMED_FUNCTION(_wrap_HunSynonym_getSyns) {
   }
   
   {
-    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym, 0) < 0) {
-      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of HunSynonym_getSyns. Expected SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym");
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_Humor, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of Humor_getSyns. Expected SWIGTYPE_p_Humor");
     }
   }
   if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
   
   convert_to_string_ex(args[1]);
-  temp2.assign(Z_STRVAL_PP(args[1]), Z_STRLEN_PP(args[1]));
-  arg2 = &temp2;
+  (&arg2)->assign(Z_STRVAL_PP(args[1]), Z_STRLEN_PP(args[1]));
   
-  result = (arg1)->getSyns(*arg2);
+  result = (arg1)->getSyns(arg2);
   {
     std::vector< std::string > * resultobj = new std::vector< std::string >((const std::vector< std::string > &) result);
     SWIG_SetPointerZval(return_value, (void *)resultobj, SWIGTYPE_p_std__vectorT_std__string_t, 1);
   }
+  return;
+fail:
+  zend_error_noreturn(SWIG_ErrorCode(),"%s",SWIG_ErrorMsg());
+}
+
+
+ZEND_NAMED_FUNCTION(_wrap_Humor_getClassName) {
+  Humor *arg1 = (Humor *) 0 ;
+  zval **args[1];
+  std::string result;
   
-  ZVAL_STRINGL(*(args[1]), const_cast<char*>(arg2->data()), arg2->size(), 1);
+  SWIG_ResetError();
+  if(ZEND_NUM_ARGS() != 1 || zend_get_parameters_array_ex(1, args) != SUCCESS) {
+    WRONG_PARAM_COUNT;
+  }
+  
+  {
+    if(SWIG_ConvertPtr(*args[0], (void **) &arg1, SWIGTYPE_p_Humor, 0) < 0) {
+      SWIG_PHP_Error(E_ERROR, "Type error in argument 1 of Humor_getClassName. Expected SWIGTYPE_p_Humor");
+    }
+  }
+  if(!arg1) SWIG_PHP_Error(E_ERROR, "this pointer is NULL");
+  result = (arg1)->getClassName();
+  
+  ZVAL_STRINGL(return_value, const_cast<char*>((&result)->data()), (&result)->size(), 1);
   
   return;
 fail:
@@ -1259,16 +1692,19 @@ fail:
 }
 
 
-static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_com__sefh__hunstemmer__HunSynonym) {
-  __wrap_delete_HunSynonym(rsrc, SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym->name TSRMLS_CC);
+static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_value_type) {
+  /* No destructor for simple type _p_value_type */
+  efree(rsrc->ptr);
 }
 static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_std__vectorT_std__string_t) {
-  /* No destructor for simple type _p_std__vectorT_std__string_t */
+  __wrap_delete_StringVector(rsrc, SWIGTYPE_p_std__vectorT_std__string_t->name TSRMLS_CC);
+}
+static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_size_type) {
+  /* No destructor for simple type _p_size_type */
   efree(rsrc->ptr);
 }
-static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_std__string) {
-  /* No destructor for simple type _p_std__string */
-  efree(rsrc->ptr);
+static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_Humor) {
+  __wrap_delete_Humor(rsrc, SWIGTYPE_p_Humor->name TSRMLS_CC);
 }
 /* end wrapper section */
 /* class entry subsection */
@@ -1277,9 +1713,19 @@ static ZEND_RSRC_DTOR_FUNC(_wrap_destroy_p_std__string) {
 /* entry subsection */
 /* Every non-class user visible function must have an entry here */
 static zend_function_entry example_functions[] = {
- SWIG_ZEND_NAMED_FE(hunsynonym_getinstance,_wrap_HunSynonym_getInstance,NULL)
- SWIG_ZEND_NAMED_FE(hunsynonym_processquery,_wrap_HunSynonym_processQuery,NULL)
- SWIG_ZEND_NAMED_FE(hunsynonym_getsyns,_wrap_HunSynonym_getSyns,NULL)
+ SWIG_ZEND_NAMED_FE(new_stringvector,_wrap_new_StringVector,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_size,_wrap_StringVector_size,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_capacity,_wrap_StringVector_capacity,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_reserve,_wrap_StringVector_reserve,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_clear,_wrap_StringVector_clear,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_push,_wrap_StringVector_push,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_is_empty,_wrap_StringVector_is_empty,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_pop,_wrap_StringVector_pop,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_get,_wrap_StringVector_get,NULL)
+ SWIG_ZEND_NAMED_FE(stringvector_set,_wrap_StringVector_set,NULL)
+ SWIG_ZEND_NAMED_FE(new_humor,_wrap_new_Humor,NULL)
+ SWIG_ZEND_NAMED_FE(humor_getsyns,_wrap_Humor_getSyns,NULL)
+ SWIG_ZEND_NAMED_FE(humor_getclassname,_wrap_Humor_getClassName,NULL)
  SWIG_ZEND_NAMED_FE(swig_example_alter_newobject,_wrap_swig_example_alter_newobject,NULL)
  SWIG_ZEND_NAMED_FE(swig_example_get_newobject,_wrap_swig_example_get_newobject,NULL)
 {NULL, NULL, NULL}
@@ -1562,12 +2008,14 @@ SWIG_PropagateClientData(void) {
 ZEND_INIT_MODULE_GLOBALS(example, example_init_globals, example_destroy_globals);
 
 /* Register resource destructors for pointer types */
-le_swig__p_com__sefh__hunstemmer__HunSynonym=zend_register_list_destructors_ex(_wrap_destroy_p_com__sefh__hunstemmer__HunSynonym,NULL,(char *)(SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym->name),module_number);
-SWIG_TypeClientData(SWIGTYPE_p_com__sefh__hunstemmer__HunSynonym,&le_swig__p_com__sefh__hunstemmer__HunSynonym);
+le_swig__p_value_type=zend_register_list_destructors_ex(_wrap_destroy_p_value_type,NULL,(char *)(SWIGTYPE_p_value_type->name),module_number);
+SWIG_TypeClientData(SWIGTYPE_p_value_type,&le_swig__p_value_type);
 le_swig__p_std__vectorT_std__string_t=zend_register_list_destructors_ex(_wrap_destroy_p_std__vectorT_std__string_t,NULL,(char *)(SWIGTYPE_p_std__vectorT_std__string_t->name),module_number);
 SWIG_TypeClientData(SWIGTYPE_p_std__vectorT_std__string_t,&le_swig__p_std__vectorT_std__string_t);
-le_swig__p_std__string=zend_register_list_destructors_ex(_wrap_destroy_p_std__string,NULL,(char *)(SWIGTYPE_p_std__string->name),module_number);
-SWIG_TypeClientData(SWIGTYPE_p_std__string,&le_swig__p_std__string);
+le_swig__p_size_type=zend_register_list_destructors_ex(_wrap_destroy_p_size_type,NULL,(char *)(SWIGTYPE_p_size_type->name),module_number);
+SWIG_TypeClientData(SWIGTYPE_p_size_type,&le_swig__p_size_type);
+le_swig__p_Humor=zend_register_list_destructors_ex(_wrap_destroy_p_Humor,NULL,(char *)(SWIGTYPE_p_Humor->name),module_number);
+SWIG_TypeClientData(SWIGTYPE_p_Humor,&le_swig__p_Humor);
 CG(active_class_entry) = NULL;
 /* end oinit subsection */
 

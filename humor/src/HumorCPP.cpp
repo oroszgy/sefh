@@ -1,8 +1,10 @@
 #include "../include/HumorCPP.h"
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 #include <exception>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <boost/algorithm/string.hpp>
 
@@ -21,6 +23,18 @@ void HumorCPP::initialize(std::string dir)
 	ctu = openCpToUtf();
 	utc = openUtfToCp();
 	morphId = init(dir.c_str(),1038,1250,0);
+}
+
+std::string HumorCPP::getInitString() {
+	std::string ctus, utcs, ms;
+	ctus = ctu == NULL ? "false" : "true";
+	utcs = utc == NULL ? "false" : "true";
+	std::stringstream ss;//create a stringstream
+	ss << morphId;//add number to the stream
+	ms = ss.str();//return a string with the contents of the stream
+	return ctus + std::string(", ")
+			+ utcs + std::string(", ")
+			+ ms;
 }
 
 bool HumorCPP::isInitialized()

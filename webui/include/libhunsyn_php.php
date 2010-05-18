@@ -10,22 +10,7 @@
  * interface file instead. 
  * ----------------------------------------------------------------------------- */
 
-// Try to load our extension if it's not already loaded.
-if (!extension_loaded('example')) {
-  if (strtolower(substr(PHP_OS, 0, 3)) === 'win') {
-    if (!dl('php_example.dll')) return;
-  } else {
-    // PHP_SHLIB_SUFFIX gives 'dylib' on MacOS X but modules are 'so'.
-    if (PHP_SHLIB_SUFFIX === 'dylib') {
-      if (!dl('example.so')) return;
-    } else {
-      if (!dl('example.'.PHP_SHLIB_SUFFIX)) return;
-    }
-  }
-}
-
-
-
+/* PHP Proxy Classes */
 /* PHP Proxy Classes */
 class StringVector {
 	public $_cPtr=null;
@@ -142,6 +127,5 @@ class Humor {
 		return Humor_getClassName($this->_cPtr);
 	}
 }
-
 
 ?>

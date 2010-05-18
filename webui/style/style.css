@@ -8,6 +8,10 @@ a {
   text-decoration: none;
 }
 
+#syn {
+	font-size: 9pt;
+	text-align: center;
+}
 #content {
   width: 700px;
   border: 1px solid gray;

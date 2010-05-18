@@ -30,7 +30,17 @@ PHP_RINIT_FUNCTION(example);
 PHP_RSHUTDOWN_FUNCTION(example);
 PHP_MINFO_FUNCTION(example);
 
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_getInstance);
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_processQuery);
-ZEND_NAMED_FUNCTION(_wrap_HunSynonym_getSyns);
+ZEND_NAMED_FUNCTION(_wrap_new_StringVector);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_size);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_capacity);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_reserve);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_clear);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_push);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_is_empty);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_pop);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_get);
+ZEND_NAMED_FUNCTION(_wrap_StringVector_set);
+ZEND_NAMED_FUNCTION(_wrap_new_Humor);
+ZEND_NAMED_FUNCTION(_wrap_Humor_getSyns);
+ZEND_NAMED_FUNCTION(_wrap_Humor_getClassName);
 #endif /* PHP_EXAMPLE_H */

@@ -27,6 +27,7 @@ namespace com
                     //static std::vector<std::string>* getWordGenerate(std::string word);
                     //static std::vector<std::string>* getWordForms(std::string word, int limit);
                     static std::vector<std::string> getSyns(std::string word);
+                    static std::string getInitString();
                     //void TestError(std::string word, int limit);
                     //static std::string* getStrFromJava(java::lang::String* jStr);
                     //static java::lang::String* convertToJavaStr(std::string* str);

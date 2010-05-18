@@ -5,8 +5,14 @@
 %{
  /* Includes the header in the wrapper code */
  
- #include "../hunStemmer/include/HunSynonym.h"
+ #include "Humor.h"
  %}
  
+using namespace std;
+
+namespace std {
+   %template(StringVector) vector<string>;
+};
+ 
  /* Parse the header file to generate wrappers */
- %include "../hunStemmer/include/HunSynonym.h"
+ %include "Humor.h"
