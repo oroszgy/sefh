@@ -229,7 +229,7 @@ void DateFormat::_setRegExpString(std::string dateFormat)
 
 	prefix = std::string(PREFIX);
 	suffix += std::string(SUFFIX);
-	sep = std::string(SEP);
+	sep = std::string(DSEP);
 	std::string xmldate = boost::regex_replace(date, spaceRegexp, sep);
 	xmldate = prefix + xmldate + suffix;
 

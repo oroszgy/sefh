@@ -48,7 +48,8 @@ indri::api::ParsedDocument* UnitFieldAnnotator::transform( indri::api::ParsedDoc
 
 			try{
 			value += unitRecognizer->getSIValue(unit) * 100;
-			//std::cout<<value<<std::endl;
+			//debug
+			//std::cout<<unit<<"\t"<<value<<std::endl;
 			extent->number = value;
 			} catch(...) {
 				std::cout<<"Error with: "<<unit<<"\n";
