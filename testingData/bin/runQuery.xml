@@ -1,0 +1,5 @@
+<parameters>
+<query>orbán</query>
+<index>../indeces/testIndex</index>
+<printSnippets>true</printSnippets>
+</parameters>
