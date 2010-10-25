@@ -1,6 +1,6 @@
 <?php 
 include( "config.php" );
-include( "libindri_php.php" ); 
+//include( "libindri_php.php" ); 
 ?>
 
 <?php

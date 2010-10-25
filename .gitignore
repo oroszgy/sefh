@@ -21,3 +21,4 @@ ModifyFields
 pagerank
 annotateFile
 *.7z
+.metadata

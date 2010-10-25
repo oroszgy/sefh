@@ -19,7 +19,7 @@
 	<unit type="deviza" multiplier="180">dollár</unit>
 </units>
 <dates>
-	<date>yyyy month d</date> 
+  <!--<date>yyyy month d</date> -->
 	<date>yyyy. month d.</date>
 	<date>yyyy. month dd.</date>
 	<date>yyyy. month d-</date>

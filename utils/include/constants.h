@@ -8,8 +8,9 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-#define PREFIX "(((<[^<>]+?>)(\\\s)*))"
+#define PREFIX "(((<([^<>]+?)>)(\\\s)*))"
 #define SUFFIX "(((</[^<>]+?>)(\\\s)*))"
+//#define SUFFIX "(((</\4>)(\\\s)*))"
 #define SEP "(((<[^<>]+?>)|(\\\s))+)"
 #define DSEP "(((<[^<>]+?>)|(\\\\s))+)"
 #define ADDSTR "([öüóőúéáűíÖÜÓŐÚÉÁŰÍA-Za-z]*)"

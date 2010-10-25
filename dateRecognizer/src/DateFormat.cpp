@@ -62,6 +62,9 @@ std::vector<DateFormat>* DateFormat::getInstances()
 	return ret;
 }
 
+DateFormat DateFormat::create(std::string format) {
+	return DateFormat(format, "xml");
+}
 
 
 std::string DateFormat::getDay(std::string date)

@@ -23,6 +23,8 @@ public:
 	static std::vector<DateFormat>* getInstances();
 	~DateFormat();
 
+	DateFormat create(std::string);
+
 	std::string getSimpleRecognizerString();
 	/**
 	 * Returns a regular expression, which can be used for manipulating a

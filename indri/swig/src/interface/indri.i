@@ -130,14 +130,12 @@ typedef long long UINT64;
 #define get_double get
 
   %}
-
 %include "typemaps.i"
 %include "std_string.i"
 %include "std_vector.i"
 %include "exception.i"
 %include "indritypemaps.i"
 %include "LemurException.i"
-
 
 namespace indri{
   namespace parse{

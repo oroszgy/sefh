@@ -1366,3 +1366,4 @@ void indri::api::QueryEnvironment::setMaxWildcardTerms(int maxTerms) {
 }
 
 
+

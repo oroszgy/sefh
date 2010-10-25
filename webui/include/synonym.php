@@ -8,6 +8,7 @@ global $SYNS;
 function storeAllSyns($query) {
 	preg_match_all('/~[a-zA-ZöüóőúéáűíÖÜÓŐÚÉÁŰÍ]+/', $query, $synWords, PREG_OFFSET_CAPTURE);
 	$syns = $synWords[0];
+	$ret = array();
 	for($i=0; $i<count($syns); ++$i) {
 		$word = $syns[$i][0];
 		$word = substr($word, 1, strlen($word)-1);

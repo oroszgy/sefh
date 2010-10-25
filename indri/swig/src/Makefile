@@ -184,6 +184,7 @@ ifneq ("$(SWIG)", "")
 	$(SWIG) -php5 -c++ -o php/indri_phpwrap.cpp -outdir php $(INCLUDES) $(PHPSRC) 
 endif
 
+
 $(OUTDIRPHP)/indri_phpwrap.o: php/indri_phpwrap.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $< $(PHPINCLUDE)
 

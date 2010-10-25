@@ -333,6 +333,7 @@ namespace indri
       const std::vector<indri::server::QueryServer*>& getServers() const { return _servers;
       }
       
+
     };
   }
 }

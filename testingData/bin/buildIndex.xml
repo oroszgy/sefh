@@ -1,6 +1,6 @@
 <parameters>
  <corpus>
-<path>/home/mee/Projects/ogy/xml/annotated</path>
+<path>/home/mee/Projects/ogy/xml/annotated/ny000131.xml</path>
 <class>xml</class></corpus>
  <memory>800m</memory>
  <index>testIndex</index> <stemmer><name>hunStemmer</name></stemmer> 
@@ -332,6 +332,9 @@
  <name>date</name>
  <numeric>true</numeric>
  <parserName>HunDateFieldAnnotator</parserName>
+</field>
+<field>
+ <name>felszolalo</name>
 </field>
 <field>
 <name>weight</name><numeric>true</numeric>
