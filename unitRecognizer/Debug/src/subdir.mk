@@ -23,7 +23,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -I"/home/mee/workspaces/sefh/sefh/utils/include" -I"/home/mee/workspaces/sefh/sefh/indri/contrib/lemur/include" -I"/home/mee/workspaces/sefh/sefh/indri/include" -I"/home/mee/workspaces/sefh/sefh/utils/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	g++ -I"/home/oroszgy/workspace/ppke/hundri/utils/include" -I"/home/oroszgy/workspace/ppke/hundri/indri/contrib/lemur/include" -I"/home/oroszgy/workspace/ppke/hundri/indri/include" -I"/home/oroszgy/workspace/ppke/hundri/utils/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
