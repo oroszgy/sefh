@@ -49,7 +49,7 @@ int main(int args, char** argv)
 
 	HumorCPP::close();*/
 
-	using namespace com::sefh::daterecognising;
+	using namespace com::sefh::daterecognition;
 	std::vector<DateFormat> dateVec = DateFormat::getInstances()[0];
 	DateFormat f = dateVec[0];
 	std::string date = "2008. május 1.";

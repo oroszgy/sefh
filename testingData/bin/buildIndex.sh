@@ -7,7 +7,7 @@ PAR="/buildIndex.xml"
 
 export LD_LIBRARY_PATH=$LIBDIR 
 rm testIndex -r
-./buildindex ./buildIndex.xml
+../../indri/buildindex/buildindex ./buildIndex.xml
 
 rm ../indeces/testIndex -r
 mv ./testIndex ../indeces
